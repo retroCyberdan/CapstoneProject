@@ -1,0 +1,344 @@
+fileFormatVersion: 2
+guid: 977a3dc324939f14096e081e927e28af
+ModelImporter:
+  serializedVersion: 22200
+  internalIDToNameTable: []
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Amazake
+    second: {fileID: 2100000, guid: de73e43d127dee94fa4fb0aa6eaa3f43, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Ashtray
+    second: {fileID: 2100000, guid: cd99135e07dbb6c46a065d9cb828cb5c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Bowl
+    second: {fileID: 2100000, guid: 1f1bc1af9e18e0c43bbd6eb8219dfecb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Cup
+    second: {fileID: 2100000, guid: d8b0e74e59960064ca07bd737c5aa0fe, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Cushion
+    second: {fileID: 2100000, guid: 99bad973c54143c459e00bcc246b9634, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Dorayaki
+    second: {fileID: 2100000, guid: f1997b2ccc618c04baf99bdb1aab3da1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: GreenTea
+    second: {fileID: 2100000, guid: a4eb0fff8043d754c9c56243e950a919, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: HanabiraMochi
+    second: {fileID: 2100000, guid: 08e46c3c307c788448ab534dbb081ef5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Housekitou_Blue
+    second: {fileID: 2100000, guid: 1d0e89192d73784489111523cab40c31, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Housekitou_Red
+    second: {fileID: 2100000, guid: ee55dca2cb9b653478bda67e7742856f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: KamoSoba
+    second: {fileID: 2100000, guid: e9572271625f2bf4d904fb4ecbe98fb1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: KamoUdon
+    second: {fileID: 2100000, guid: d85033cdde2f36841bec48d3ded95c0d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: KitsuneSoba
+    second: {fileID: 2100000, guid: 6f2f024bcc387f649b2d7ad78c28ded8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: KitsuneUdon
+    second: {fileID: 2100000, guid: d701cb52403bde84c8b6c1de16cd65d7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Leaf
+    second: {fileID: 2100000, guid: 0c8735a102c935844a7b0ca262802d87, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Menu
+    second: {fileID: 2100000, guid: e28e8b9a3495d8948b8aad5862847449, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MitarashiDango
+    second: {fileID: 2100000, guid: f504a6d3f41cede46b774eb843623bff, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Omelet
+    second: {fileID: 2100000, guid: cf20ba7547e4b7442b24b30e8cb813f2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Plate
+    second: {fileID: 2100000, guid: 75f3ae3057f03be429dfe055bc4363c9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: RiceBall
+    second: {fileID: 2100000, guid: 3679e7759e143e5408db86a1fb4a0363, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SakuraMochi
+    second: {fileID: 2100000, guid: 1cc869b06fd8d6a4dbb11eda7e5db69d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: TableZasiki
+    second: {fileID: 2100000, guid: 3ac7c0b6a69d78e42aaad4bebf1b3ad6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Toothpick
+    second: {fileID: 2100000, guid: 69d4d5fcf0308a54b9a66c5270eb339e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Tray
+    second: {fileID: 2100000, guid: a025275e83e90a74a87a998a99b6a955, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Wood
+    second: {fileID: 2100000, guid: 42e1df5d0ba53c049b3d4df2281145c7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Yunomi
+    second: {fileID: 2100000, guid: 257d97fd348cc5d43a0eb85a85571be5, type: 2}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Amazake_dif
+    second: {fileID: 2800000, guid: 36e3e2ad730a70d4fad39e6331730682, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Ashtray_dif
+    second: {fileID: 2800000, guid: fa02c5cb9e1ed2c41aba37240e072bb7, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Cushion02_dif
+    second: {fileID: 2800000, guid: 90c5f9d172a068e4595d1b5d295e01f6, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Dorayaki_dif
+    second: {fileID: 2800000, guid: 5212d2f1a31d4674eba5a52e46f21078, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: GreenTea_dif
+    second: {fileID: 2800000, guid: 4aec09718a4e5be43bfeea42c992ebd0, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Hanabiramochi_dif
+    second: {fileID: 2800000, guid: a44d917e1c745c2438397cae63bf18f8, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Housekitou_dif
+    second: {fileID: 2800000, guid: 9d0cf34a6d69dc34eb69cf7a37b05c99, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Housekitou_opacity
+    second: {fileID: 2800000, guid: db515b4bca3809b4abd9437d33262262, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: KamoSoba_dif
+    second: {fileID: 2800000, guid: 32df60ca8ca014745a447f91d9fd0487, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: KamoUdon_dif
+    second: {fileID: 2800000, guid: 810bb5b004fc7ce4180c64b302796d43, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: KituneSoba_dif
+    second: {fileID: 2800000, guid: 87f9e09cf48d2094ea6b401980752202, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: KituneUdon_dif
+    second: {fileID: 2800000, guid: af5c6bdaf074cd4468255308e54c3083, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Menu_dif
+    second: {fileID: 2800000, guid: 12ae5757e0f14ac41820c006db3ce86f, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Mitarashidango_dif
+    second: {fileID: 2800000, guid: 7da0b1a7662e3524593b8abc8807bcf5, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Omelet_dif
+    second: {fileID: 2800000, guid: a4182b65d708ff146a33798dbb3d6797, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: RiceBall_dif
+    second: {fileID: 2800000, guid: a0571cc32fc6eda4f9a4774aa517f260, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Sakuramochi_dif
+    second: {fileID: 2800000, guid: d5fe1f15d028ba7429d70a7aa647a9dd, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Sakuramochi_opacity
+    second: {fileID: 2800000, guid: 7addf1eb96f4fa84b9f0309f6143e865, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: TableZasiki_dif
+    second: {fileID: 2800000, guid: 6e8cfc5f150ad0a46a57cdaaf747005c, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Toothpick_dif
+    second: {fileID: 2800000, guid: 19e55f026e426f944be60a897ac0c070, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Tray_dif
+    second: {fileID: 2800000, guid: 712c8a78d96b98440840a56966f78aea, type: 3}
+  materials:
+    materialImportMode: 2
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    removeConstantScaleCurves: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importPhysicalCameras: 1
+    importVisibility: 0
+    importBlendShapes: 0
+    importCameras: 0
+    importLights: 0
+    nodeNameCollisionStrategy: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    optimizeBones: 1
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    strictVertexDataChecks: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 0
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  importBlendShapeDeformPercent: 1
+  remapMaterialsIfMaterialImportModeIsNone: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
