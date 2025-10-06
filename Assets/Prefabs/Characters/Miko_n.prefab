@@ -4195,7 +4195,7 @@ GameObject:
   - component: {fileID: 65462534714164354}
   - component: {fileID: 8567074163386910071}
   m_Layer: 0
-  m_Name: Miko
+  m_Name: Miko_n
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
