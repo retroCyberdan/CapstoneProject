@@ -8,41 +8,39 @@ public class HealthSystem : MonoBehaviour
     [SerializeField] private float currentHealth;
 
     [Header("References")]
-    [SerializeField] private HealthBarUI healthBarUI;
+    [SerializeField] private UI_HealthBar uiHealthBar;
 
-    // Eventi per notificare cambiamenti di salute
-    public event Action<float, float> OnHealthChanged; // currentHealth, maxHealth
+    // events per notificare cambiamenti di salute
+    public event Action<float, float> OnHealthChanged; // <- currentHealth, maxHealth
     public event Action OnDeath;
+
+
+    // getters
+    public float GetCurrentHealth() => currentHealth;
+    public float GetMaxHealth() => maxHealth;
+    public float GetHealthPercentage() => currentHealth / maxHealth;
+    public bool IsAlive() => currentHealth > 0;
+    public bool IsAtMaxHealth() => Mathf.Approximately(currentHealth, maxHealth);
 
     private void Start()
     {
         currentHealth = maxHealth;
 
-        // Inizializza la health bar se presente
-        if (healthBarUI != null)
+        if (uiHealthBar != null)
         {
-            healthBarUI.maxHealthValue = maxHealth;
-            healthBarUI.healthValue = currentHealth;
+            uiHealthBar.maxHealthValue = maxHealth;
+            uiHealthBar.healthValue = currentHealth;
         }
     }
 
     private void Update()
     {
         // Debug controls - rimuovi in produzione
-        if (Input.GetKeyDown(KeyCode.H))
-        {
-            TakeDamage(10f);
-        }
+        if (Input.GetKeyDown(KeyCode.H)) TakeDamage(10f);
 
-        if (Input.GetKeyDown(KeyCode.G))
-        {
-            Heal(15f);
-        }
+        if (Input.GetKeyDown(KeyCode.G)) Heal(15f);
     }
 
-    /// <summary>
-    /// Infligge danno al sistema di salute
-    /// </summary>
     public void TakeDamage(float damage)
     {
         if (damage < 0)
@@ -57,15 +55,9 @@ public class HealthSystem : MonoBehaviour
         UpdateHealthBar();
         OnHealthChanged?.Invoke(currentHealth, maxHealth);
 
-        if (currentHealth <= 0)
-        {
-            Die();
-        }
+        if (currentHealth <= 0) Die();
     }
 
-    /// <summary>
-    /// Recupera vita
-    /// </summary>
     public void Heal(float amount)
     {
         if (amount < 0)
@@ -87,9 +79,6 @@ public class HealthSystem : MonoBehaviour
         OnHealthChanged?.Invoke(currentHealth, maxHealth);
     }
 
-    /// <summary>
-    /// Imposta la salute a un valore specifico
-    /// </summary>
     public void SetHealth(float value)
     {
         currentHealth = Mathf.Clamp(value, 0f, maxHealth);
@@ -97,40 +86,23 @@ public class HealthSystem : MonoBehaviour
         UpdateHealthBar();
         OnHealthChanged?.Invoke(currentHealth, maxHealth);
 
-        if (currentHealth <= 0)
-        {
-            Die();
-        }
+        if (currentHealth <= 0) Die();
     }
 
-    /// <summary>
-    /// Imposta la salute massima e opzionalmente recupera completamente
-    /// </summary>
     public void SetMaxHealth(float value, bool healToMax = false)
     {
         maxHealth = Mathf.Max(value, 1f);
 
-        if (healToMax)
-        {
-            currentHealth = maxHealth;
-        }
-        else
-        {
-            currentHealth = Mathf.Min(currentHealth, maxHealth);
-        }
+        if (healToMax) currentHealth = maxHealth;
 
-        if (healthBarUI != null)
-        {
-            healthBarUI.maxHealthValue = maxHealth;
-        }
+        else currentHealth = Mathf.Min(currentHealth, maxHealth);
+
+        if (uiHealthBar != null) uiHealthBar.maxHealthValue = maxHealth;
 
         UpdateHealthBar();
         OnHealthChanged?.Invoke(currentHealth, maxHealth);
     }
 
-    /// <summary>
-    /// Recupera completamente la salute
-    /// </summary>
     public void HealToMax()
     {
         Heal(maxHealth - currentHealth);
@@ -138,10 +110,7 @@ public class HealthSystem : MonoBehaviour
 
     private void UpdateHealthBar()
     {
-        if (healthBarUI != null)
-        {
-            healthBarUI.healthValue = currentHealth;
-        }
+        if (uiHealthBar != null) uiHealthBar.healthValue = currentHealth;
     }
 
     private void Die()
@@ -150,11 +119,4 @@ public class HealthSystem : MonoBehaviour
         Debug.Log($"{gameObject.name} è morto!");
         // Aggiungi qui la logica di morte (animazioni, disattivazione, ecc.)
     }
-
-    // Getters
-    public float GetCurrentHealth() => currentHealth;
-    public float GetMaxHealth() => maxHealth;
-    public float GetHealthPercentage() => currentHealth / maxHealth;
-    public bool IsAlive() => currentHealth > 0;
-    public bool IsAtMaxHealth() => Mathf.Approximately(currentHealth, maxHealth);
 }

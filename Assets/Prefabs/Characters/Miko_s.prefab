@@ -1516,6 +1516,8 @@ GameObject:
   - component: {fileID: 2052907555864192276}
   - component: {fileID: 8516823243210722063}
   - component: {fileID: 1270159362964134331}
+  - component: {fileID: 4431936453763905095}
+  - component: {fileID: 1581802545759256761}
   m_Layer: 0
   m_Name: Miko_s
   m_TagString: Player
@@ -1684,7 +1686,48 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   currentHealth: 0
-  healthBarUI: {fileID: 0}
+  uiHealthBar: {fileID: 0}
+--- !u!114 &4431936453763905095
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2440846093052305444}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 555881f236066154f866030b3e341ed7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxStress: 100
+  currentStress: 0
+  stressPerEnemy: 5
+  stressDecayRate: 3
+  enemyThreshold: 4
+  uiStressBar: {fileID: 0}
+  poolManager: {fileID: 0}
+  playerVision: {fileID: 1581802545759256761}
+--- !u!114 &1581802545759256761
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2440846093052305444}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 732fe26ffb5515f44911248480bb7cef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _visionRadius: 15
+  _fovSegments: 50
+  _enemyLayer:
+    serializedVersion: 2
+    m_Bits: 1
+  _obstacleLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  _drawFOV: 1
 --- !u!1 &2483920275955652409
 GameObject:
   m_ObjectHideFlags: 0

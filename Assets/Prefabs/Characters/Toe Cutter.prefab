@@ -1403,7 +1403,7 @@ GameObject:
   - component: {fileID: 6056568022187406056}
   m_Layer: 0
   m_Name: Toe Cutter
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

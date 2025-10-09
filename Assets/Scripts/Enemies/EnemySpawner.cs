@@ -3,15 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class EnemiesSpawnData
+public class EnemySpawnData
 {
-    public string tag;
-    public float spawnProbability; // <- probabilità di generazione (enemy > villain)
+    public string poolTag;
+    public float spawnProbability; // <- probabilità di generazione
+    public float lifetime; // <-- durata vita del nemico (in secondi)
 }
 
-public class EnemiesSpawner : MonoBehaviour
+public class EnemySpawner : MonoBehaviour
 {
-    public EnemiesSpawnData[] enemies;
+    public EnemySpawnData[] enemies;
     public Transform[] spawnPoints;
     public float spawnInterval = 3f;
 
@@ -27,14 +28,18 @@ public class EnemiesSpawner : MonoBehaviour
         float totalSpawnProbability = 0;
         foreach (var e in enemies) totalSpawnProbability += e.spawnProbability;
 
-        float randomSpawnFactor = Random.value * totalSpawnProbability; // <- fattore randomizzante
+        float randomSpawnFactor = Random.value * totalSpawnProbability;
 
         foreach (var e in enemies)
         {
             if (randomSpawnFactor < e.spawnProbability)
             {
                 Transform spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
-                PoolManager.Instance.SpawnFromPool(e.tag, spawnPoint.position, Quaternion.identity);
+                GameObject enemy = PoolManager.Instance.SpawnFromPool(e.poolTag, spawnPoint.position, Quaternion.identity);
+
+                // se il nemico è valido, disattivalo dopo (lifetime)
+                if (enemy != null) PoolManager.Instance.StartCoroutine(PoolManager.Instance.DisableAfterDelay(enemy, e.lifetime));
+
                 return;
             }
             randomSpawnFactor -= e.spawnProbability;

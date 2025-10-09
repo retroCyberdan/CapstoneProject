@@ -462,7 +462,7 @@ GameObject:
   - component: {fileID: 3476560835332344900}
   m_Layer: 0
   m_Name: Ghost Face
-  m_TagString: Untagged
+  m_TagString: Villain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

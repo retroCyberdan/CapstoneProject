@@ -5,19 +5,19 @@ using UnityEngine;
 public class EnemyAnimatorController : MonoBehaviour
 {
     private Animator _animator;
-    private EnemyAI _enemyAI;
+    private EnemyController _enemyController;
 
     // Start is called before the first frame update
     void Start()
     {
         _animator = GetComponent<Animator>();
-        _enemyAI = GetComponent<EnemyAI>();
+        _enemyController = GetComponent<EnemyController>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        _animator.SetFloat("horizontal", _enemyAI.MoveDir.x);
-        _animator.SetFloat("vertical", _enemyAI.MoveDir.z);
+        _animator.SetFloat("horizontal", _enemyController.MoveDir.x);
+        _animator.SetFloat("vertical", _enemyController.MoveDir.z);
     }
 }

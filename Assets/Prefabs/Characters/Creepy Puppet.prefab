@@ -594,7 +594,7 @@ GameObject:
   - component: {fileID: 9051370166031419976}
   m_Layer: 0
   m_Name: Creepy Puppet
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

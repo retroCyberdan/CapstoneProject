@@ -3,18 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class Pool
+public class PoolData
 {
-    public string tag; 
+    public string poolTag;
     public GameObject prefab;
-    public int size;
+    public int poolSize;
 }
 
 public class PoolManager : MonoBehaviour
 {
     public static PoolManager Instance;
 
-    public List<Pool> pools;
+    public List<PoolData> pools;
     private Dictionary<string, Queue<GameObject>> _poolDictionary;
 
     private void Awake()
@@ -24,28 +24,26 @@ public class PoolManager : MonoBehaviour
             Instance = this;
             DontDestroyOnLoad(gameObject);
         }
-        else
-        {
-            Destroy(gameObject);
-        }
+
+        else Destroy(gameObject);
     }
 
     void Start()
     {
         _poolDictionary = new Dictionary<string, Queue<GameObject>>();
 
-        foreach (Pool pool in pools)
+        foreach (PoolData pool in pools)
         {
             Queue<GameObject> objectPool = new Queue<GameObject>();
 
-            for (int i = 0; i < pool.size; i++)
+            for (int i = 0; i < pool.poolSize; i++)
             {
                 GameObject obj = Instantiate(pool.prefab);
                 obj.SetActive(false);
                 objectPool.Enqueue(obj);
             }
 
-            _poolDictionary.Add(pool.tag, objectPool);
+            _poolDictionary.Add(pool.poolTag, objectPool);
         }
     }
 
@@ -66,5 +64,13 @@ public class PoolManager : MonoBehaviour
         _poolDictionary[tag].Enqueue(obj);
 
         return obj;
+    }
+
+    // ?? Disattiva un oggetto dopo un certo tempo
+    public IEnumerator DisableAfterDelay(GameObject obj, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+
+        if (obj != null) obj.SetActive(false);
     }
 }

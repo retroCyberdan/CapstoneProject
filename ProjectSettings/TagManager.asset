@@ -4,11 +4,9 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Enemy
-  - Enemy2
-  - Enemy3
-  - Villain
   - NPC
+  - Enemy
+  - Villain
   layers:
   - Default
   - TransparentFX
