@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b98561ca0425e0b4aab3ec0fa0524e7c, type: 3}
+  m_Name: Mama Jaga
+  m_EditorClassIdentifier: 
+  enemyPrefab: {fileID: 3417471540883226065, guid: 5e10197b3fbb8f347a65f058cebfc0da,
+    type: 3}
+  moveSpeed: 3
+  minWaitTime: 2
+  maxWaitTime: 5
+  minMoveTime: 2
+  maxMoveTime: 4
+  rotationSpeed: 10
+  damage: 7
+  damageCooldown: 3
+  visionRadius: 7
+  fovSegments: 50
+  damageMultiplier: 2
+  moveSpeedReduction: 0.7

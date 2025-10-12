@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 public class HealthSystem : MonoBehaviour
@@ -9,11 +10,14 @@ public class HealthSystem : MonoBehaviour
 
     [Header("References")]
     [SerializeField] private UI_HealthBar uiHealthBar;
+    [SerializeField] private CanvasGroup deathCanvas;
+
+    [Header("Death Settings")]
+    [SerializeField] private float deathCanvasFadeSpeed = 1f;
 
     // events per notificare cambiamenti di salute
-    public event Action<float, float> OnHealthChanged; // <- currentHealth, maxHealth
+    public event Action<float, float> OnHealthChanged;
     public event Action OnDeath;
-
 
     // getters
     public float GetCurrentHealth() => currentHealth;
@@ -31,14 +35,13 @@ public class HealthSystem : MonoBehaviour
             uiHealthBar.maxHealthValue = maxHealth;
             uiHealthBar.healthValue = currentHealth;
         }
-    }
 
-    private void Update()
-    {
-        // Debug controls - rimuovi in produzione
-        if (Input.GetKeyDown(KeyCode.H)) TakeDamage(10f);
-
-        if (Input.GetKeyDown(KeyCode.G)) Heal(15f);
+        // Assicurati che la death canvas sia invisibile all'inizio
+        if (deathCanvas != null)
+        {
+            deathCanvas.alpha = 0f;
+            deathCanvas.gameObject.SetActive(false);
+        }
     }
 
     public void TakeDamage(float damage)
@@ -48,6 +51,8 @@ public class HealthSystem : MonoBehaviour
             Debug.LogWarning("Il danno non può essere negativo. Usa Heal() per recuperare vita.");
             return;
         }
+
+        if (!IsAlive()) return;
 
         currentHealth -= damage;
         currentHealth = Mathf.Max(currentHealth, 0f);
@@ -94,7 +99,6 @@ public class HealthSystem : MonoBehaviour
         maxHealth = Mathf.Max(value, 1f);
 
         if (healToMax) currentHealth = maxHealth;
-
         else currentHealth = Mathf.Min(currentHealth, maxHealth);
 
         if (uiHealthBar != null) uiHealthBar.maxHealthValue = maxHealth;
@@ -117,6 +121,60 @@ public class HealthSystem : MonoBehaviour
     {
         OnDeath?.Invoke();
         Debug.Log($"{gameObject.name} è morto!");
-        // Aggiungi qui la logica di morte (animazioni, disattivazione, ecc.)
+
+        // Disabilita il controller del player
+        var controller = GetComponent<PlayerController>();
+        if (controller != null) controller.enabled = false;
+
+        var characterController = GetComponent<CharacterController>();
+        if (characterController != null) characterController.enabled = false;
+
+        // Ferma il gioco e mostra la death canvas
+        StartCoroutine(HandleDeath());
+    }
+
+    private IEnumerator HandleDeath()
+    {
+        // Attiva la death canvas
+        if (deathCanvas != null)
+        {
+            deathCanvas.gameObject.SetActive(true);
+
+            // Fade in graduale
+            while (deathCanvas.alpha < 1f)
+            {
+                deathCanvas.alpha += Time.unscaledDeltaTime * deathCanvasFadeSpeed;
+                yield return null;
+            }
+
+            deathCanvas.alpha = 1f;
+        }
+
+        // Aspetta un attimo prima di freezare completamente
+        yield return new WaitForSecondsRealtime(0.5f);
+
+        // Freezare la scena
+        Time.timeScale = 0f;
+    }
+
+    // Metodo pubblico per resettare il gioco (da chiamare da un bottone di restart)
+    public void ResetGame()
+    {
+        Time.timeScale = 1f;
+
+        if (deathCanvas != null)
+        {
+            deathCanvas.alpha = 0f;
+            deathCanvas.gameObject.SetActive(false);
+        }
+
+        currentHealth = maxHealth;
+        UpdateHealthBar();
+
+        var controller = GetComponent<PlayerController>();
+        if (controller != null) controller.enabled = true;
+
+        var characterController = GetComponent<CharacterController>();
+        if (characterController != null) characterController.enabled = true;
     }
 }

@@ -91,4 +91,29 @@ public class EnemyVisionAI : MonoBehaviour
         if (_player == null) return Vector3.zero;
         return (_player.position - transform.position).normalized;
     }
+
+    /// <summary>
+    /// Metodo per impostare il raggio di visione da EnemyController
+    /// </summary>
+    public void SetVisionRadius(float radius)
+    {
+        _visionRadius = Mathf.Max(0f, radius);
+    }
+
+    /// <summary>
+    /// Metodo per impostare i segmenti del FOV da EnemyController
+    /// </summary>
+    public void SetFovSegments(int segments)
+    {
+        _fovSegments = Mathf.Max(3, segments);
+        if (_lineRenderer != null)
+        {
+            _lineRenderer.positionCount = _fovSegments + 1;
+        }
+    }
+
+    /// <summary>
+    /// Permette di ottenere il raggio di visione attuale
+    /// </summary>
+    public float GetVisionRadius() => _visionRadius;
 }

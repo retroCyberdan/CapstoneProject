@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d0fd6bf1838f024bb0c7a5f611a5f48, type: 3}
+  m_Name: Distressed Man
+  m_EditorClassIdentifier: 
+  enemyPrefab: {fileID: 6836484041085757636, guid: 6154a957d4abe534cade3215c6bc5a5c,
+    type: 3}
+  moveSpeed: 4
+  minWaitTime: 2
+  maxWaitTime: 5
+  minMoveTime: 2
+  maxMoveTime: 4
+  rotationSpeed: 10
+  damage: 3
+  damageCooldown: 2
+  visionRadius: 6
+  fovSegments: 50
+  speedMultiplier: 0.5

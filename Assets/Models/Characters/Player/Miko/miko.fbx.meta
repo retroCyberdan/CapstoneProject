@@ -1,0 +1,1033 @@
+fileFormatVersion: 2
+guid: 0d412f346794306438ec83b3014b9e0b
+ModelImporter:
+  serializedVersion: 22200
+  internalIDToNameTable: []
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Front_Transparency
+    second: {fileID: 2100000, guid: 1687f83126679414db93c824fc7f9109, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Std_Cornea_L.001
+    second: {fileID: 2100000, guid: 2e7c5d268125059458041ee30527ff9d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Std_Cornea_R.001
+    second: {fileID: 2100000, guid: 2b006f4659dcb674b857b43dda930ddb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Std_Eye_L.001
+    second: {fileID: 2100000, guid: 7b764c3474026ff458c96cfc48c5f555, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Std_Eye_R.001
+    second: {fileID: 2100000, guid: be5d132a0b668294f8210d5746f055c4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Std_Eyelash.001
+    second: {fileID: 2100000, guid: d75219ce8d38e3c4588f605d6afcbbe9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Std_Lower_Teeth.001
+    second: {fileID: 2100000, guid: 7a705683cbaa86647a4f22225ac6fc4e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Std_Nails.001
+    second: {fileID: 2100000, guid: 3d21e97d518e13448a441bbbf56354f2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Std_Skin_Arm.001
+    second: {fileID: 2100000, guid: 5161f82b61abc834991512ba50d5e676, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Std_Skin_Body.001
+    second: {fileID: 2100000, guid: 2fc8f188eecf94449b771d52fc362887, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Std_Skin_Head.001
+    second: {fileID: 2100000, guid: 682da4f2194c4cb4cb0c2dfd741d476e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Std_Skin_Leg.001
+    second: {fileID: 2100000, guid: 3dbd4fc331fba8142a4b42ae5c830f56, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Std_Tearline_L.001
+    second: {fileID: 2100000, guid: 4e841b428573f3447bf8db18fd201704, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Std_Tearline_R.001
+    second: {fileID: 2100000, guid: 5116136765c9231408e2dde63b9950e7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Std_Tongue.001
+    second: {fileID: 2100000, guid: ec228c09e01e7d04c9e12650fd992bed, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Std_Upper_Teeth.001
+    second: {fileID: 2100000, guid: 0e1969bebb632eb438e379737fa4a4a4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Underwear_Bottoms.001
+    second: {fileID: 2100000, guid: 650f60a602e3ee748afbe9d3554b28ba, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Winter_Shoes_Mat
+    second: {fileID: 2100000, guid: 0e2f2134dd07892478ca8eff74bdab9a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Winter_Skirt_Mat
+    second: {fileID: 2100000, guid: ee94f62cb28f7d944a0efdb5cd7bf4ec, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Winter_Socks_Mat
+    second: {fileID: 2100000, guid: f23d81b687483354497f5806e69b7e8f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Winter_Top_Mat
+    second: {fileID: 2100000, guid: a8748090b2e66d14b9f3340712c7914e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: hair_Transparency
+    second: {fileID: 2100000, guid: 310f888dcaf7d16458450164a19df27d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert4
+    second: {fileID: 2100000, guid: 7cadecaa0cf6c454dacc105265806d0b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: scalp_Transparency
+    second: {fileID: 2100000, guid: 3e3feef1b5187384fa4acb93188365f7, type: 2}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Std_Cornea_L_baseColor
+    second: {fileID: 2800000, guid: d291079ce93bfe941ad0e59b97a0607d, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Std_Cornea_R_baseColor
+    second: {fileID: 2800000, guid: a0aace38a7fa1024a9403c5ae65faa4d, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Std_Eye_L_baseColor
+    second: {fileID: 2800000, guid: 6b9c996bd6033b84ea28c9dce9e38ec8, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Std_Eye_L_normal
+    second: {fileID: 2800000, guid: 6155a77682deced44b7191c3bd5f68c1, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Std_Eye_R_baseColor
+    second: {fileID: 2800000, guid: bf7e02c7356ec7248be9b7b92eba478e, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Std_Eye_R_normal
+    second: {fileID: 2800000, guid: 984f66e2de8e0c849ba33bc1fa2b1322, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Std_Eyelash_baseColor
+    second: {fileID: 2800000, guid: bcc97987a1cddcf40ace1481ac09679e, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Std_Eyelash_normal
+    second: {fileID: 2800000, guid: 215501bab102b2240bcb76047eb4282d, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Std_Lower_Teeth_baseColor
+    second: {fileID: 2800000, guid: 19b5362178431aa4b85597cb86bb268f, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Std_Lower_Teeth_normal
+    second: {fileID: 2800000, guid: a54493157feef2e4fbf3c73da399df13, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Std_Nails_baseColor
+    second: {fileID: 2800000, guid: b18e1d90974f0b74cb29cd34c457a807, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Std_Nails_normal
+    second: {fileID: 2800000, guid: d02f1abb844c06c4a9a9b034eabc1ed8, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Std_Skin_Arm_baseColor
+    second: {fileID: 2800000, guid: 6018fa9da32273d4e9b6493a47fe5a95, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Std_Skin_Arm_normal
+    second: {fileID: 2800000, guid: c44621a1ae934c94fb9c95a48e14c7a5, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Std_Skin_Body_baseColor
+    second: {fileID: 2800000, guid: 1459735d622796248b5dd7dbe36e52e1, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Std_Skin_Body_normal
+    second: {fileID: 2800000, guid: 072948b2cfafb98488a3f6b015604e95, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Std_Skin_Head_baseColor
+    second: {fileID: 2800000, guid: 296898865edbccb4fadf6c12b11526e7, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Std_Skin_Head_normal
+    second: {fileID: 2800000, guid: e7351e3b07ace834796e92dfcd928927, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Std_Skin_Leg_baseColor
+    second: {fileID: 2800000, guid: 5cfa507681ad39a40acb40ccabdad867, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Std_Skin_Leg_normal
+    second: {fileID: 2800000, guid: d5be53942d1ce674585cf79a890fb734, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Std_Tearline_L_baseColor
+    second: {fileID: 2800000, guid: 6e9fd9ece200ad143b7bc7f0700b51a6, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Std_Tearline_R_baseColor
+    second: {fileID: 2800000, guid: a1888d1d66845ae459b64dcf185134ee, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Std_Tongue_baseColor
+    second: {fileID: 2800000, guid: ed8ac25d6ba92714c82768b36fe0e574, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Std_Tongue_normal
+    second: {fileID: 2800000, guid: 190a0557a82913044bb074779a1c78d8, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Std_Upper_Teeth_baseColor
+    second: {fileID: 2800000, guid: 7269e15b2fd187b44b2a41327d974f55, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Std_Upper_Teeth_normal
+    second: {fileID: 2800000, guid: f164c60d51d9dde4eb880ee78b129a3e, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Underwear_Bottoms_baseColor
+    second: {fileID: 2800000, guid: 8c21ff0694bd1cf40a51d3a295a49485, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Underwear_Bottoms_normal
+    second: {fileID: 2800000, guid: ee0441b4ffb61304885f93c4b6671db7, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Winter_Shoes_Mat_baseColor
+    second: {fileID: 2800000, guid: 6f17c0e9460809a4bbe2b099788d37c2, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Winter_Shoes_Mat_normal
+    second: {fileID: 2800000, guid: 89403f09b0dc5ad488ba32681310bf4f, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Winter_Skirt_Mat_baseColor
+    second: {fileID: 2800000, guid: ed166c9c63d92284c843b2d62b8278d2, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Winter_Skirt_Mat_normal
+    second: {fileID: 2800000, guid: e84f982dd34701f4d8e2a0b714005210, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Winter_Socks_Mat_baseColor
+    second: {fileID: 2800000, guid: 8d9727273b29ecd4586aaf24c6cf18e8, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Winter_Socks_Mat_normal
+    second: {fileID: 2800000, guid: 3b60ae181caaa004497c760792c31dfa, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Winter_Top_Mat_baseColor_scale3
+    second: {fileID: 2800000, guid: 37a8df79e7dae6544b941bdc16ceff7b, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Winter_Top_Mat_normal
+    second: {fileID: 2800000, guid: e4b2679af0bf8be4a9f2af5733c39154, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: hair_Transparency_baseColor
+    second: {fileID: 2800000, guid: 4668e55d804c46845a34fadeee76e871, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: hair_Transparency_baseColor_scale5
+    second: {fileID: 2800000, guid: 062cd15338503194ab47e364fd1574a4, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: hair_Transparency_emissive_scale6
+    second: {fileID: 2800000, guid: 71064d07595a0514aac38a2803503414, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: lambert4_baseColor
+    second: {fileID: 2800000, guid: cf5ae0de365b98641b463406bd3783ee, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: lambert4_normal
+    second: {fileID: 2800000, guid: 8acdc4be5799d4f49b6ef682f886cf46, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: scalp_Transparency_baseColor_scale7
+    second: {fileID: 2800000, guid: 9f764df02f327bb46ba8673c044d14c4, type: 3}
+  materials:
+    materialImportMode: 2
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    removeConstantScaleCurves: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 3
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: idle
+      takeName: mixamo.com
+      internalID: -203655887218126122
+      firstFrame: 0
+      lastFrame: 180
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 0.9
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importPhysicalCameras: 1
+    importVisibility: 0
+    importBlendShapes: 0
+    importCameras: 0
+    importLights: 0
+    nodeNameCollisionStrategy: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    optimizeBones: 1
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    strictVertexDataChecks: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human:
+    - boneName: mixamorig:Hips
+      humanName: Hips
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: mixamorig:LeftUpLeg
+      humanName: LeftUpperLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: mixamorig:RightUpLeg
+      humanName: RightUpperLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: mixamorig:LeftLeg
+      humanName: LeftLowerLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: mixamorig:RightLeg
+      humanName: RightLowerLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: mixamorig:LeftFoot
+      humanName: LeftFoot
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: mixamorig:RightFoot
+      humanName: RightFoot
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: mixamorig:Spine
+      humanName: Spine
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: mixamorig:Spine1
+      humanName: Chest
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: mixamorig:Neck
+      humanName: Neck
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: mixamorig:Head
+      humanName: Head
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: mixamorig:LeftShoulder
+      humanName: LeftShoulder
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: mixamorig:RightShoulder
+      humanName: RightShoulder
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: mixamorig:LeftArm
+      humanName: LeftUpperArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: mixamorig:RightArm
+      humanName: RightUpperArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: mixamorig:LeftForeArm
+      humanName: LeftLowerArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: mixamorig:RightForeArm
+      humanName: RightLowerArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: mixamorig:LeftHand
+      humanName: LeftHand
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: mixamorig:RightHand
+      humanName: RightHand
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: mixamorig:LeftToeBase
+      humanName: LeftToes
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: mixamorig:RightToeBase
+      humanName: RightToes
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: mixamorig:LeftHandIndex1
+      humanName: Left Index Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: mixamorig:LeftHandIndex2
+      humanName: Left Index Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: mixamorig:LeftHandIndex3
+      humanName: Left Index Distal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: mixamorig:RightHandIndex1
+      humanName: Right Index Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: mixamorig:RightHandIndex2
+      humanName: Right Index Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: mixamorig:RightHandIndex3
+      humanName: Right Index Distal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: mixamorig:Spine2
+      humanName: UpperChest
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    skeleton:
+    - name: Standing Idle(Clone)
+      parentName: 
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: scene
+      parentName: Standing Idle(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: -0.000000037748947, y: 0, z: -0, w: 1}
+      scale: {x: 0.9999999, y: 1, z: 1}
+    - name: Materials
+      parentName: scene
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 3.5527137e-15, y: 0, z: -0, w: 1}
+      scale: {x: 1.0000001, y: 1, z: 1}
+    - name: SkinnedMeshes
+      parentName: scene
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 4.547473e-15, y: 0, z: -0, w: 1}
+      scale: {x: 100.00001, y: 100.00001, z: 100.00001}
+    - name: Sketchfab_model
+      parentName: SkinnedMeshes
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: -0.00000005338508, y: 0.7071068, z: -0.7071067, w: 0.000000053385076}
+      scale: {x: 1.9231628, y: 1.9231628, z: 1.9231628}
+    - name: Women_in_Skirt_fbx
+      parentName: Sketchfab_model
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 1, y: -4.411265e-23, z: 1.3877788e-15, w: 0.0000000754979}
+      scale: {x: 0.01, y: 0.010000001, z: 0.010000001}
+    - name: Object_2
+      parentName: Women_in_Skirt_fbx
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: -2.2e-44, y: 1.776357e-15, z: -3.176374e-22, w: 1}
+      scale: {x: 0.99999994, y: 0.99999994, z: 0.99999994}
+    - name: RootNode1
+      parentName: Object_2
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: -2.2e-44, y: 1.776357e-15, z: -3.176374e-22, w: 1}
+      scale: {x: 0.99999994, y: 0.99999994, z: 0.99999994}
+    - name: Object_4
+      parentName: RootNode1
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: -2.2e-44, y: 1.776357e-15, z: -3.176374e-22, w: 1}
+      scale: {x: 0.99999994, y: 0.99999994, z: 0.99999994}
+    - name: skin0
+      parentName: Object_4
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: -2.2e-44, y: 1.776357e-15, z: -3.176374e-22, w: 1}
+      scale: {x: 0.99999994, y: 0.99999994, z: 0.99999994}
+    - name: CC_Base_Teeth_Std_Lower_Teeth_0
+      parentName: skin0
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: -2.2e-44, y: 1.776357e-15, z: -3.176374e-22, w: 1}
+      scale: {x: 0.99999994, y: 0.99999994, z: 0.99999994}
+    - name: CC_Base_Teeth_Std_Upper_Teeth_0
+      parentName: skin0
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: -2.2e-44, y: 1.776357e-15, z: -3.176374e-22, w: 1}
+      scale: {x: 0.99999994, y: 0.99999994, z: 0.99999994}
+    - name: Underwear_Bottoms_Underwear_Bottoms_0
+      parentName: skin0
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: -2.2e-44, y: 1.776357e-15, z: -3.176374e-22, w: 1}
+      scale: {x: 0.99999994, y: 0.99999994, z: 0.99999994}
+    - name: Winter_Jacket_lambert4_0
+      parentName: skin0
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: -2.2e-44, y: 1.776357e-15, z: -3.176374e-22, w: 1}
+      scale: {x: 0.99999994, y: 0.99999994, z: 0.99999994}
+    - name: Winter_Shoes_Winter_Shoes_Mat_0
+      parentName: skin0
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: -2.2e-44, y: 1.776357e-15, z: -3.176374e-22, w: 1}
+      scale: {x: 0.99999994, y: 0.99999994, z: 0.99999994}
+    - name: Winter_Shoes_Winter_Socks_Mat_0
+      parentName: skin0
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: -2.2e-44, y: 1.776357e-15, z: -3.176374e-22, w: 1}
+      scale: {x: 0.99999994, y: 0.99999994, z: 0.99999994}
+    - name: Winter_Skirt_Winter_Skirt_Mat_0
+      parentName: skin0
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: -2.2e-44, y: 1.776357e-15, z: -3.176374e-22, w: 1}
+      scale: {x: 0.99999994, y: 0.99999994, z: 0.99999994}
+    - name: _
+      parentName: skin0
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: -2.2e-44, y: 1.776357e-15, z: -3.176374e-22, w: 1}
+      scale: {x: 0.99999994, y: 0.99999994, z: 0.99999994}
+    - name: _0
+      parentName: skin0
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: -2.2e-44, y: 1.776357e-15, z: -3.176374e-22, w: 1}
+      scale: {x: 0.99999994, y: 0.99999994, z: 0.99999994}
+    - name: _3
+      parentName: skin0
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: -2.2e-44, y: 1.776357e-15, z: -3.176374e-22, w: 1}
+      scale: {x: 0.99999994, y: 0.99999994, z: 0.99999994}
+    - name: _4
+      parentName: skin0
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: -2.2e-44, y: 1.776357e-15, z: -3.176374e-22, w: 1}
+      scale: {x: 0.99999994, y: 0.99999994, z: 0.99999994}
+    - name: _5
+      parentName: skin0
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: -2.2e-44, y: 1.776357e-15, z: -3.176374e-22, w: 1}
+      scale: {x: 0.99999994, y: 0.99999994, z: 0.99999994}
+    - name: _6
+      parentName: skin0
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: -2.2e-44, y: 1.776357e-15, z: -3.176374e-22, w: 1}
+      scale: {x: 0.99999994, y: 0.99999994, z: 0.99999994}
+    - name: _7
+      parentName: skin0
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: -2.2e-44, y: 1.776357e-15, z: -3.176374e-22, w: 1}
+      scale: {x: 0.99999994, y: 0.99999994, z: 0.99999994}
+    - name: __1
+      parentName: skin0
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: -2.2e-44, y: 1.776357e-15, z: -3.176374e-22, w: 1}
+      scale: {x: 0.99999994, y: 0.99999994, z: 0.99999994}
+    - name: __2
+      parentName: skin0
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: -2.2e-44, y: 1.776357e-15, z: -3.176374e-22, w: 1}
+      scale: {x: 0.99999994, y: 0.99999994, z: 0.99999994}
+    - name: __3
+      parentName: skin0
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: -2.2e-44, y: 1.776357e-15, z: -3.176374e-22, w: 1}
+      scale: {x: 0.99999994, y: 0.99999994, z: 0.99999994}
+    - name: __4
+      parentName: skin0
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: -2.2e-44, y: 1.776357e-15, z: -3.176374e-22, w: 1}
+      scale: {x: 0.99999994, y: 0.99999994, z: 0.99999994}
+    - name: __5
+      parentName: skin0
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: -2.2e-44, y: 1.776357e-15, z: -3.176374e-22, w: 1}
+      scale: {x: 0.99999994, y: 0.99999994, z: 0.99999994}
+    - name: __6
+      parentName: skin0
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: -2.2e-44, y: 1.776357e-15, z: -3.176374e-22, w: 1}
+      scale: {x: 0.99999994, y: 0.99999994, z: 0.99999994}
+    - name: __7
+      parentName: skin0
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: -2.2e-44, y: 1.776357e-15, z: -3.176374e-22, w: 1}
+      scale: {x: 0.99999994, y: 0.99999994, z: 0.99999994}
+    - name: __8
+      parentName: skin0
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: -2.2e-44, y: 1.776357e-15, z: -3.176374e-22, w: 1}
+      scale: {x: 0.99999994, y: 0.99999994, z: 0.99999994}
+    - name: __9
+      parentName: skin0
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: -2.2e-44, y: 1.776357e-15, z: -3.176374e-22, w: 1}
+      scale: {x: 0.99999994, y: 0.99999994, z: 0.99999994}
+    - name: winter_cloth_raw_Re_Winter_Top_Mat_0
+      parentName: skin0
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: -2.2e-44, y: 1.776357e-15, z: -3.176374e-22, w: 1}
+      scale: {x: 0.99999994, y: 0.99999994, z: 0.99999994}
+    - name: mixamorig:Hips
+      parentName: Standing Idle(Clone)
+      position: {x: 0.0000009609682, y: 0.017969402, z: -0.00016998782}
+      rotation: {x: -0.000000007617692, y: -0.005350119, z: 0.0000000027763094, w: 0.9999857}
+      scale: {x: 1, y: 1, z: 1}
+    - name: mixamorig:RightUpLeg
+      parentName: mixamorig:Hips
+      position: {x: 0.0015322712, y: -0.0008226863, z: 0.00009358199}
+      rotation: {x: 0.00017461894, y: -0.01430073, z: 0.9998232, w: 0.012209461}
+      scale: {x: 0.9999999, y: 1.0000019, z: 1.0000015}
+    - name: mixamorig:RightLeg
+      parentName: mixamorig:RightUpLeg
+      position: {x: -4.278536e-12, y: 0.00759989, z: 2.3218575e-12}
+      rotation: {x: 0.00908276, y: -0.0000154812, z: -0.0017020623, w: 0.9999573}
+      scale: {x: 1.0000001, y: 1.0000005, z: 1.0000004}
+    - name: mixamorig:RightFoot
+      parentName: mixamorig:RightLeg
+      position: {x: -3.4583777e-12, y: 0.0071140123, z: -3.4373249e-12}
+      rotation: {x: 0.37321723, y: 0.046371166, z: -0.018681562, w: 0.926396}
+      scale: {x: 1.0000006, y: 1.0000017, z: 1.0000013}
+    - name: mixamorig:RightToeBase
+      parentName: mixamorig:RightFoot
+      position: {x: 1.5212581e-11, y: 0.0030542086, z: -1.9888381e-11}
+      rotation: {x: -0.4246261, y: -0.07514433, z: 0.035392676, w: -0.90155053}
+      scale: {x: 1.0000001, y: 1.0000007, z: 0.9999992}
+    - name: mixamorig:RightToe_End
+      parentName: mixamorig:RightToeBase
+      position: {x: -1.2366128e-12, y: 0.0011505121, z: 9.30295e-13}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: mixamorig:LeftUpLeg
+      parentName: mixamorig:Hips
+      position: {x: -0.0015322712, y: -0.0008226863, z: 0.000086055916}
+      rotation: {x: -0.00019015645, y: -0.015572574, z: 0.9998042, w: -0.012208302}
+      scale: {x: 1.0000001, y: 1.0000015, z: 1.0000014}
+    - name: mixamorig:LeftLeg
+      parentName: mixamorig:LeftUpLeg
+      position: {x: -6.4448204e-12, y: 0.007600469, z: -5.231766e-12}
+      rotation: {x: 0.012196953, y: 0.000020797814, z: 0.0017052108, w: 0.9999242}
+      scale: {x: 1.0000001, y: 1.0000005, z: 1.0000002}
+    - name: mixamorig:LeftFoot
+      parentName: mixamorig:LeftLeg
+      position: {x: -8.614188e-12, y: 0.007113788, z: -2.1186408e-12}
+      rotation: {x: 0.36906335, y: -0.04715241, z: 0.018752042, w: 0.9280179}
+      scale: {x: 0.99999964, y: 0.99999994, z: 0.99999994}
+    - name: mixamorig:LeftToeBase
+      parentName: mixamorig:LeftFoot
+      position: {x: 2.230131e-13, y: 0.0030391817, z: 5.868633e-11}
+      rotation: {x: -0.42803472, y: 0.07813172, z: -0.03717508, w: -0.8996109}
+      scale: {x: 1.000001, y: 1.0000021, z: 1.0000005}
+    - name: mixamorig:LeftToe_End
+      parentName: mixamorig:LeftToeBase
+      position: {x: -1.698139e-12, y: 0.0011137302, z: 2.5903023e-12}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: mixamorig:Spine
+      parentName: mixamorig:Hips
+      position: {x: -0, y: 0.0014837802, z: -0.00009453711}
+      rotation: {x: -0.031808533, y: 0.0000000030837988, z: -0.0000000017471657, w: 0.999494}
+      scale: {x: 1.0000001, y: 1, z: 1.0000012}
+    - name: mixamorig:Spine1
+      parentName: mixamorig:Spine
+      position: {x: -0, y: 0.0017345845, z: 3.4854674e-13}
+      rotation: {x: 0.000000048428774, y: -0.000000007506243, z: -0.0000000011890596,
+        w: 1}
+      scale: {x: 1.0000004, y: 1, z: 1.0000012}
+    - name: mixamorig:Spine2
+      parentName: mixamorig:Spine1
+      position: {x: -0, y: 0.0019823853, z: -9.9906645e-12}
+      rotation: {x: -0.0000000037252903, y: 0.0000000018263803, z: 0.000000007034936,
+        w: 1}
+      scale: {x: 0.99999994, y: 1, z: 1.0000007}
+    - name: mixamorig:Neck
+      parentName: mixamorig:Spine2
+      position: {x: -0, y: 0.002230181, z: -6.2748334e-11}
+      rotation: {x: 0.031808484, y: 2.9483682e-10, z: -0.000000009264469, w: 0.999494}
+      scale: {x: 1.0000021, y: 1, z: 1.000001}
+    - name: mixamorig:Head
+      parentName: mixamorig:Neck
+      position: {x: -0, y: 0.0012023876, z: 0.00009426519}
+      rotation: {x: 0.0000000037833168, y: -7.566655e-10, z: 0.0000000021872386, w: 1}
+      scale: {x: 0.99999994, y: 1, z: 1}
+    - name: mixamorig:HeadTop_End
+      parentName: mixamorig:Head
+      position: {x: -0, y: 0.0037592931, z: 0.00029472227}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: mixamorig:RightShoulder
+      parentName: mixamorig:Spine2
+      position: {x: 0.0006363606, y: 0.001924923, z: -0.000035504}
+      rotation: {x: -0.56213725, y: -0.41823518, z: 0.59019756, w: -0.40093395}
+      scale: {x: 1.0000008, y: 1.0000015, z: 1.0000014}
+    - name: mixamorig:RightArm
+      parentName: mixamorig:RightShoulder
+      position: {x: -3.8650197e-13, y: 0.0014606776, z: -3.7833057e-12}
+      rotation: {x: -0.1359328, y: -0.0004973262, z: 0.014812289, w: 0.99060726}
+      scale: {x: 1.0000006, y: 1.0000011, z: 1.0000008}
+    - name: mixamorig:RightForeArm
+      parentName: mixamorig:RightArm
+      position: {x: -2.479131e-12, y: 0.0037457768, z: -3.183304e-11}
+      rotation: {x: 0.004219308, y: 0.000040491283, z: 0.009579423, w: 0.9999453}
+      scale: {x: 1.0000004, y: 1.0000002, z: 1.0000004}
+    - name: mixamorig:RightHand
+      parentName: mixamorig:RightForeArm
+      position: {x: 6.5211317e-12, y: 0.004544037, z: 6.9652235e-11}
+      rotation: {x: 0.0012310004, y: 0.000048033035, z: 0.03900018, w: 0.99923843}
+      scale: {x: 1.0000011, y: 1.0000017, z: 1.0000008}
+    - name: mixamorig:RightHandIndex1
+      parentName: mixamorig:RightHand
+      position: {x: -5.4596744e-12, y: 0.0023435808, z: 3.2069153e-11}
+      rotation: {x: 0.005031638, y: -0.000263804, z: -0.052331943, w: 0.99861705}
+      scale: {x: 1.0000001, y: 1.000001, z: 1.0000004}
+    - name: mixamorig:RightHandIndex2
+      parentName: mixamorig:RightHandIndex1
+      position: {x: 3.9300922e-13, y: 0.00020089102, z: 8.047069e-12}
+      rotation: {x: 0.000000014435495, y: 0.000000112573574, z: 0.00000010118648,
+        w: 1}
+      scale: {x: 1.0000005, y: 1.0000007, z: 1.0000004}
+    - name: mixamorig:RightHandIndex3
+      parentName: mixamorig:RightHandIndex2
+      position: {x: -0.0000061942833, y: 0.00030489636, z: 0.0000038328903}
+      rotation: {x: -0.000000027939677, y: -0.00000015363906, z: -0.000000043940076,
+        w: 1}
+      scale: {x: 0.99999994, y: 0.9999992, z: 0.9999998}
+    - name: mixamorig:RightHandIndex4
+      parentName: mixamorig:RightHandIndex3
+      position: {x: -0.000019486455, y: 0.00026844168, z: 0.0000030357742}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: mixamorig:LeftShoulder
+      parentName: mixamorig:Spine2
+      position: {x: -0.0006363606, y: 0.0019228853, z: -0.0000035241387}
+      rotation: {x: 0.57662237, y: -0.40822104, z: 0.5772638, w: 0.40942487}
+      scale: {x: 1.0000018, y: 1.0000017, z: 1.0000015}
+    - name: mixamorig:LeftArm
+      parentName: mixamorig:LeftShoulder
+      position: {x: 2.245333e-12, y: 0.0014606776, z: -3.6703466e-12}
+      rotation: {x: -0.13675116, y: -0.0007112324, z: -0.0026960075, w: 0.99060154}
+      scale: {x: 1.0000004, y: 1.0000008, z: 1.0000001}
+    - name: mixamorig:LeftForeArm
+      parentName: mixamorig:LeftArm
+      position: {x: -1.433258e-12, y: 0.00374445, z: 4.121549e-11}
+      rotation: {x: -0.009516864, y: -0.00044521602, z: 0.03188591, w: 0.9994461}
+      scale: {x: 1, y: 1.0000004, z: 1.0000001}
+    - name: mixamorig:LeftHand
+      parentName: mixamorig:LeftForeArm
+      position: {x: 2.5690268e-12, y: 0.004562734, z: -2.0588555e-11}
+      rotation: {x: -0.0044678953, y: 0.0005221089, z: 0.11607798, w: -0.9932299}
+      scale: {x: 0.9999998, y: 0.99999994, z: 0.99999994}
+    - name: mixamorig:LeftHandIndex1
+      parentName: mixamorig:LeftHand
+      position: {x: -1.26041694e-11, y: 0.002381638, z: -2.319143e-13}
+      rotation: {x: 0.0043687383, y: 0.0004525463, z: -0.082445465, w: -0.9965859}
+      scale: {x: 1.0000006, y: 1.0000012, z: 1.0000005}
+    - name: mixamorig:LeftHandIndex2
+      parentName: mixamorig:LeftHandIndex1
+      position: {x: -9.426263e-13, y: 0.00019947489, z: 4.5187834e-12}
+      rotation: {x: -4.6566118e-10, y: -0.000000029744108, z: -0.000000010633809,
+        w: 1}
+      scale: {x: 1.0000005, y: 1.0000005, z: 1.0000004}
+    - name: mixamorig:LeftHandIndex3
+      parentName: mixamorig:LeftHandIndex2
+      position: {x: 0.000013875744, y: 0.00029768384, z: 0.000018424296}
+      rotation: {x: 0.000000014901158, y: -0.000000014319081, z: 0.000000014838175,
+        w: 1}
+      scale: {x: 0.9999998, y: 1.0000001, z: 0.99999994}
+    - name: mixamorig:LeftHandIndex4
+      parentName: mixamorig:LeftHandIndex3
+      position: {x: -0.0000021067472, y: 0.00025453846, z: 0.0000039529664}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 0.009
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 1
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 3
+  humanoidOversampling: 1
+  avatarSetup: 1
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  importBlendShapeDeformPercent: 1
+  remapMaterialsIfMaterialImportModeIsNone: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
