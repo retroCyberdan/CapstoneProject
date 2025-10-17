@@ -21,6 +21,6 @@ MonoBehaviour:
   maxMoveTime: 4
   rotationSpeed: 10
   damage: 2
-  damageCooldown: 3
+  damageCooldown: 1
   visionRadius: 4
   fovSegments: 50

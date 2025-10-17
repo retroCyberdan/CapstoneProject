@@ -14,14 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 3382000873337714825, guid: d50807a6b943b8a47901972daf45b4e7,
     type: 3}
-  moveSpeed: 4
+  moveSpeed: 2
   minWaitTime: 2
   maxWaitTime: 5
   minMoveTime: 2
   maxMoveTime: 4
   rotationSpeed: 10
-  damage: 2
-  damageCooldown: 4
+  damage: 5
+  damageCooldown: 1
   visionRadius: 5
   fovSegments: 50
   speedMultiplier: 1.5

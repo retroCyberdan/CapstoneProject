@@ -6,30 +6,29 @@ public class SaveSystem : MonoBehaviour
 {
     public static SaveSystem Instance { get; private set; }
 
-    private PlayerSave _playerSave;
-    private string _dataString;
-    private string _path;
-
     [SerializeField] private Transform _player;
     [SerializeField] private HealthSystem _healthSystem;
     [SerializeField] private StressSystem _stressSystem;
 
+    private PlayerSave _playerSave;
+    private string _dataString;
+    private string _path;
+
     private void Awake()
     {
-        // Pattern Singleton
-        if (Instance == null)
-        {
-            Instance = this;
-            // Non serve DontDestroyOnLoad per questo caso
-        }
-        else
-        {
-            Destroy(gameObject);
-            return;
-        }
+        //if (Instance == null)
+        //{
+        //    Instance = this;
+        //    // non serve DontDestroyOnLoad per questo caso
+        //}
+        //else
+        //{
+        //    Destroy(gameObject);
+        //    return;
+        //}
 
         _playerSave = new PlayerSave();
-        _path = Application.persistentDataPath + "/save.json"; // Meglio usare persistentDataPath
+        _path = Application.persistentDataPath + "/save.json"; // <- meglio usare persistentDataPath
         Debug.Log("Save path: " + _path);
     }
 
@@ -105,6 +104,9 @@ public class SaveSystem : MonoBehaviour
 
                 if (_player != null)
                 {
+                    //Vector3 loadPos = 
+                    //Debug.Log($"Posizione: {_player.transform.position}");
+                    //Debug.Log($"JSON: {loadPos}");
                     _player.transform.position = new Vector3(_playerSave.position[0], _playerSave.position[1], _playerSave.position[2]);
                     _player.transform.rotation = new Quaternion(_playerSave.rotation[0], _playerSave.rotation[1], _playerSave.rotation[2], _playerSave.rotation[3]);
                 }
@@ -137,8 +139,7 @@ public class SaveSystem : MonoBehaviour
         }
     }
 
-    // Metodo pubblico per cancellare il salvataggio (opzionale, utile per testing)
-    public bool DeleteSave()
+    public bool DeleteSave() // <- metodo pubblico per cancellare il salvataggio (opzionale, utile per testing)
     {
         try
         {

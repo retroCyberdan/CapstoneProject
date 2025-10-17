@@ -10,6 +10,7 @@ public class MainMenuManager : MonoBehaviour
 
     private void Start()
     {
+        AudioManager.Instance.PlayBGM(AudioManager.Instance.menuMusic);
         // Controlla se esiste un salvataggio e abilita/disabilita il pulsante Continue
         UpdateContinueButton();
     }
@@ -45,6 +46,7 @@ public class MainMenuManager : MonoBehaviour
             Debug.Log("Salvataggio precedente eliminato");
         }
         SceneManager.LoadScene(_gameSceneName);
+        AudioManager.Instance.PlayBGM(AudioManager.Instance.gameMusic);
     }
 
     // Chiamato dal pulsante "Continue"

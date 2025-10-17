@@ -1,15 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class AudioManager : MonoBehaviour
 {
     public static AudioManager Instance { get; private set; }
 
+    [Header("Audio Mixer")]
+    public AudioMixer audioMixer; // <- riferimento al mixer per il controllo del volume globale
+
     [Header("BGM Settings")]
     public AudioClip menuMusic;
     public AudioClip gameMusic;
-    [Range(0f, 1f)] public float musicVolume = 0.5f;
 
     [Header("Player Audio Settings")]
     public AudioClip[] footstepSounds; // <- passi su terreno normale
@@ -29,6 +32,8 @@ public class AudioManager : MonoBehaviour
 
     private AudioSource _currentBGM;
     private AudioSource _breathingSource; // <- source per l'affanno continuo
+    private AudioMixerGroup _bgmGroup;
+    private AudioMixerGroup _sfxGroup;
 
     private void Awake()
     {
@@ -36,12 +41,54 @@ public class AudioManager : MonoBehaviour
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
+            InitializeMixerGroups();
+            LoadVolumeFromPlayerPrefs(); // <- carica tutti i volumi salvati all'avvio
         }
         else
         {
             Destroy(gameObject);
             return;
         }
+    }
+
+    private void InitializeMixerGroups() // <- trova e memorizza i gruppi del mixer
+    {
+        if (audioMixer != null)
+        {
+            AudioMixerGroup[] groups = audioMixer.FindMatchingGroups("Master");
+
+            foreach (var group in groups)
+            {
+                if (group.name == "BGMs") _bgmGroup = group;
+                else if (group.name == "SFXs") _sfxGroup = group;
+            }
+        }
+    }
+
+    private void LoadVolumeFromPlayerPrefs() // <- carica i volumi dai PlayerPrefs e li applica al mixer
+    {
+        float masterVolume = PlayerPrefs.GetFloat(PlayerPrefsKeys.Volume, 0f);
+        float bgmVolume = PlayerPrefs.GetFloat(PlayerPrefsKeys.BGMVolume, 0f);
+        float sfxVolume = PlayerPrefs.GetFloat(PlayerPrefsKeys.SFXVolume, 0f);
+
+        //SetMixerVolume("Volume", masterVolume);
+        //SetMixerVolume("BGMVolume", bgmVolume);
+        //SetMixerVolume("SFXVolume", sfxVolume);
+    }
+
+    //private void SetMixerVolume(string parameterName, float sliderValue) // <- converte il valore dello slider (0-1) in decibel e lo applica al mixer
+    //{
+    //    if (audioMixer != null)
+    //    {
+    //        // Converti il valore lineare (0-1) in decibel (da -80dB a 0dB)
+    //        float volumeDB = sliderValue > 0.0001f ? Mathf.Log10(sliderValue) * 20f : -80f;
+    //        audioMixer.SetFloat(parameterName, volumeDB);
+    //    }
+    //}
+
+    public void UpdateVolumeFromPlayerPrefs() // <- metodo pubblico per aggiornare tutti i volumi
+    {
+        LoadVolumeFromPlayerPrefs();
     }
 
     public void PlayBGM(AudioClip clip) // <- riproduce musica di sottofondo (menu o gioco)
@@ -62,7 +109,7 @@ public class AudioManager : MonoBehaviour
         _currentBGM = bgmObj.AddComponent<AudioSource>();
         _currentBGM.clip = clip;
         _currentBGM.loop = true;
-        _currentBGM.volume = musicVolume;
+        _currentBGM.outputAudioMixerGroup = _bgmGroup; // <- usa il gruppo Music
         _currentBGM.Play();
     }
 
@@ -122,6 +169,7 @@ public class AudioManager : MonoBehaviour
         _breathingSource.clip = randomBreathing;
         _breathingSource.volume = breathingVolume;
         _breathingSource.loop = true;
+        _breathingSource.outputAudioMixerGroup = _sfxGroup; // <- usa il gruppo SFX
         _breathingSource.Play();
     }
 
@@ -158,6 +206,7 @@ public class AudioManager : MonoBehaviour
         AudioSource audioSource = audioObject.AddComponent<AudioSource>();
         audioSource.clip = clip;
         audioSource.volume = volume;
+        audioSource.outputAudioMixerGroup = _sfxGroup; // <- usa il gruppo SFX
         audioSource.Play();
 
         Destroy(audioObject, clip.length);
@@ -174,6 +223,7 @@ public class AudioManager : MonoBehaviour
         audioSource.clip = clip;
         audioSource.volume = volume;
         audioSource.pitch = pitch;
+        audioSource.outputAudioMixerGroup = _sfxGroup; // <- usa il gruppo SFX
         audioSource.Play();
 
         Destroy(audioObject, clip.length / pitch); // <- adatta la durata in base al pitch
@@ -192,12 +242,5 @@ public class AudioManager : MonoBehaviour
     public void PlayOneShot(AudioClip clip, Vector2 position, float volume = 1f) // <- metodo generico per riprodurre qualsiasi suono
     {
         PlaySoundEffect(clip, position, volume);
-    }
-
-    public void SetMusicVolume(float volume) // <- cambia il volume della musica
-    {
-        musicVolume = Mathf.Clamp01(volume);
-
-        if (_currentBGM != null) _currentBGM.volume = musicVolume;
     }
 }

@@ -38,6 +38,17 @@ public class OptionsMenu : MonoBehaviour
         audioMixer.SetFloat("Volume", volume);
     }
 
+    public void SetBGMVolume(float volume)
+    {
+        audioMixer.SetFloat("BGMVolume", volume);
+    }
+
+    public void SetSFXVolume(float volume)
+    {
+        audioMixer.SetFloat("SFXVolume", volume);
+    }
+
+
     public void SetGraphicQuality(int qualityIndex)
     {
         QualitySettings.SetQualityLevel(qualityIndex);
