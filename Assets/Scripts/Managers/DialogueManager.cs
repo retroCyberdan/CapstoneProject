@@ -15,9 +15,13 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] float animationDuration = 0.5f;
     [SerializeField] float moveDistance = 50f; // distanza movimento (in pixel)
 
+    [Header("Oggetti da attivare")]
+    [SerializeField] GameObject[] oggettiDaAttivare;
+
     Story story;
     bool dialogueActive;
     Vector3 startPosition;
+    Dictionary<string, object> savedVariables = new Dictionary<string, object>(); // Salva solo le variabili
 
     public static DialogueManager Instance { get; private set; }
 
@@ -42,7 +46,7 @@ public class DialogueManager : MonoBehaviour
         }
         else if (dialogueActive && !story.canContinue && Input.GetKeyDown(KeyCode.Space))
         {
-            StartCoroutine(AnimateOut());
+            StartCoroutine(AnimateOutAndActivate());
             dialogueActive = false;
         }
     }
@@ -50,6 +54,13 @@ public class DialogueManager : MonoBehaviour
     public void StartDialogue(TextAsset dialogue)
     {
         story = new Story(dialogue.text);
+
+        // Ripristina le variabili salvate
+        foreach (var variable in savedVariables)
+        {
+            story.variablesState[variable.Key] = variable.Value;
+        }
+
         StartCoroutine(AnimateIn());
         ShowNextLine();
         dialogueActive = true;
@@ -94,6 +105,28 @@ public class DialogueManager : MonoBehaviour
                     story.ChooseChoiceIndex(choice.index);
                     ShowNextLine();
                 });
+            }
+        }
+    }
+
+    private void CheckAndActivateObjects()
+    {
+        if (story.currentTags.Count > 0)
+        {
+            foreach (string tag in story.currentTags)
+            {
+                // Formato tag: attiva_oggetto:0 (dove 0 è l'indice dell'array)
+                if (tag.StartsWith("attiva_oggetto:"))
+                {
+                    string[] tagParts = tag.Split(':');
+                    if (tagParts.Length > 1 && int.TryParse(tagParts[1], out int index))
+                    {
+                        if (index >= 0 && index < oggettiDaAttivare.Length && oggettiDaAttivare[index] != null)
+                        {
+                            oggettiDaAttivare[index].SetActive(true);
+                        }
+                    }
+                }
             }
         }
     }
@@ -170,6 +203,28 @@ public class DialogueManager : MonoBehaviour
         canvasGroup.alpha = 0f;
         canvasGroup.blocksRaycasts = false;
         canvasGroup.interactable = false;
+    }
+
+    IEnumerator AnimateOutAndActivate()
+    {
+        // Salva le variabili prima di chiudere
+        if (story != null)
+        {
+            savedVariables.Clear();
+            foreach (string variableName in story.variablesState)
+            {
+                savedVariables[variableName] = story.variablesState[variableName];
+            }
+        }
+
+        // Esegui l'animazione di uscita
+        yield return StartCoroutine(AnimateOut());
+
+        // Aspetta un po' di tempo prima di attivare gli oggetti
+        yield return new WaitForSeconds(0.5f); // <- modifica questo valore (in secondi)
+
+        // Dopo l'animazione e l'attesa, attiva gli oggetti
+        CheckAndActivateObjects();
     }
 
     public void OnComplete()

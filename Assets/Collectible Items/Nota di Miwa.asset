@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c417e88f4e3ad854cae814ec58f10992, type: 3}
+  m_Name: Nota di Miwa
+  m_EditorClassIdentifier: 
+  itemSprite: {fileID: 21300000, guid: cd8d82d28ab5d914b92c5f25e031f821, type: 3}
+  itemDescription: "Nota di Miwa\n\n\nQuesto posto \xE8 strano, comincio a non sentirmi
+    pienamente lucida...\n\nDelle volte sembra come se vedessi delle ombre dietro
+    di me, che mi seguono costantemente...\n\nEppure non c'\xE8 nessuno..."

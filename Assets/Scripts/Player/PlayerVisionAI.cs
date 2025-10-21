@@ -49,7 +49,7 @@ public class PlayerVisionAI : MonoBehaviour
 
         // Trova tutti i nemici con tag "Enemy" e "Villain" attivi
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-        GameObject[] villains = GameObject.FindGameObjectsWithTag("Villain");
+        GameObject[] villains = GameObject.FindGameObjectsWithTag("Boss");
 
         CheckEnemyArray(enemies);
         CheckEnemyArray(villains);

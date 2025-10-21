@@ -127,7 +127,7 @@ GameObject:
   - component: {fileID: 3947505684543723555}
   - component: {fileID: 3231166295181549759}
   m_Layer: 0
-  m_Name: popup_msg
+  m_Name: popup_message
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -189,7 +189,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 1d03b6a674d6be54b8d4f44b9c6bf502, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5fc972c166b731d4fb8764b6b956dcd1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

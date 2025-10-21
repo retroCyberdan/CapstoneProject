@@ -4036,7 +4036,7 @@ MonoBehaviour:
   _obstacleLayer:
     serializedVersion: 2
     m_Bits: 64
-  _drawFOV: 1
+  _drawFOV: 0
 --- !u!114 &9126938221159856401
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4052,7 +4052,7 @@ MonoBehaviour:
   xAxis:
     Value: 0
     m_SpeedMode: 0
-    m_MaxSpeed: 300
+    m_MaxSpeed: 200
     m_AccelTime: 0
     m_DecelTime: 0
     m_InputAxisName: Mouse X
@@ -4070,7 +4070,7 @@ MonoBehaviour:
   yAxis:
     Value: 0
     m_SpeedMode: 0
-    m_MaxSpeed: 300
+    m_MaxSpeed: 200
     m_AccelTime: 0
     m_DecelTime: 0
     m_InputAxisName: Mouse Y

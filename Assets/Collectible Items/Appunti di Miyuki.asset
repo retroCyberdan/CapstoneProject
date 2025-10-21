@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c417e88f4e3ad854cae814ec58f10992, type: 3}
+  m_Name: Appunti di Miyuki
+  m_EditorClassIdentifier: 
+  itemSprite: {fileID: 21300000, guid: 4671bdca5a191704ea92f0f39cf7fc43, type: 3}
+  itemDescription: "Appunti di Miyuki\n\n\nDa quando siamo qui, sento che ogni momento
+    potrebbe essere l'ultimo.\r\n\r\nMi sento pi\xF9 vicina a Misato che mai. \xC8
+    bello condividere segreti con lei...\r\n\r\nSpesso parliamo del passato. Ricordo
+    molte cose di allora...\r\n\r\nCome il suo volto fu il primo disegno che feci
+    all'asilo. Abbiamo diviso il foglio e ci siamo disegnate a vicenda.\r\n\r\nRicordo
+    di essere diventata pi\xF9 alta di lei, e di come lei sia rimasta a casa mia
+    mentre la sua veniva ristrutturata. Parliamo spesso di queste cose.\r\n\r\nTutta
+    la mia vita mi \xE8 passata davanti agli occhi. Di tutti i momenti, quello \xE8
+    quello che voglio continuare a vivere ancora e ancora, per sempre."

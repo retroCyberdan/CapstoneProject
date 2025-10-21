@@ -6,7 +6,7 @@ TagManager:
   tags:
   - NPC
   - Enemy
-  - Villain
+  - Boss
   layers:
   - Default
   - TransparentFX

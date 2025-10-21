@@ -2331,7 +2331,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f24f463879bbe2c4d934bbefad48e255, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  popUpCanvas: {fileID: 0}
+  popUpCanvas: {fileID: 102778676319204396}
   dialogue: {fileID: 0}
 --- !u!114 &1543005259897676324
 MonoBehaviour:
@@ -4382,6 +4382,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7604fbf7a6fd93a46b3c2d8c14470e48, type: 3}
+--- !u!223 &102778676319204396 stripped
+Canvas:
+  m_CorrespondingSourceObject: {fileID: 7964747779358043374, guid: 7604fbf7a6fd93a46b3c2d8c14470e48,
+    type: 3}
+  m_PrefabInstance: {fileID: 8062942248096635074}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &6184008394453333410 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4194911323561569632, guid: 7604fbf7a6fd93a46b3c2d8c14470e48,
