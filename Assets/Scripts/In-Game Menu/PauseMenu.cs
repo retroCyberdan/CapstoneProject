@@ -56,7 +56,7 @@ public class PauseMenu : MonoBehaviour
             return true;
 
         // Controlla se ItemsManager è aperto
-        if (ItemsManager.Instance != null && ItemsManager.Instance.canvasGroup.gameObject.activeSelf)
+        if (ItemsUiManager.Instance != null && ItemsUiManager.Instance.canvasGroup.gameObject.activeSelf)
             return true;
 
         return false;

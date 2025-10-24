@@ -13,7 +13,11 @@ public class DialogueManager : MonoBehaviour
 
     [Header("Animazione")]
     [SerializeField] float animationDuration = 0.5f;
-    [SerializeField] float moveDistance = 50f; // distanza movimento (in pixel)
+    [SerializeField] float moveDistance = 50f; // <- distanza movimento (in pixel)
+
+    [Header("Save System References")]
+    [SerializeField] SaveSystem saveSystem;
+    [SerializeField] HealthSystem healthSystem;
 
     [Header("Oggetti da attivare")]
     [SerializeField] GameObject[] oggettiDaAttivare;
@@ -55,7 +59,7 @@ public class DialogueManager : MonoBehaviour
     {
         story = new Story(dialogue.text);
 
-        // Ripristina le variabili salvate
+        // ripristina le variabili salvate
         foreach (var variable in savedVariables)
         {
             story.variablesState[variable.Key] = variable.Value;
@@ -73,15 +77,11 @@ public class DialogueManager : MonoBehaviour
             string text = story.Continue();
             dialogueText.SetText(text);
 
-            if (story.currentChoices.Count == 0)
-            {
-                HideButtons();
-            }
-            else
-            {
-                ShowButtons();
-            }
+            if (story.currentChoices.Count == 0) HideButtons();
+
+            else ShowButtons();
         }
+
         else
         {
             dialogueText.SetText("");
@@ -115,7 +115,7 @@ public class DialogueManager : MonoBehaviour
         {
             foreach (string tag in story.currentTags)
             {
-                // Formato tag: attiva_oggetto:0 (dove 0 è l'indice dell'array)
+                // formato tag: attiva_oggetto:0 (dove 0 è l'indice dell'array)
                 if (tag.StartsWith("attiva_oggetto:"))
                 {
                     string[] tagParts = tag.Split(':');
@@ -127,6 +127,11 @@ public class DialogueManager : MonoBehaviour
                         }
                     }
                 }
+
+                // tag per salvare e curare
+                else if (tag == "save") Save();
+
+                else if (tag == "heal") Heal();
             }
         }
     }
@@ -154,7 +159,7 @@ public class DialogueManager : MonoBehaviour
         canvasGroup.blocksRaycasts = true;
         canvasGroup.interactable = true;
 
-        // Posizione iniziale (sotto)
+        // posizione iniziale (sotto)
         Vector3 startPos = startPosition + Vector3.down * moveDistance;
         canvasGroup.transform.localPosition = startPos;
 
@@ -165,10 +170,9 @@ public class DialogueManager : MonoBehaviour
             elapsedTime += Time.deltaTime;
             float t = elapsedTime / animationDuration;
 
-            // Lerp per movimento
-            canvasGroup.transform.localPosition = Vector3.Lerp(startPos, startPosition, t);
-            // Lerp per fade
-            canvasGroup.alpha = Mathf.Lerp(0f, 1f, t);
+            canvasGroup.transform.localPosition = Vector3.Lerp(startPos, startPosition, t); // <- lerp per movimento
+
+            canvasGroup.alpha = Mathf.Lerp(0f, 1f, t); // <- lerp per fade
 
             yield return null;
         }
@@ -180,7 +184,7 @@ public class DialogueManager : MonoBehaviour
 
     IEnumerator AnimateOut()
     {
-        // Posizione finale (sotto)
+        // posizione finale (sotto)
         Vector3 endPos = startPosition + Vector3.down * moveDistance;
 
         float elapsedTime = 0f;
@@ -190,15 +194,14 @@ public class DialogueManager : MonoBehaviour
             elapsedTime += Time.deltaTime;
             float t = elapsedTime / animationDuration;
 
-            // Lerp per movimento
-            canvasGroup.transform.localPosition = Vector3.Lerp(startPosition, endPos, t);
-            // Lerp per fade
-            canvasGroup.alpha = Mathf.Lerp(1f, 0f, t);
+            canvasGroup.transform.localPosition = Vector3.Lerp(startPosition, endPos, t); // <- lerp per movimento
+
+            canvasGroup.alpha = Mathf.Lerp(1f, 0f, t); // <- lerp per fade
 
             yield return null;
         }
 
-        // Assicura valori finali
+        // assicura valori finali
         canvasGroup.transform.localPosition = startPosition;
         canvasGroup.alpha = 0f;
         canvasGroup.blocksRaycasts = false;
@@ -207,7 +210,7 @@ public class DialogueManager : MonoBehaviour
 
     IEnumerator AnimateOutAndActivate()
     {
-        // Salva le variabili prima di chiudere
+        // salva le variabili prima di chiudere
         if (story != null)
         {
             savedVariables.Clear();
@@ -217,18 +220,29 @@ public class DialogueManager : MonoBehaviour
             }
         }
 
-        // Esegui l'animazione di uscita
-        yield return StartCoroutine(AnimateOut());
+        yield return StartCoroutine(AnimateOut()); // <- esegui l'animazione di uscita
 
-        // Aspetta un po' di tempo prima di attivare gli oggetti
-        yield return new WaitForSeconds(0.5f); // <- modifica questo valore (in secondi)
+        yield return new WaitForSeconds(0.5f); // <- aspetta un po' di tempo prima di attivare gli oggetti (modifica questo valore (in sec))
 
-        // Dopo l'animazione e l'attesa, attiva gli oggetti
-        CheckAndActivateObjects();
+        CheckAndActivateObjects(); // <- dopo l'animazione e l'attesa, attiva gli oggetti
     }
 
     public void OnComplete()
     {
         gameObject.SetActive(false);
+    }
+
+    private void Save()
+    {
+        if (saveSystem != null) saveSystem.Save();
+
+        else Debug.LogWarning("SaveSystem non assegnato nel DialogueManager!");
+    }
+
+    private void Heal()
+    {
+        if (healthSystem != null) healthSystem.HealToMax();
+
+        else Debug.LogWarning("HealthSystem non assegnato nel DialogueManager!");
     }
 }

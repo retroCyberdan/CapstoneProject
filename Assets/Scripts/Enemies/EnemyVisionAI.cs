@@ -8,6 +8,9 @@ public class EnemyVisionAI : MonoBehaviour
     [SerializeField] private LayerMask _playerLayer;
     [SerializeField] private LayerMask _obstacleLayer;
 
+    [Header("Debug")]
+    [SerializeField] private bool _drawFOV = true;
+
     private LineRenderer _lineRenderer;
     private Transform _player;
     private bool _chasingPlayer;
@@ -17,13 +20,13 @@ public class EnemyVisionAI : MonoBehaviour
     void Start()
     {
         _player = GameObject.FindGameObjectWithTag("Player")?.transform;
-        FovLineRendererSetup();
+        if (_drawFOV) FovLineRendererSetup();
     }
 
     void Update()
     {
         CheckForPlayer();
-        DrawFOV();
+        if (_drawFOV) DrawFOV();
     }
 
     void FovLineRendererSetup()
@@ -69,6 +72,8 @@ public class EnemyVisionAI : MonoBehaviour
 
     void DrawFOV()
     {
+        if (_lineRenderer == null) return;
+
         // Disegna un FOV circolare
         for (int i = 0; i <= _fovSegments; i++)
         {

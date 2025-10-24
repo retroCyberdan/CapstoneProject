@@ -3368,6 +3368,7 @@ MonoBehaviour:
   _obstacleLayer:
     serializedVersion: 2
     m_Bits: 64
+  _drawFOV: 0
 --- !u!1 &3502252207362394853
 GameObject:
   m_ObjectHideFlags: 0

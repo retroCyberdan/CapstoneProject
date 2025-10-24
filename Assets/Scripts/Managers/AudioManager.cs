@@ -17,6 +17,7 @@ public class AudioManager : MonoBehaviour
     [Header("Player Audio Settings")]
     public AudioClip[] footstepSounds; // <- passi su terreno normale
     public AudioClip[] woodFootstepSounds; // <- passi su terreno legnoso
+    public AudioClip[] rockFootstepSounds; // <- passi su terreno roccioso
     [Range(0f, 1f)] public float footstepVolume = 0.7f;
 
     [Header("Running Audio Settings")]
@@ -132,6 +133,11 @@ public class AudioManager : MonoBehaviour
         {
             soundArray = woodFootstepSounds;
         }
+        else if (surfaceType == "RockGround" && rockFootstepSounds != null && rockFootstepSounds.Length > 0)
+        {
+            soundArray = rockFootstepSounds;
+        }
+
         else if (footstepSounds != null && footstepSounds.Length > 0)
         {
             soundArray = footstepSounds;

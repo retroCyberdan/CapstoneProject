@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class HealthSystem : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class HealthSystem : MonoBehaviour
 
     [Header("Death Settings")]
     [SerializeField] private float deathCanvasFadeSpeed = 1f;
+    [SerializeField] private string mainMenuSceneName = "MainMenu";
 
     // events per notificare cambiamenti di salute
     public event Action<float, float> OnHealthChanged;
@@ -36,7 +38,7 @@ public class HealthSystem : MonoBehaviour
             uiHealthBar.healthValue = currentHealth;
         }
 
-        // Assicurati che la death canvas sia invisibile all'inizio
+        // assicurati che la death canvas sia invisibile all'inizio
         if (deathCanvas != null)
         {
             deathCanvas.alpha = 0f;
@@ -122,25 +124,24 @@ public class HealthSystem : MonoBehaviour
         OnDeath?.Invoke();
         Debug.Log($"{gameObject.name} è morto!");
 
-        // Disabilita il controller del player
+        // disabilita il controller del player
         var controller = GetComponent<PlayerController>();
         if (controller != null) controller.enabled = false;
 
         var characterController = GetComponent<CharacterController>();
         if (characterController != null) characterController.enabled = false;
 
-        // Ferma il gioco e mostra la death canvas
-        StartCoroutine(HandleDeath());
+        StartCoroutine(HandleDeath()); // <- ferma il gioco e mostra la death canvas
     }
 
     private IEnumerator HandleDeath()
     {
-        // Attiva la death canvas
+        // attiva la death canvas
         if (deathCanvas != null)
         {
             deathCanvas.gameObject.SetActive(true);
 
-            // Fade in graduale
+            // fade in graduale
             while (deathCanvas.alpha < 1f)
             {
                 deathCanvas.alpha += Time.unscaledDeltaTime * deathCanvasFadeSpeed;
@@ -150,15 +151,18 @@ public class HealthSystem : MonoBehaviour
             deathCanvas.alpha = 1f;
         }
 
-        // Aspetta un attimo prima di freezare completamente
-        yield return new WaitForSecondsRealtime(0.5f);
+        yield return new WaitForSecondsRealtime(0.5f); // <- aspetta un attimo prima di freezare completamente
 
-        // Freezare la scena
-        Time.timeScale = 0f;
+        //Time.timeScale = 0f; // <- freezare la scena
+
+        while (!Input.GetKeyDown(KeyCode.Space)) yield return null; // <- aspetta che il giocatore prema Spazio per tornare al menu
+
+        // ripristina il timeScale e torna al MainMenu
+        //Time.timeScale = 1f;
+        SceneManager.LoadScene(mainMenuSceneName);
     }
 
-    // Metodo pubblico per resettare il gioco (da chiamare da un bottone di restart)
-    public void ResetGame()
+    public void ResetGame() // <- metodo pubblico per resettare il gioco (da chiamare da un bottone di restart)
     {
         Time.timeScale = 1f;
 

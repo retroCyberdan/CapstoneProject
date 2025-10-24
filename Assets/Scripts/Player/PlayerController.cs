@@ -25,6 +25,8 @@ public class PlayerController : MonoBehaviour
     private CharacterController _characterController;
     private bool _wasRunning = false; // <- traccia lo stato di corsa
 
+    [HideInInspector] public bool canSprint = true; // <- controllato dallo StressSystem
+
     public float Horizontal => _horizontal;
     public float Vertical => _vertical;
     public float CurrentSpeed => _currentSpeed;
@@ -49,7 +51,8 @@ public class PlayerController : MonoBehaviour
         _horizontal = Input.GetAxis("Horizontal");
         _vertical = Input.GetAxis("Vertical");
 
-        if (Input.GetKey(KeyCode.LeftShift)) _currentSpeed = sprintSpeed;
+        // Permetti lo sprint solo se canSprint è true
+        if (Input.GetKey(KeyCode.LeftShift) && canSprint) _currentSpeed = sprintSpeed;
         else _currentSpeed = walkSpeed;
     }
 
@@ -75,7 +78,7 @@ public class PlayerController : MonoBehaviour
     {
         bool isMoving = Mathf.Abs(_horizontal) > 0.1f || Mathf.Abs(_vertical) > 0.1f;
         bool isGrounded = _characterController.isGrounded;
-        bool isSprinting = Input.GetKey(KeyCode.LeftShift);
+        bool isSprinting = Input.GetKey(KeyCode.LeftShift) && canSprint; // <- controlla anche canSprint
 
         if (isMoving && isGrounded)
         {
@@ -93,7 +96,7 @@ public class PlayerController : MonoBehaviour
     {
         bool isMoving = Mathf.Abs(_horizontal) > 0.1f || Mathf.Abs(_vertical) > 0.1f;
         bool isGrounded = _characterController.isGrounded;
-        bool isSprinting = Input.GetKey(KeyCode.LeftShift);
+        bool isSprinting = Input.GetKey(KeyCode.LeftShift) && canSprint; // <- controlla anche canSprint
         bool isRunning = isMoving && isGrounded && isSprinting;
 
         if (isRunning && !_wasRunning)
@@ -117,10 +120,13 @@ public class PlayerController : MonoBehaviour
 
         if (Physics.Raycast(rayOrigin, Vector3.down, out hit, groundCheckDistance + 1f))
         {
-            // controlla il layer dell'oggetto colpito (con spazio "Wood Ground")
-            if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Wood Ground"))
+            if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Wood Ground")) // <- controlla il layer dell'oggetto colpito (con spazio "Wood Ground")
             {
                 _currentSurfaceType = "WoodGround";
+            }
+            else if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Rock Ground")) // <- controlla il layer dell'oggetto colpito (con spazio "Rock Ground")
+            {
+                _currentSurfaceType = "RockGround";
             }
             else if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Ground"))
             {
@@ -135,7 +141,7 @@ public class PlayerController : MonoBehaviour
 
     private float GetCurrentFootstepInterval()
     {
-        bool isSprinting = Input.GetKey(KeyCode.LeftShift);
+        bool isSprinting = Input.GetKey(KeyCode.LeftShift) && canSprint; // <- controlla anche canSprint
         return isSprinting ? footstepInterval / sprintFootstepMultiplier : footstepInterval;
     }
 

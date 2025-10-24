@@ -35,5 +35,4 @@ public class UI_HealthBar : MonoBehaviour
     {
         healthValue -= damage;
     }
-
 }

@@ -1,0 +1,229 @@
+fileFormatVersion: 2
+guid: 76d8c2bd2e3b77c4a9d955d3853b012d
+ModelImporter:
+  serializedVersion: 22200
+  internalIDToNameTable: []
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: bansei_1_392k_20200425_u1_v1
+    second: {fileID: 2100000, guid: 844d64c30767da146962eeafe660f2c0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: bansei_1_392k_20200425_u1_v2
+    second: {fileID: 2100000, guid: 3b7863ba508b9e1429fd8c88f183fe7e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: bansei_1_392k_20200425_u1_v3
+    second: {fileID: 2100000, guid: 90e980f7e614e844398ab92e1c154c1a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: bansei_1_392k_20200425_u2_v1
+    second: {fileID: 2100000, guid: 19d322e5668cfb0479c99e4b97d55b9b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: bansei_1_392k_20200425_u2_v2
+    second: {fileID: 2100000, guid: a1645593b5207d3418c4da1e8784a621, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: bansei_1_392k_20200425_u2_v3
+    second: {fileID: 2100000, guid: c9f4d73a6d5b4fa4b85b4df203d42616, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: bansei_1_392k_20200425_u3_v1
+    second: {fileID: 2100000, guid: 6cb81ff4520a2104aa4aef478bc4f5ce, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: bansei_1_392k_20200425_u3_v2
+    second: {fileID: 2100000, guid: a3009c695be948e4293a69701984156f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: bansei_1_392k_20200425_u3_v3
+    second: {fileID: 2100000, guid: 837f81791da3ab141a85219ccd06a62b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: bansei_1_392k_20200425_u4_v1
+    second: {fileID: 2100000, guid: 544ad9c8992d154468d2e0a609a602c4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: bansei_1_392k_20200425_u4_v2
+    second: {fileID: 2100000, guid: d98ba3727ea9a5f4ba3b7cfd6e4a5b4a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: bansei_1_392k_20200425_u4_v3
+    second: {fileID: 2100000, guid: 82ea3996c1de2194f9b27b82ea1c9112, type: 2}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: bansei_1_392k_20200425_u1_v1_baseColor
+    second: {fileID: 2800000, guid: b83296cf941168f4684834b2e4c492f4, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: bansei_1_392k_20200425_u1_v2_baseColor
+    second: {fileID: 2800000, guid: 9dc92bd8911f59b4c9e66303e53b0b34, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: bansei_1_392k_20200425_u1_v3_baseColor
+    second: {fileID: 2800000, guid: 9c4fec3059018f442b8e3753686d6426, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: bansei_1_392k_20200425_u2_v1_baseColor
+    second: {fileID: 2800000, guid: 23104ed72d9d6974da41dac5cc7f2108, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: bansei_1_392k_20200425_u2_v2_baseColor
+    second: {fileID: 2800000, guid: 585ea4ecd1cf85a48b034efa5208d6c6, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: bansei_1_392k_20200425_u2_v3_baseColor
+    second: {fileID: 2800000, guid: a23f62c93184ca64690f89d9d68d2e09, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: bansei_1_392k_20200425_u3_v1_baseColor
+    second: {fileID: 2800000, guid: d11f273d99bc6794a8dce75c3f8d5c89, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: bansei_1_392k_20200425_u3_v2_baseColor
+    second: {fileID: 2800000, guid: 66df96b30f1738d4985c215bd3dcdca4, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: bansei_1_392k_20200425_u3_v3_baseColor
+    second: {fileID: 2800000, guid: d6323533515cf944bbc1fcb8745b76d4, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: bansei_1_392k_20200425_u4_v1_baseColor
+    second: {fileID: 2800000, guid: a6bf18b3a2bf1704bb350b5857cf8d3f, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: bansei_1_392k_20200425_u4_v2_baseColor
+    second: {fileID: 2800000, guid: e2a75b13aedd1554b8db199546254a66, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: bansei_1_392k_20200425_u4_v3_baseColor
+    second: {fileID: 2800000, guid: 6d287910e3cef9a44b7b377a346993d6, type: 3}
+  materials:
+    materialImportMode: 2
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    removeConstantScaleCurves: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1.5
+    meshCompression: 0
+    addColliders: 1
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importPhysicalCameras: 1
+    importVisibility: 0
+    importBlendShapes: 0
+    importCameras: 0
+    importLights: 0
+    nodeNameCollisionStrategy: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    optimizeBones: 1
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    strictVertexDataChecks: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 0.015
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 0
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  importBlendShapeDeformPercent: 1
+  remapMaterialsIfMaterialImportModeIsNone: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

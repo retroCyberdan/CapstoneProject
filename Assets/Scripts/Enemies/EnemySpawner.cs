@@ -67,7 +67,7 @@ public class EnemySpawner : MonoBehaviour
                         // Se è il boss, riproduci la musica del boss
                         if (bossSpawnMusic != null && AudioManager.Instance != null)
                         {
-                            AudioManager.Instance.PlayOneShot(bossSpawnMusic, spawnPoint.position);
+                            AudioManager.Instance.PlayOneShot(bossSpawnMusic, spawnPoint.position, .05f);
                         }
                         _currentBoss = enemy;
                     }
@@ -76,7 +76,7 @@ public class EnemySpawner : MonoBehaviour
                         // Se è un nemico normale, riproduci il suono di spawn
                         if (enemySpawnSound != null && AudioManager.Instance != null)
                         {
-                            AudioManager.Instance.PlayOneShot(enemySpawnSound, spawnPoint.position);
+                            AudioManager.Instance.PlayOneShot(enemySpawnSound, spawnPoint.position, .05f);
                         }
                     }
 

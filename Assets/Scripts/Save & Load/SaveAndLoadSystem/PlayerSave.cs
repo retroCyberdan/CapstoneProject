@@ -1,9 +1,8 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[System.Serializable] // <- la rendo serializzabile
-public class PlayerSave // <-  rimuovo MonoBehaviour poichè deve essere scollegata da qualsiasi componente
+[System.Serializable]
+public class PlayerSave
 {
     public float[] position = new float[3];
     public float[] rotation = new float[4];
@@ -12,9 +11,13 @@ public class PlayerSave // <-  rimuovo MonoBehaviour poichè deve essere scollega
     public float currentStress;
     public float maxStress;
 
-    public PlayerSave() { } // <- costruttore vuoto
+    // Lista degli ID degli oggetti raccolti
+    public List<string> collectedItemIDs = new List<string>();
 
-    public PlayerSave(float[] position, float[] rotation, float currentHealth, float maxHealth, float currentStress, float maxStress) // <- override costruttore con parametri
+    public PlayerSave() { }
+
+    public PlayerSave(float[] position, float[] rotation, float currentHealth, float maxHealth,
+                      float currentStress, float maxStress, List<string> collectedItemIDs)
     {
         this.position = position;
         this.rotation = rotation;
@@ -22,5 +25,6 @@ public class PlayerSave // <-  rimuovo MonoBehaviour poichè deve essere scollega
         this.maxHealth = maxHealth;
         this.currentStress = currentStress;
         this.maxStress = maxStress;
+        this.collectedItemIDs = collectedItemIDs ?? new List<string>();
     }
 }

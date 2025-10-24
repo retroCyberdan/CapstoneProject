@@ -43,10 +43,7 @@ public class PlayerAnimationsController : MonoBehaviour
             _animator.SetTrigger("isHitted");
 
             // Riproduce suono di hit
-            if (AudioManager.Instance != null)
-            {
-                AudioManager.Instance.PlayHit(transform.position);
-            }
+            if (AudioManager.Instance != null) AudioManager.Instance.PlayHit(transform.position);
         }
     }
 
@@ -56,10 +53,7 @@ public class PlayerAnimationsController : MonoBehaviour
         _animator.SetBool("isDead", true);
 
         // Riproduce suono di morte
-        if (AudioManager.Instance != null)
-        {
-            AudioManager.Instance.PlayDeath(transform.position);
-        }
+        if (AudioManager.Instance != null) AudioManager.Instance.PlayDeath(transform.position);
     }
 
     private void OnDestroy()

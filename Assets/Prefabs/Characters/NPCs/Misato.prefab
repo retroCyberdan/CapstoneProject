@@ -2520,7 +2520,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: 791891402c1565643a0c6ab2cf65a3bd, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
-  m_ApplyRootMotion: 1
+  m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_WarningMessage: 
@@ -2547,7 +2547,7 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1
+  m_Radius: 1.5
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
@@ -2590,7 +2590,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   popUpCanvas: {fileID: 6275815855453331650}
-  dialogue: {fileID: 0}
+  dialogue: {fileID: 4900000, guid: 3631d82bb61c79042a3d403c9542474e, type: 3}
 --- !u!114 &8638122956437615197
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2603,6 +2603,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d11ce46384c7184ca7e9a49d18f920e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hasPreDialogueAnimation: 1
+  preDialogueAnimationTrigger: specialAnimation
 --- !u!1 &5858390522989547747
 GameObject:
   m_ObjectHideFlags: 0
@@ -3917,6 +3919,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7654198473289939833}
     m_Modifications:
+    - target: {fileID: 147702474667281938, guid: 7604fbf7a6fd93a46b3c2d8c14470e48,
+        type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2366907885721327058, guid: 7604fbf7a6fd93a46b3c2d8c14470e48,
         type: 3}
       propertyPath: m_Name

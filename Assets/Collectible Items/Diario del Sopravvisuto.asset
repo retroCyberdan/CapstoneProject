@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c417e88f4e3ad854cae814ec58f10992, type: 3}
   m_Name: Diario del Sopravvisuto
   m_EditorClassIdentifier: 
+  itemID: diary_1
   itemSprite: {fileID: 21300000, guid: 2ea31d815460e9c45b77a0913747f695, type: 3}
   itemDescription: "Diario del Sopravvisuto\n\n\nHo visto la silhouette di una strana
     donna nella nebbia che avvolge il villaggio.\r\n\r\nA piccoli passi, quasi trascinandosi,

@@ -21,10 +21,10 @@ public class InventorySlot : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (itemData != null && ItemsManager.Instance != null)
+        if (itemData != null && ItemsUiManager.Instance != null)
         {
             // Mostra l'oggetto (il SetAsLastSibling è già dentro ShowItem)
-            ItemsManager.Instance.ShowItem(itemData);
+            ItemsUiManager.Instance.ShowItem(itemData);
         }
     }
 }

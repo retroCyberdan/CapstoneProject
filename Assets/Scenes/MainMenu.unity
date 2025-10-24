@@ -1641,8 +1641,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1088021669}
-        m_TargetAssemblyTypeName: MainMenuManager, Assembly-CSharp
+      - m_Target: {fileID: 1748652274}
+        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
         m_MethodName: OnContinueClicked
         m_Mode: 1
         m_Arguments:
@@ -1883,7 +1883,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1088021664}
   - component: {fileID: 1088021668}
-  - component: {fileID: 1088021669}
   m_Layer: 0
   m_Name: -Managers-
   m_TagString: Untagged
@@ -1949,6 +1948,14 @@ MonoBehaviour:
   - {fileID: 8300000, guid: d574f93a770f8e84a9a4c1d8c29237e2, type: 3}
   - {fileID: 8300000, guid: 550e3a5de2146a9429beffac8e048e1d, type: 3}
   - {fileID: 8300000, guid: 3b2b235ea943ddd4fb5618bd1cd6134c, type: 3}
+  rockFootstepSounds:
+  - {fileID: 8300000, guid: 57b07a06944bd564da321aa6e89ab43c, type: 3}
+  - {fileID: 8300000, guid: e1037f451d4b5a048b7ad14ce643654a, type: 3}
+  - {fileID: 8300000, guid: c1b9fba1aa7198744aa7cc78b94645f1, type: 3}
+  - {fileID: 8300000, guid: c3816afe301d30049b2e61e31f0d93bf, type: 3}
+  - {fileID: 8300000, guid: 9ad223c137350e74aa4044f23f022083, type: 3}
+  - {fileID: 8300000, guid: 6aaf95ead1d7b884aa695950e8d4dd32, type: 3}
+  - {fileID: 8300000, guid: 22d958f1f01461f4a9126dbcc3146b70, type: 3}
   footstepVolume: 0.7
   breathingSounds:
   - {fileID: 8300000, guid: 38b067399e8f9ef45ba1a0970a3f7e67, type: 3}
@@ -1965,21 +1972,6 @@ MonoBehaviour:
   hitVolume: 0.8
   deathSound: {fileID: 8300000, guid: d7107d3a998d6eb478e6bced7c879f8c, type: 3}
   deathVolume: 0.9
---- !u!114 &1088021669
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1088021662}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 28deaba6cffafd64183e2fd2fc81ba9c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _continueButton: {fileID: 1034695686}
-  _newGameButton: {fileID: 2119298230}
-  _gameSceneName: Scene1
 --- !u!1 &1152313609
 GameObject:
   m_ObjectHideFlags: 0
@@ -2785,6 +2777,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1748652273}
+  - component: {fileID: 1748652274}
   m_Layer: 5
   m_Name: MainMenu
   m_TagString: Untagged
@@ -2817,6 +2810,21 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1748652274
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1748652272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28deaba6cffafd64183e2fd2fc81ba9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _continueButton: {fileID: 1034695686}
+  _newGameButton: {fileID: 2119298230}
+  _gameSceneName: Scene1
 --- !u!1 &1992401512
 GameObject:
   m_ObjectHideFlags: 0
@@ -3310,8 +3318,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1088021669}
-        m_TargetAssemblyTypeName: MainMenuManager, Assembly-CSharp
+      - m_Target: {fileID: 1748652274}
+        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
         m_MethodName: OnNewGameClicked
         m_Mode: 1
         m_Arguments:

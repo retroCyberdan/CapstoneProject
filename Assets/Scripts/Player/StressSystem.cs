@@ -10,10 +10,17 @@ public class StressSystem : MonoBehaviour
     [SerializeField] private float stressDecayRate = 2f; // <- riduzione stress al secondo
     [SerializeField] private int enemyToGetStressed = 3; // <- soglia di nemici: sopra aumenta stress, sotto diminuisce
 
+    [Header("Stress Effects Settings")]
+    [SerializeField] private GameObject stressedCanvas; // <- canvas da mostrare quando stressato
+    [SerializeField] private AudioClip playerStressedSound; // <- audio da riprodurre quando stressato
+    [SerializeField] private float stressReliefThreshold = 50f; // <- soglia per tornare alla normalità (default: metà)
+
     [Header("References")]
     [SerializeField] private UI_StressBar uiStressBar;
     [SerializeField] private PoolManager poolManager;
     [SerializeField] private PlayerVisionAI playerVision;
+    [SerializeField] private PlayerController playerController;
+    [SerializeField] private Animator playerAnimator;
 
     // Eventi per notificare cambiamenti di stress
     public event Action<float, float> OnStressChanged; // currentStress, maxStress
@@ -22,6 +29,7 @@ public class StressSystem : MonoBehaviour
 
     private bool isStressed = false;
     private int previousActiveEnemies = 0;
+    private AudioSource stressedAudioSource; // <- riferimento all'audio source dello stress
 
     // Getters
     public float GetCurrentStress() => currentStress;
@@ -47,6 +55,22 @@ public class StressSystem : MonoBehaviour
         if (playerVision == null)
         {
             playerVision = GetComponent<PlayerVisionAI>();
+        }
+
+        if (playerController == null)
+        {
+            playerController = GetComponent<PlayerController>();
+        }
+
+        if (playerAnimator == null)
+        {
+            playerAnimator = GetComponent<Animator>();
+        }
+
+        // Assicurati che il canvas sia disattivato all'inizio
+        if (stressedCanvas != null)
+        {
+            stressedCanvas.SetActive(false);
         }
     }
 
@@ -136,6 +160,7 @@ public class StressSystem : MonoBehaviour
         if (!isStressed && currentStress >= maxStress)
         {
             isStressed = true;
+            ActivateStressEffects();
             OnStressed?.Invoke();
             Debug.Log($"{gameObject.name} è completamente stressato!");
         }
@@ -160,10 +185,11 @@ public class StressSystem : MonoBehaviour
         UpdateStressBar();
         OnStressChanged?.Invoke(currentStress, maxStress);
 
-        // Controlla se lo stress è tornato sotto il massimo
-        if (wasStressed && currentStress < maxStress)
+        // Controlla se lo stress è tornato sotto la soglia di rilassamento
+        if (wasStressed && currentStress <= stressReliefThreshold)
         {
             isStressed = false;
+            DeactivateStressEffects();
             OnStressRelieved?.Invoke();
             Debug.Log($"{gameObject.name} si è calmato!");
         }
@@ -185,14 +211,86 @@ public class StressSystem : MonoBehaviour
         if (!wasStressed && currentStress >= maxStress)
         {
             isStressed = true;
+            ActivateStressEffects();
             OnStressed?.Invoke();
             Debug.Log($"{gameObject.name} è completamente stressato!");
         }
-        else if (wasStressed && currentStress < maxStress)
+        else if (wasStressed && currentStress <= stressReliefThreshold)
         {
             isStressed = false;
+            DeactivateStressEffects();
             OnStressRelieved?.Invoke();
             Debug.Log($"{gameObject.name} si è calmato!");
+        }
+    }
+
+    /// <summary>
+    /// Attiva tutti gli effetti dello stress
+    /// </summary>
+    private void ActivateStressEffects()
+    {
+        // Mostra il canvas
+        if (stressedCanvas != null)
+        {
+            stressedCanvas.SetActive(true);
+        }
+
+        // Riproduci il suono di stress
+        if (playerStressedSound != null && AudioManager.Instance != null)
+        {
+            GameObject audioObject = new GameObject("StressedAudio");
+            audioObject.transform.position = transform.position;
+            audioObject.transform.SetParent(transform);
+
+            stressedAudioSource = audioObject.AddComponent<AudioSource>();
+            stressedAudioSource.clip = playerStressedSound;
+            stressedAudioSource.loop = true;
+            stressedAudioSource.volume = 0.7f;
+            stressedAudioSource.Play();
+        }
+
+        // Disabilita la corsa del player
+        if (playerController != null)
+        {
+            playerController.canSprint = false;
+        }
+
+        // Attiva la bool nell'animator
+        if (playerAnimator != null)
+        {
+            playerAnimator.SetBool("isStressed", true);
+        }
+    }
+
+    /// <summary>
+    /// Disattiva tutti gli effetti dello stress
+    /// </summary>
+    private void DeactivateStressEffects()
+    {
+        // Nascondi il canvas
+        if (stressedCanvas != null)
+        {
+            stressedCanvas.SetActive(false);
+        }
+
+        // Ferma il suono di stress
+        if (stressedAudioSource != null)
+        {
+            stressedAudioSource.Stop();
+            Destroy(stressedAudioSource.gameObject);
+            stressedAudioSource = null;
+        }
+
+        // Riabilita la corsa del player
+        if (playerController != null)
+        {
+            playerController.canSprint = true;
+        }
+
+        // Disattiva la bool nell'animator
+        if (playerAnimator != null)
+        {
+            playerAnimator.SetBool("isStressed", false);
         }
     }
 
@@ -253,5 +351,14 @@ public class StressSystem : MonoBehaviour
     private void UpdateStressBar()
     {
         if (uiStressBar != null) uiStressBar.stressValue = currentStress;
+    }
+
+    private void OnDestroy()
+    {
+        // Cleanup quando lo script viene distrutto
+        if (stressedAudioSource != null)
+        {
+            Destroy(stressedAudioSource.gameObject);
+        }
     }
 }

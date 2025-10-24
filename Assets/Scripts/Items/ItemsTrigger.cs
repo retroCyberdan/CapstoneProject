@@ -4,8 +4,8 @@ public class ItemsTrigger : MonoBehaviour
 {
     [SerializeField] Canvas popUpCanvas;
     [SerializeField] SO_Items itemData;
-    [SerializeField] bool destroyAfterPickup = true; // Distrugge l'oggetto dopo la raccolta
-    [SerializeField] bool addToInventory = true; // Aggiunge l'oggetto all'inventario
+    [SerializeField] bool destroyAfterPickup = true;
+    [SerializeField] bool addToInventory = true;
 
     bool isPlayerInRange;
     bool isItemCollected;
@@ -13,6 +13,23 @@ public class ItemsTrigger : MonoBehaviour
     private void Awake()
     {
         if (popUpCanvas != null) popUpCanvas.gameObject.SetActive(false);
+    }
+
+    private void Start()
+    {
+        // Controlla se questo oggetto è già stato raccolto
+        // Fatto in Start() per assicurarsi che SaveSystem abbia caricato i dati
+        if (SaveSystem.Instance != null && itemData != null)
+        {
+            if (SaveSystem.Instance.IsItemCollected(itemData.itemID))
+            {
+                // Se già raccolto, disattiva/distruggi immediatamente
+                if (destroyAfterPickup)
+                    Destroy(gameObject);
+                else
+                    gameObject.SetActive(false);
+            }
+        }
     }
 
     void Update()
@@ -35,9 +52,15 @@ public class ItemsTrigger : MonoBehaviour
             InventoryManager.Instance.AddItem(itemData);
         }
 
+        // Registra l'oggetto come raccolto nel SaveSystem
+        if (SaveSystem.Instance != null && itemData != null)
+        {
+            SaveSystem.Instance.RegisterCollectedItem(itemData.itemID);
+        }
+
         // Attiva la UI dell'oggetto
-        ItemsManager.Instance.canvasGroup.gameObject.SetActive(true);
-        ItemsManager.Instance.ShowItem(itemData);
+        ItemsUiManager.Instance.canvasGroup.gameObject.SetActive(true);
+        ItemsUiManager.Instance.ShowItem(itemData);
 
         // Distruggi o disattiva l'oggetto
         if (destroyAfterPickup)
