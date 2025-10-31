@@ -24,8 +24,8 @@ MonoBehaviour:
 
 
     Sembra che fosse consuetudine per ogni bambino
-    avere una bambola propria, che veniva offerta a uno dei <color=cyan>Santuari
-    delle Bambole</color> se il bambino moriva.'
+    avere una bambola propria, che veniva offerta a uno dei <color=red>Santuari delle
+    Bambole</color> se il bambino moriva.'
   useObjectSound: 0
   objectSound: {fileID: 0}
   soundVolume: 1

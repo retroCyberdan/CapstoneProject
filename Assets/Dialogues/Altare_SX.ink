@@ -34,5 +34,4 @@ L'altare si illumina di una luce fredda.
     Le due bambole risuonano insieme... #attiva_shifting
     Gli altari iniziano a muoversi!
 }
-
 -> END
