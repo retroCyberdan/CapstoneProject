@@ -330,6 +330,7 @@ MonoBehaviour:
   flashlightToggleSound: {fileID: 8300000, guid: d9b61cd3ed55e5a4d9d4e0fd1ae1b02d,
     type: 3}
   flashlightVolume: 0.8
+  flashlightItem: {fileID: 11400000, guid: a659767db126fe244b1aa15bfb5e243f, type: 2}
 --- !u!1 &7674161021097939657
 GameObject:
   m_ObjectHideFlags: 0

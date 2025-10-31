@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemID: note_1
   itemSprite: {fileID: 21300000, guid: 51a7413405927444199e45b48ba2914f, type: 3}
-  itemDescription: "Appunti del Sopravvisuto\n\n\nL'unica cosa che mi riesce a darmi
-    un p\xF2 di conforto in questo posto sono i santuari.\n\nRiesco a ritrovare me
-    stesso, a riposare la mia anima stanca e il mio corpo devastato.\n\nSe stai leggendo
-    queste righe, approfittane, potrebbe essere tardi la prossima volta."
+  itemDescription: "Appunti del Sopravvisuto\n\n\nL'unica cosa che riesce a darmi
+    un p\xF2 di conforto in questo posto sono i <color=red>santuari</color>.\n\nRiesco
+    a ritrovare me stesso, a riposare la mia anima stanca e il mio corpo devastato.\n\nSe
+    stai leggendo queste righe, approfittane, potrebbe essere tardi la prossima volta."

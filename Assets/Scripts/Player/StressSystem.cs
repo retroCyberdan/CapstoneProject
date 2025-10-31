@@ -4,125 +4,124 @@ using UnityEngine;
 public class StressSystem : MonoBehaviour
 {
     [Header("Stress Settings")]
-    [SerializeField] private float maxStress = 100f;
-    [SerializeField] private float currentStress = 0f;
-    [SerializeField] private float stressPerEnemy = 5f; // <- stress aggiunto per ogni nemico attivo
-    [SerializeField] private float stressDecayRate = 2f; // <- riduzione stress al secondo
-    [SerializeField] private int enemyToGetStressed = 3; // <- soglia di nemici: sopra aumenta stress, sotto diminuisce
+    [SerializeField] private float _maxStress = 100f;
+    [SerializeField] private float _currentStress = 0f;
+    [SerializeField] private float _stressPerEnemy = 5f; // <- stress aggiunto per ogni nemico attivo
+    [SerializeField] private float _stressDecayRate = 2f; // <- riduzione stress al secondo
+    [SerializeField] private int _enemyToGetStressed = 3; // <- soglia di nemici: sopra aumenta stress, sotto diminuisce
 
     [Header("Stress Effects Settings")]
-    [SerializeField] private GameObject stressedCanvas; // <- canvas da mostrare quando stressato
-    [SerializeField] private AudioClip playerStressedSound; // <- audio da riprodurre quando stressato
-    [SerializeField] private float stressReliefThreshold = 50f; // <- soglia per tornare alla normalità (default: metà)
+    [SerializeField] private GameObject _stressedCanvas; // <- canvas da mostrare quando stressato
+    [SerializeField] private AudioClip _playerStressedSound; // <- audio da riprodurre quando stressato
+    [SerializeField] private float _stressReliefThreshold = 50f; // <- soglia per tornare alla normalità (default: metà)
 
     [Header("References")]
-    [SerializeField] private UI_StressBar uiStressBar;
-    [SerializeField] private PoolManager poolManager;
-    [SerializeField] private PlayerVisionAI playerVision;
-    [SerializeField] private PlayerController playerController;
-    [SerializeField] private Animator playerAnimator;
+    [SerializeField] private UI_StressBar _uiStressBar;
+    [SerializeField] private PoolManager _poolManager;
+    [SerializeField] private PlayerVisionAI _playerVision;
+    [SerializeField] private PlayerController _playerController;
+    [SerializeField] private Animator _playerAnimator;
 
     // Eventi per notificare cambiamenti di stress
     public event Action<float, float> OnStressChanged; // currentStress, maxStress
     public event Action OnStressed; // <- quando lo stress raggiunge il massimo
     public event Action OnStressRelieved; // <- quando lo stress torna sotto il massimo
 
-    private bool isStressed = false;
-    private int previousActiveEnemies = 0;
-    private AudioSource stressedAudioSource; // <- riferimento all'audio source dello stress
+    private bool _isStressed = false;
+    private int _previousActiveEnemies = 0;
+    private AudioSource _stressedAudioSource; // <- riferimento all'audio source dello stress
 
     // Getters
-    public float GetCurrentStress() => currentStress;
-    public float GetMaxStress() => maxStress;
-    public float GetStressPercentage() => currentStress / maxStress;
-    public bool IsStressed() => isStressed;
+    public float GetCurrentStress() => _currentStress;
+    public float GetMaxStress() => _maxStress;
+    public float GetStressPercentage() => _currentStress / _maxStress;
+    public bool IsStressed() => _isStressed;
 
     private void Start()
     {
-        currentStress = 0f;
+        _currentStress = 0f;
 
-        if (uiStressBar != null)
+        if (_uiStressBar != null)
         {
-            uiStressBar.maxStressValue = maxStress;
-            uiStressBar.stressValue = currentStress;
+            _uiStressBar.maxStressValue = _maxStress;
+            _uiStressBar.stressValue = _currentStress;
         }
 
-        if (poolManager == null)
+        if (_poolManager == null)
         {
-            poolManager = PoolManager.Instance;
+            _poolManager = PoolManager.Instance;
         }
 
-        if (playerVision == null)
+        if (_playerVision == null)
         {
-            playerVision = GetComponent<PlayerVisionAI>();
+            _playerVision = GetComponent<PlayerVisionAI>();
         }
 
-        if (playerController == null)
+        if (_playerController == null)
         {
-            playerController = GetComponent<PlayerController>();
+            _playerController = GetComponent<PlayerController>();
         }
 
-        if (playerAnimator == null)
+        if (_playerAnimator == null)
         {
-            playerAnimator = GetComponent<Animator>();
+            _playerAnimator = GetComponent<Animator>();
         }
 
-        // Assicurati che il canvas sia disattivato all'inizio
-        if (stressedCanvas != null)
+        // si assicura che il canvas sia disattivato all'inizio
+        if (_stressedCanvas != null)
         {
-            stressedCanvas.SetActive(false);
+            _stressedCanvas.SetActive(false);
         }
     }
 
     private void Update()
     {
-        // Debug controls - rimuovi in produzione
-        if (Input.GetKeyDown(KeyCode.K)) AddStress(10f);
-        if (Input.GetKeyDown(KeyCode.L)) ReduceStress(10f);
+        //// debug controls - rimuovi in produzione
+        //if (Input.GetKeyDown(KeyCode.K)) AddStress(10f);
+        //if (Input.GetKeyDown(KeyCode.L)) ReduceStress(10f);
 
-        // Calcola lo stress in base ai nemici attivi
-        UpdateStressBasedOnEnemies();
+        UpdateStressBasedOnEnemies(); // <- calcola lo stress in base ai nemici attivi
     }
 
     private void UpdateStressBasedOnEnemies()
     {
-        // Conta solo i nemici nel campo visivo del player
+        // conta solo i nemici nel campo visivo del player
         int activeEnemies = CountEnemiesInPlayerVision();
 
-        if (activeEnemies >= enemyToGetStressed)
+        if (activeEnemies >= _enemyToGetStressed)
         {
-            // Aumenta lo stress in base al numero di nemici
-            float stressIncrease = activeEnemies * stressPerEnemy * Time.deltaTime;
+            // aumenta lo stress in base al numero di nemici
+            float stressIncrease = activeEnemies * _stressPerEnemy * Time.deltaTime;
             AddStress(stressIncrease);
         }
         else
         {
-            // Riduce lo stress quando i nemici sono sotto la soglia
-            ReduceStress(stressDecayRate * Time.deltaTime);
+            // riduce lo stress quando i nemici sono sotto la soglia
+            ReduceStress(_stressDecayRate * Time.deltaTime);
         }
 
-        previousActiveEnemies = activeEnemies;
+        _previousActiveEnemies = activeEnemies;
     }
 
     private int CountEnemiesInPlayerVision()
     {
-        // Se non c'è PlayerVisionAI, fallback al vecchio metodo
-        if (playerVision == null)
+        // se non c'è PlayerVisionAI, fallback al vecchio metodo
+        if (_playerVision == null)
         {
             return CountActiveEnemies();
         }
 
-        // Conta solo i nemici visibili dal player
-        return playerVision.EnemiesInSightCount;
+        // conta solo i nemici visibili dal player
+        return _playerVision.EnemiesInSightCount;
     }
 
     private int CountActiveEnemies()
     {
-        if (poolManager == null) return 0;
+        if (_poolManager == null) return 0;
 
         int count = 0;
 
-        // Conta tutti gli oggetti con tag "Enemy" o "Villain" attivi
+        // conta tutti gli oggetti con tag "Enemy" o "Villain" attivi
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
         GameObject[] villains = GameObject.FindGameObjectsWithTag("Villain");
 
@@ -139,10 +138,7 @@ public class StressSystem : MonoBehaviour
         return count;
     }
 
-    /// <summary>
-    /// Aggiunge stress
-    /// </summary>
-    public void AddStress(float amount)
+    public void AddStress(float amount) // <- aggiunge Stress
     {
         if (amount < 0)
         {
@@ -150,26 +146,23 @@ public class StressSystem : MonoBehaviour
             return;
         }
 
-        currentStress += amount;
-        currentStress = Mathf.Min(currentStress, maxStress);
+        _currentStress += amount;
+        _currentStress = Mathf.Min(_currentStress, _maxStress);
 
         UpdateStressBar();
-        OnStressChanged?.Invoke(currentStress, maxStress);
+        OnStressChanged?.Invoke(_currentStress, _maxStress);
 
-        // Controlla se lo stress ha raggiunto il massimo
-        if (!isStressed && currentStress >= maxStress)
+        // controlla se lo stress ha raggiunto il massimo
+        if (!_isStressed && _currentStress >= _maxStress)
         {
-            isStressed = true;
+            _isStressed = true;
             ActivateStressEffects();
             OnStressed?.Invoke();
             Debug.Log($"{gameObject.name} è completamente stressato!");
         }
     }
 
-    /// <summary>
-    /// Riduce lo stress
-    /// </summary>
-    public void ReduceStress(float amount)
+    public void ReduceStress(float amount) // <- riduce lo Stress
     {
         if (amount < 0)
         {
@@ -177,188 +170,164 @@ public class StressSystem : MonoBehaviour
             return;
         }
 
-        bool wasStressed = isStressed;
+        bool wasStressed = _isStressed;
 
-        currentStress -= amount;
-        currentStress = Mathf.Max(currentStress, 0f);
+        _currentStress -= amount;
+        _currentStress = Mathf.Max(_currentStress, 0f);
 
         UpdateStressBar();
-        OnStressChanged?.Invoke(currentStress, maxStress);
+        OnStressChanged?.Invoke(_currentStress, _maxStress);
 
-        // Controlla se lo stress è tornato sotto la soglia di rilassamento
-        if (wasStressed && currentStress <= stressReliefThreshold)
+        // controlla se lo stress è tornato sotto la soglia di rilassamento
+        if (wasStressed && _currentStress <= _stressReliefThreshold)
         {
-            isStressed = false;
+            _isStressed = false;
             DeactivateStressEffects();
             OnStressRelieved?.Invoke();
             Debug.Log($"{gameObject.name} si è calmato!");
         }
     }
 
-    /// <summary>
-    /// Imposta lo stress a un valore specifico
-    /// </summary>
-    public void SetStress(float value)
+    public void SetStress(float value) // <- imposta lo Stress a un valore specifico
     {
-        bool wasStressed = isStressed;
+        bool wasStressed = _isStressed;
 
-        currentStress = Mathf.Clamp(value, 0f, maxStress);
+        _currentStress = Mathf.Clamp(value, 0f, _maxStress);
 
         UpdateStressBar();
-        OnStressChanged?.Invoke(currentStress, maxStress);
+        OnStressChanged?.Invoke(_currentStress, _maxStress);
 
-        // Controlla i cambiamenti di stato
-        if (!wasStressed && currentStress >= maxStress)
+        // controlla i cambiamenti di stato
+        if (!wasStressed && _currentStress >= _maxStress)
         {
-            isStressed = true;
+            _isStressed = true;
             ActivateStressEffects();
             OnStressed?.Invoke();
             Debug.Log($"{gameObject.name} è completamente stressato!");
         }
-        else if (wasStressed && currentStress <= stressReliefThreshold)
+        else if (wasStressed && _currentStress <= _stressReliefThreshold)
         {
-            isStressed = false;
+            _isStressed = false;
             DeactivateStressEffects();
             OnStressRelieved?.Invoke();
             Debug.Log($"{gameObject.name} si è calmato!");
         }
     }
 
-    /// <summary>
-    /// Attiva tutti gli effetti dello stress
-    /// </summary>
-    private void ActivateStressEffects()
+    private void ActivateStressEffects() // <- attiva tutti gli effetti dello Stress
     {
-        // Mostra il canvas
-        if (stressedCanvas != null)
+        // mostra il canvas
+        if (_stressedCanvas != null)
         {
-            stressedCanvas.SetActive(true);
+            _stressedCanvas.SetActive(true);
         }
 
-        // Riproduci il suono di stress
-        if (playerStressedSound != null && AudioManager.Instance != null)
+        // riproduce il suono di stress
+        if (_playerStressedSound != null && AudioManager.Instance != null)
         {
             GameObject audioObject = new GameObject("StressedAudio");
             audioObject.transform.position = transform.position;
             audioObject.transform.SetParent(transform);
 
-            stressedAudioSource = audioObject.AddComponent<AudioSource>();
-            stressedAudioSource.clip = playerStressedSound;
-            stressedAudioSource.loop = true;
-            stressedAudioSource.volume = 0.7f;
-            stressedAudioSource.Play();
+            _stressedAudioSource = audioObject.AddComponent<AudioSource>();
+            _stressedAudioSource.clip = _playerStressedSound;
+            _stressedAudioSource.loop = true;
+            _stressedAudioSource.volume = 0.7f;
+            _stressedAudioSource.Play();
         }
 
-        // Disabilita la corsa del player
-        if (playerController != null)
+        // disabilita la corsa del player
+        if (_playerController != null)
         {
-            playerController.canSprint = false;
+            _playerController.canSprint = false;
         }
 
-        // Attiva la bool nell'animator
-        if (playerAnimator != null)
+        // attiva la bool nell'animator
+        if (_playerAnimator != null)
         {
-            playerAnimator.SetBool("isStressed", true);
+            _playerAnimator.SetBool("isStressed", true);
         }
     }
 
-    /// <summary>
-    /// Disattiva tutti gli effetti dello stress
-    /// </summary>
-    private void DeactivateStressEffects()
+    private void DeactivateStressEffects() // <- disattiva tutti gli effetti dello Stress
     {
-        // Nascondi il canvas
-        if (stressedCanvas != null)
+        // nasconde il canvas
+        if (_stressedCanvas != null)
         {
-            stressedCanvas.SetActive(false);
+            _stressedCanvas.SetActive(false);
         }
 
-        // Ferma il suono di stress
-        if (stressedAudioSource != null)
+        // ferma il suono di stress
+        if (_stressedAudioSource != null)
         {
-            stressedAudioSource.Stop();
-            Destroy(stressedAudioSource.gameObject);
-            stressedAudioSource = null;
+            _stressedAudioSource.Stop();
+            Destroy(_stressedAudioSource.gameObject);
+            _stressedAudioSource = null;
         }
 
-        // Riabilita la corsa del player
-        if (playerController != null)
+        // riabilita la corsa del player
+        if (_playerController != null)
         {
-            playerController.canSprint = true;
+            _playerController.canSprint = true;
         }
 
-        // Disattiva la bool nell'animator
-        if (playerAnimator != null)
+        // disattiva la bool nell'animator
+        if (_playerAnimator != null)
         {
-            playerAnimator.SetBool("isStressed", false);
+            _playerAnimator.SetBool("isStressed", false);
         }
     }
 
-    /// <summary>
-    /// Imposta lo stress massimo
-    /// </summary>
-    public void SetMaxStress(float value, bool resetStress = false)
+    public void SetMaxStress(float value, bool resetStress = false) // <- imposta lo Stress massimo
     {
-        maxStress = Mathf.Max(value, 1f);
+        _maxStress = Mathf.Max(value, 1f);
 
         if (resetStress)
         {
-            currentStress = 0f;
+            _currentStress = 0f;
         }
         else
         {
-            currentStress = Mathf.Min(currentStress, maxStress);
+            _currentStress = Mathf.Min(_currentStress, _maxStress);
         }
 
-        if (uiStressBar != null) uiStressBar.maxStressValue = maxStress;
+        if (_uiStressBar != null) _uiStressBar.maxStressValue = _maxStress;
 
         UpdateStressBar();
-        OnStressChanged?.Invoke(currentStress, maxStress);
+        OnStressChanged?.Invoke(_currentStress, _maxStress);
     }
 
-    /// <summary>
-    /// Azzera completamente lo stress
-    /// </summary>
-    public void ResetStress()
+    public void ResetStress() // <- azzera completamente lo stress
     {
-        ReduceStress(currentStress);
+        ReduceStress(_currentStress);
     }
 
-    /// <summary>
-    /// Imposta la velocità di riduzione stress
-    /// </summary>
-    public void SetStressDecayRate(float rate)
+    public void SetStressDecayRate(float rate) // <- imposta la velocità di riduzione dello Stress
     {
-        stressDecayRate = Mathf.Max(rate, 0f);
+        _stressDecayRate = Mathf.Max(rate, 0f);
     }
 
-    /// <summary>
-    /// Imposta la soglia di nemici per l'aumento/riduzione stress
-    /// </summary>
-    public void SetEnemyThreshold(int threshold)
+    public void SetEnemyThreshold(int threshold) // <- imposta la soglia di nemici per aumentare/ridurre lo Stress
     {
-        enemyToGetStressed = Mathf.Max(threshold, 0);
+        _enemyToGetStressed = Mathf.Max(threshold, 0);
     }
 
-    /// <summary>
-    /// Imposta lo stress aggiunto per nemico
-    /// </summary>
-    public void SetStressPerEnemy(float stress)
+    public void SetStressPerEnemy(float stress) // <- imposta lo Stress aggiunto per ogni nemico attivo
     {
-        stressPerEnemy = Mathf.Max(stress, 0f);
+        _stressPerEnemy = Mathf.Max(stress, 0f);
     }
 
     private void UpdateStressBar()
     {
-        if (uiStressBar != null) uiStressBar.stressValue = currentStress;
+        if (_uiStressBar != null) _uiStressBar.stressValue = _currentStress;
     }
 
     private void OnDestroy()
     {
-        // Cleanup quando lo script viene distrutto
-        if (stressedAudioSource != null)
+        // cleanup quando lo script viene distrutto
+        if (_stressedAudioSource != null)
         {
-            Destroy(stressedAudioSource.gameObject);
+            Destroy(_stressedAudioSource.gameObject);
         }
     }
 }

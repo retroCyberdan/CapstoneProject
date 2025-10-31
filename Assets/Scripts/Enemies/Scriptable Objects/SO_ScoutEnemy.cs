@@ -12,6 +12,6 @@ public class SO_ScoutEnemy : SO_Enemy
     public override void Initialize(EnemyController controller)
     {
         base.Initialize(controller);
-        // Logica specifica per il nemico scout
+        // logica specifica per il nemico scout
     }
 }

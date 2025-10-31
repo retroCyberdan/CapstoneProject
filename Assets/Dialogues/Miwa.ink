@@ -17,6 +17,7 @@ VAR oggetti_attivabili = false
 -> END
 
 === risposta_seconda_scelta ===
-<u>MIWA</u>: Forse hai ragione. Hai notato anche tu questa insolita foschia? Tieni, ho trovato questa nell'autobus, magari quelle due ti vedranno! # attiva_oggetto:0 # attiva_oggetto:1
+<u>MIWA</u>: Forse hai ragione. Hai notato anche tu questa insolita foschia? Tieni, ho trovato questa nell'autobus, magari riesci ad orientarti meglio!
+    # attiva_oggetto:0 #aggiungi_oggetto:7
 ~ oggetti_attivabili = true
 -> END

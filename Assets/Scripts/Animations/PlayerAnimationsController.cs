@@ -15,7 +15,7 @@ public class PlayerAnimationsController : MonoBehaviour
         _playerController = GetComponent<PlayerController>();
         _healthSystem = GetComponent<HealthSystem>();
 
-        // Sottoscrivi agli eventi del HealthSystem
+        // sottoscrive agli eventi del HealthSystem
         if (_healthSystem != null)
         {
             _healthSystem.OnHealthChanged += OnHealthChanged;
@@ -26,7 +26,7 @@ public class PlayerAnimationsController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Aggiorna parametri di movimento solo se il player è vivo
+        // aggiorna parametri di movimento solo se il player è vivo
         if (_healthSystem != null && _healthSystem.IsAlive())
         {
             _animator.SetFloat("horizontal", _playerController.Horizontal);
@@ -37,28 +37,26 @@ public class PlayerAnimationsController : MonoBehaviour
 
     private void OnHealthChanged(float currentHealth, float maxHealth)
     {
-        // Trigger animazione di hit quando viene inflitto danno
+        // trigger animazione di hit quando viene inflitto danno
         if (currentHealth < maxHealth)
         {
             _animator.SetTrigger("isHitted");
 
-            // Riproduce suono di hit
             if (AudioManager.Instance != null) AudioManager.Instance.PlayHit(transform.position);
         }
     }
 
     private void OnDeath()
     {
-        // Attiva animazione di morte
+        // attiva animazione di morte
         _animator.SetBool("isDead", true);
 
-        // Riproduce suono di morte
         if (AudioManager.Instance != null) AudioManager.Instance.PlayDeath(transform.position);
     }
 
     private void OnDestroy()
     {
-        // Rimuovi sottoscrizioni agli eventi per evitare memory leak
+        // rimuove sottoscrizioni agli eventi per evitare memory leak
         if (_healthSystem != null)
         {
             _healthSystem.OnHealthChanged -= OnHealthChanged;

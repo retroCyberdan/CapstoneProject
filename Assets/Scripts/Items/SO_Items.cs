@@ -11,4 +11,12 @@ public class SO_Items : ScriptableObject
     public Sprite itemSprite;
     [TextArea(3, 10)]
     public string itemDescription;
+
+    [Header("Audio Settings")]
+    [Tooltip("Abilita la riproduzione del suono per questo oggetto")]
+    public bool useObjectSound = false;
+    [Tooltip("Suono riprodotto quando viene mostrata la UI di questo oggetto")]
+    public AudioClip objectSound;
+    [Range(0f, 1f)]
+    public float soundVolume = 1f;
 }

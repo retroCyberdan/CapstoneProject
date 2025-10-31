@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Flashlight : MonoBehaviour
 {
+    [Header("Flashlight References")]
     public GameObject on;
     public GameObject off;
 
@@ -11,17 +12,31 @@ public class Flashlight : MonoBehaviour
     public AudioClip flashlightToggleSound;
     [Range(0f, 1f)] public float flashlightVolume = 0.7f;
 
+    [Header("Item Reference")]
+    [Tooltip("Riferimento allo ScriptableObject della torcia")]
+    public SO_Items flashlightItem;
+
     private bool _isOn;
+    private bool _hasFlashlight;
 
     void Start()
     {
-        on.SetActive(false);
-        off.SetActive(true);
-        _isOn = false;
+        CheckInventoryForFlashlight();
+        UpdateFlashlightState();
     }
 
     void Update()
     {
+        // Controlla solo se non abbiamo ancora la torcia
+        if (!_hasFlashlight)
+        {
+            CheckInventoryForFlashlight();
+
+            if (_hasFlashlight) UpdateFlashlightState();
+
+            return;
+        }
+
         if (Input.GetKeyDown(KeyCode.F)) UseFlashlight();
     }
 
@@ -40,9 +55,35 @@ public class Flashlight : MonoBehaviour
 
         _isOn = !_isOn;
 
-        if (AudioManager.Instance != null && flashlightToggleSound != null)
+        if (AudioManager.Instance != null && flashlightToggleSound != null) AudioManager.Instance.PlayOneShot(flashlightToggleSound, transform.position, flashlightVolume);
+    }
+
+    private void CheckInventoryForFlashlight()
+    {
+        if (InventoryManager.Instance == null || flashlightItem == null)
         {
-            AudioManager.Instance.PlayOneShot(flashlightToggleSound, transform.position, flashlightVolume);
+            _hasFlashlight = false;
+            return;
+        }
+
+        _hasFlashlight = InventoryManager.Instance.HasItem(flashlightItem);
+    }
+
+    private void UpdateFlashlightState()
+    {
+        if (_hasFlashlight)
+        {
+            // mostra la torcia spenta
+            on.SetActive(false);
+            off.SetActive(true);
+            _isOn = false;
+            Debug.Log("Torcia sbloccata! Premi F per accenderla.");
+        }
+        else
+        {
+            // nasconde completamente la torcia
+            on.SetActive(false);
+            off.SetActive(false);
         }
     }
 }

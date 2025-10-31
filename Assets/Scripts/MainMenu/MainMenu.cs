@@ -13,8 +13,8 @@ public class MainMenu : MonoBehaviour
     private void Start()
     {
         AudioManager.Instance.PlayBGM(AudioManager.Instance.menuMusic);
-        // Controlla se esiste un salvataggio e abilita/disabilita il pulsante Continue
-        UpdateContinueButton();
+
+        UpdateContinueButton(); // <- controlla se esiste un salvataggio e abilita/disabilita il pulsante Continue
     }
 
     private void UpdateContinueButton()
@@ -24,9 +24,9 @@ public class MainMenu : MonoBehaviour
             bool saveExists = SaveSystem.SaveFileExists();
             _continueButton.interactable = saveExists;
 
-            // Opzionale: cambia anche l'opacità visiva del bottone
+            // opzionale: cambia anche l'opacità visiva del bottone
             var colors = _continueButton.colors;
-            colors.disabledColor = new Color(1f, 1f, 1f, 0.5f); // Bianco semi-trasparente
+            colors.disabledColor = new Color(1f, 1f, 1f, 0.5f); // bianco semi-trasparente
             _continueButton.colors = colors;
 
             Debug.Log(saveExists ? "Salvataggio trovato - Continue attivo" : "Nessun salvataggio - Continue disabilitato");
@@ -37,8 +37,7 @@ public class MainMenu : MonoBehaviour
         }
     }
 
-    // Chiamato dal pulsante "New Game"
-    public void OnNewGameClicked()
+    public void OnNewGameClicked() // <- chiamato dal pulsante "New Game"
     {
         //// Cancella il salvataggio esistente per iniziare da zero
         //string path = Application.persistentDataPath + "/save.json";
@@ -47,18 +46,18 @@ public class MainMenu : MonoBehaviour
         //    System.IO.File.Delete(path);
         //    Debug.Log("Salvataggio precedente eliminato");
         //}
+
         ShouldLoadSave = false;
         SceneManager.LoadScene(_gameSceneName);
-        AudioManager.Instance.PlayBGM(AudioManager.Instance.gameMusic);
+        AudioManager.Instance.StopBGM();
     }
 
-    // Chiamato dal pulsante "Continue"
-    public void OnContinueClicked()
+    public void OnContinueClicked() // <- chiamato dal pulsante "Continue"
     {
         if (SaveSystem.SaveFileExists())
         {
             ShouldLoadSave = true;
-            SceneManager.LoadScene(_gameSceneName);
+            SceneManager.LoadScene("Scene1");
         }
         else
         {
@@ -66,8 +65,13 @@ public class MainMenu : MonoBehaviour
         }
     }
 
-    // Metodo opzionale per cancellare il salvataggio (per testing)
-    public void DeleteSaveFile()
+    public void OnExitClicked() // <- chiamato dal pulsante "Exit"
+    {
+        Debug.Log("Uscita dal gioco");
+        Application.Quit();
+    }
+
+    public void DeleteSaveFile() // <- metodo opzionale per cancellare il salvataggio (per testing)
     {
         string path = Application.persistentDataPath + "/save.json";
         if (System.IO.File.Exists(path))

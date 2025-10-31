@@ -1,10 +1,6 @@
 using UnityEngine;
 
-/// <summary>
-/// Classe base astratta per tutti i nemici.
-/// Non può essere istanziata direttamente - serve come template per creare nemici specifici.
-/// </summary>
-public abstract class SO_Enemy : ScriptableObject
+public abstract class SO_Enemy : ScriptableObject // <- classe base astratta per tutti i nemici. Non può essere istanziata direttamente - serve come template per creare nemici specifici.
 {
     [Header("Prefab Settings")]
     [Tooltip("Il prefab del nemico con tutti i componenti necessari (Animator, CharacterController, EnemyVisionAI)")]
@@ -43,18 +39,12 @@ public abstract class SO_Enemy : ScriptableObject
     [Tooltip("Numero di segmenti per il campo visivo")]
     public int fovSegments = 50;
 
-    /// <summary>
-    /// Metodo virtuale per inizializzazioni custom dei nemici specifici
-    /// </summary>
-    public virtual void Initialize(EnemyController controller)
+    public virtual void Initialize(EnemyController controller) // <- metodo per inizializzazioni custom di nemici specifici
     {
-        // I nemici derivati possono sovrascrivere questo metodo per logiche custom
+        // i nemici derivati possono sovrascrivere questo metodo con logiche custom
     }
 
-    /// <summary>
-    /// Valida i dati dello Scriptable Object
-    /// </summary>
-    public virtual void OnValidate()
+    public virtual void OnValidate() // <- valida i dati dello Scriptable Object
     {
         moveSpeed = Mathf.Max(0f, moveSpeed);
         minWaitTime = Mathf.Max(0f, minWaitTime);

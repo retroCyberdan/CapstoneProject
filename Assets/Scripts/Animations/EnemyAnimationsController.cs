@@ -26,42 +26,27 @@ public class EnemyAnimationsController : MonoBehaviour
     // Metodo chiamato quando il nemico triggera il player
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
-        if (hit.gameObject.CompareTag("Player"))
-        {
-            TriggerAttack();
-        }
+        if (hit.gameObject.CompareTag("Player")) TriggerAttack();
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            TriggerAttack();
-        }
+        if (collision.gameObject.CompareTag("Player")) TriggerAttack();
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
-        {
-            TriggerAttack();
-        }
+        if (other.CompareTag("Player")) TriggerAttack();
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Player"))
-        {
-            _isAttacking = false;
-        }
+        if (other.CompareTag("Player")) _isAttacking = false;
     }
 
     private void OnCollisionExit(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            _isAttacking = false;
-        }
+        if (collision.gameObject.CompareTag("Player")) _isAttacking = false;
     }
 
     private void TriggerAttack()

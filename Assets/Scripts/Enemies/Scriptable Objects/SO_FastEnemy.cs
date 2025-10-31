@@ -12,6 +12,6 @@ public class SO_FastEnemy : SO_Enemy
     public override void Initialize(EnemyController controller)
     {
         base.Initialize(controller);
-        // Logica specifica per il nemico veloce
+        // logica specifica per il nemico veloce
     }
 }

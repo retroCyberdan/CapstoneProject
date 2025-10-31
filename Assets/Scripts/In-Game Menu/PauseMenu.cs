@@ -16,6 +16,9 @@ public class PauseMenu : MonoBehaviour
     public AudioClip menuCloseSound;
     [Range(0f, 1f)] public float menuSoundVolume = 0.5f;
 
+    [Header("Camera Controller")]
+    [SerializeField] ThirdCameraController cameraController;
+
     void Start()
     {
         if (pauseMenuUI != null) pauseMenuUI.SetActive(false);
@@ -27,37 +30,23 @@ public class PauseMenu : MonoBehaviour
         {
             if (GameIsPaused)
             {
-                // Se il gioco è in pausa, controlla se ci sono altri canvas aperti
-                bool otherCanvasOpen = IsAnyOtherCanvasOpen();
+                bool otherCanvasOpen = IsAnyOtherCanvasOpen(); // <- se il gioco è in pausa, controlla se ci sono altri canvas aperti
 
-                if (!otherCanvasOpen)
-                {
-                    // Chiudi solo se nessun altro canvas specifico è aperto
-                    Resume();
-                }
-                // Se altri canvas sono aperti, ESC non fa nulla
+                if (!otherCanvasOpen) Resume(); // <- chiudi solo se nessun altro canvas specifico è aperto
+                // se altri canvas sono aperti, ESC non fa nulla
             }
-            else
-            {
-                // Apri il pause menu (non importa quali canvas sono aperti)
-                Pause();
-            }
+            else Pause(); // <- apri il pause menu (non importa quali canvas sono aperti)
         }
     }
 
     bool IsAnyOtherCanvasOpen()
     {
-        // Controlla se l'inventario è aperto
-        if (inventoryCanvas != null && inventoryCanvas.activeSelf)
-            return true;
+        if (inventoryCanvas != null && inventoryCanvas.activeSelf) return true; // <- controlla se l'inventario è aperto
 
-        // Controlla se le opzioni sono aperte
-        if (optionsCanvas != null && optionsCanvas.activeSelf)
-            return true;
+        if (optionsCanvas != null && optionsCanvas.activeSelf) return true; // <- controlla se le opzioni sono aperte
 
-        // Controlla se ItemsManager è aperto
-        if (ItemsUiManager.Instance != null && ItemsUiManager.Instance.canvasGroup.gameObject.activeSelf)
-            return true;
+        if (ItemsUiManager.Instance != null && ItemsUiManager.Instance.canvasGroup.gameObject.activeSelf) return true; // <- controlla se ItemsManager è aperto
+
 
         return false;
     }
@@ -68,8 +57,9 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 1f;
         GameIsPaused = false;
 
-        if (menuCloseSound != null && AudioManager.Instance != null)
-            AudioManager.Instance.PlayOneShot(menuCloseSound, transform.position, menuSoundVolume);
+        if (cameraController != null) cameraController.HideCursor(); // <- nascondi il cursore quando riprendi il gioco
+
+        if (menuCloseSound != null && AudioManager.Instance != null) AudioManager.Instance.PlayOneShot(menuCloseSound, transform.position, menuSoundVolume);
     }
 
     public void Pause()
@@ -78,8 +68,9 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 0f;
         GameIsPaused = true;
 
-        if (menuOpenSound != null && AudioManager.Instance != null)
-            AudioManager.Instance.PlayOneShot(menuOpenSound, transform.position, menuSoundVolume);
+        if (cameraController != null) cameraController.ShowCursor(); // <- mostra il cursore quando apri il menu di pausa
+
+        if (menuOpenSound != null && AudioManager.Instance != null) AudioManager.Instance.PlayOneShot(menuOpenSound, transform.position, menuSoundVolume);
     }
 
     public void BackToMainMenu()

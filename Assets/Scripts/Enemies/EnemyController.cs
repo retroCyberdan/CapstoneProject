@@ -5,7 +5,7 @@ public class EnemyController : MonoBehaviour
     [Header("Enemy Data")]
     [SerializeField] private SO_Enemy _enemyData;
 
-    // Parametri di movimento (caricati dallo ScriptableObject)
+    // parametri di movimento (caricati dallo ScriptableObject)
     private float _moveSpeed;
     private float _minWaitTime;
     private float _maxWaitTime;
@@ -13,7 +13,7 @@ public class EnemyController : MonoBehaviour
     private float _maxMoveTime;
     private float _rotationSpeed;
 
-    // Parametri di danno (caricati dallo ScriptableObject)
+    // parametri di danno (caricati dallo ScriptableObject)
     private float _damage;
     private float _damageCooldown;
 
@@ -35,23 +35,19 @@ public class EnemyController : MonoBehaviour
         _characterController = GetComponent<CharacterController>();
         _enemyVision = GetComponent<EnemyVisionAI>();
 
-        // Trova e salva il riferimento al HealthSystem del player
+        // trova e salva il riferimento al HealthSystem del player
         GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
         if (playerObj != null)
         {
             _playerHealth = playerObj.GetComponent<HealthSystem>();
         }
 
-        // Carica i parametri dallo ScriptableObject
-        LoadEnemyData();
+        LoadEnemyData(); // <- carica i parametri dallo ScriptableObject
 
         ChangeState();
     }
 
-    /// <summary>
-    /// Carica tutti i parametri dallo ScriptableObject
-    /// </summary>
-    private void LoadEnemyData()
+    private void LoadEnemyData() // <- carica tutti i parametri dallo ScriptableObject
     {
         if (_enemyData == null)
         {
@@ -68,21 +64,17 @@ public class EnemyController : MonoBehaviour
         _damage = _enemyData.damage;
         _damageCooldown = _enemyData.damageCooldown;
 
-        // Configura EnemyVisionAI se presente
+        // configura EnemyVisionAI se presente
         if (_enemyVision != null)
         {
             _enemyVision.SetVisionRadius(_enemyData.visionRadius);
             _enemyVision.SetFovSegments(_enemyData.fovSegments);
         }
 
-        // Chiama il metodo di inizializzazione custom del nemico
-        _enemyData.Initialize(this);
+        _enemyData.Initialize(this); // <- chiama il metodo di inizializzazione custom del nemico
     }
 
-    /// <summary>
-    /// Permette di cambiare i dati del nemico a runtime (utile per il pooling)
-    /// </summary>
-    public void SetEnemyData(SO_Enemy newEnemyData)
+    public void SetEnemyData(SO_Enemy newEnemyData) // <- permette di cambiare i dati del nemico a runtime (utile per il pooling)
     {
         _enemyData = newEnemyData;
         LoadEnemyData();
@@ -144,31 +136,19 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-    // Gestione collisione con CharacterController
-    private void OnControllerColliderHit(ControllerColliderHit hit)
+    private void OnControllerColliderHit(ControllerColliderHit hit) // <- gestione collisione con CharacterController
     {
-        if (hit.gameObject.CompareTag("Player"))
-        {
-            DealDamageToPlayer();
-        }
+        if (hit.gameObject.CompareTag("Player")) DealDamageToPlayer();
     }
 
-    // Gestione collisione con Rigidbody
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter(Collision collision) // <- gestione collisione con Rigidbody
     {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            DealDamageToPlayer();
-        }
+        if (collision.gameObject.CompareTag("Player")) DealDamageToPlayer();
     }
 
-    // Gestione trigger
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other) // <- gestione trigger
     {
-        if (other.CompareTag("Player"))
-        {
-            DealDamageToPlayer();
-        }
+        if (other.CompareTag("Player")) DealDamageToPlayer();
     }
 
     private void DealDamageToPlayer()
@@ -184,11 +164,11 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-    // Metodi pubblici per modificare il danno a runtime
+    // metodi pubblici per modificare il danno a runtime
     public void SetDamage(float newDamage) => _damage = Mathf.Max(0, newDamage);
     public float GetDamage() => _damage;
 
-    // Metodi pubblici per modificare altri parametri a runtime
+    // metodi pubblici per modificare altri parametri a runtime
     public void SetMoveSpeed(float newSpeed) => _moveSpeed = Mathf.Max(0, newSpeed);
     public float GetMoveSpeed() => _moveSpeed;
 }

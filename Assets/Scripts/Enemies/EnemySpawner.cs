@@ -52,7 +52,7 @@ public class EnemySpawner : MonoBehaviour
                 Transform spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
                 GameObject enemy = PoolManager.Instance.SpawnFromPool(e.poolTag, spawnPoint.position, Quaternion.identity);
 
-                // Configura il nemico con i dati dello ScriptableObject
+                // configura il nemico con i dati dello ScriptableObject
                 if (enemy != null)
                 {
                     EnemyController controller = enemy.GetComponent<EnemyController>();
@@ -61,10 +61,10 @@ public class EnemySpawner : MonoBehaviour
                         controller.SetEnemyData(e.enemyData);
                     }
 
-                    // Gestione audio in base al tipo di nemico
+                    // gestione audio in base al tipo di nemico
                     if (e.poolTag == bossPoolTag)
                     {
-                        // Se è il boss, riproduci la musica del boss
+                        // se è il boss, riproduci la musica del boss
                         if (bossSpawnMusic != null && AudioManager.Instance != null)
                         {
                             AudioManager.Instance.PlayOneShot(bossSpawnMusic, spawnPoint.position, .05f);
@@ -73,15 +73,14 @@ public class EnemySpawner : MonoBehaviour
                     }
                     else
                     {
-                        // Se è un nemico normale, riproduci il suono di spawn
+                        // se è un nemico normale, riproduci il suono di spawn
                         if (enemySpawnSound != null && AudioManager.Instance != null)
                         {
                             AudioManager.Instance.PlayOneShot(enemySpawnSound, spawnPoint.position, .05f);
                         }
                     }
 
-                    // Disattiva il nemico dopo il tempo di vita specificato
-                    PoolManager.Instance.StartCoroutine(DisableEnemyAfterDelay(enemy, e.lifetime, e.poolTag == bossPoolTag));
+                    PoolManager.Instance.StartCoroutine(DisableEnemyAfterDelay(enemy, e.lifetime, e.poolTag == bossPoolTag)); // <- disattiva il nemico dopo il tempo di vita specificato
                 }
 
                 return;
@@ -98,7 +97,7 @@ public class EnemySpawner : MonoBehaviour
         {
             enemy.SetActive(false);
 
-            // Se era il boss, resetta il riferimento
+            // se era il boss, resetta il riferimento
             if (isBoss && enemy == _currentBoss)
             {
                 _currentBoss = null;

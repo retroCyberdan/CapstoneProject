@@ -3,11 +3,11 @@ using TMPro;
 
 public class CreditsMenu : MonoBehaviour
 {
-    public GameObject mainMenu; // Riferimento al menu principale
+    public GameObject mainMenu; // <- riferimento al menu principale
 
     void Update()
     {
-        // Premi ESC per tornare al menu
+        // premi ESC per tornare al menu
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             ReturnToMainMenu();

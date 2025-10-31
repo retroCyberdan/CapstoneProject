@@ -5,7 +5,7 @@ using TMPro;
 using UnityEngine.UI;
 using Ink.Runtime;
 
-// by il grandissimo prof. Luca Villanini (1h37m M7S1G4)
+// by il grandissimo prof. Luca Villanini
 
 public class DialogueTrigger : MonoBehaviour
 {

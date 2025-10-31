@@ -22,28 +22,24 @@ public class DataSystem : MonoBehaviour
     {
         _volumeSlider.value = PlayerPrefs.GetFloat(PlayerPrefsKeys.Volume, 0f);
 
-        // Carica i volumi separati solo se gli slider esistono
-        if (_bgmVolumeSlider != null)
-            _bgmVolumeSlider.value = PlayerPrefs.GetFloat(PlayerPrefsKeys.BGMVolume, 0f);
-        if (_sfxVolumeSlider != null)
-            _sfxVolumeSlider.value = PlayerPrefs.GetFloat(PlayerPrefsKeys.SFXVolume, 0f);
+        // carica i volumi separati solo se gli slider esistono
+        if (_bgmVolumeSlider != null) _bgmVolumeSlider.value = PlayerPrefs.GetFloat(PlayerPrefsKeys.BGMVolume, 0f);
+
+        if (_sfxVolumeSlider != null) _sfxVolumeSlider.value = PlayerPrefs.GetFloat(PlayerPrefsKeys.SFXVolume, 0f);
 
         _graphicsDropdown.value = PlayerPrefs.GetInt(PlayerPrefsKeys.Graphics, 0);
         _resolutionDropdown.value = PlayerPrefs.GetInt(PlayerPrefsKeys.Resolution, 0);
         _fullScreenToggle.isOn = PlayerPrefs.GetInt(PlayerPrefsKeys.FullScreen, 0) == 1 ? true : false;
     }
 
-    // Queste funzioni vanno collegate agli eventi OnValueChanged nell'Inspector
+    // queste funzioni vanno collegate agli eventi OnValueChanged nell'Inspector
     public void SetVolume(float volume)
     {
         PlayerPrefs.SetFloat(PlayerPrefsKeys.Volume, volume);
         PlayerPrefs.Save();
 
-        // Notifica l'AudioManager del cambio volume
-        if (AudioManager.Instance != null)
-        {
-            AudioManager.Instance.UpdateVolumeFromPlayerPrefs();
-        }
+        // notifica l'AudioManager del cambio volume
+        if (AudioManager.Instance != null) AudioManager.Instance.UpdateVolumeFromPlayerPrefs();
     }
 
     public void SetBGMVolume(float volume) // <- nuovo metodo per volume musica separato
@@ -51,10 +47,7 @@ public class DataSystem : MonoBehaviour
         PlayerPrefs.SetFloat(PlayerPrefsKeys.BGMVolume, volume);
         PlayerPrefs.Save();
 
-        if (AudioManager.Instance != null)
-        {
-            AudioManager.Instance.UpdateVolumeFromPlayerPrefs();
-        }
+        if (AudioManager.Instance != null) AudioManager.Instance.UpdateVolumeFromPlayerPrefs();
     }
 
     public void SetSFXVolume(float volume) // <- nuovo metodo per volume SFX separato
@@ -62,10 +55,7 @@ public class DataSystem : MonoBehaviour
         PlayerPrefs.SetFloat(PlayerPrefsKeys.SFXVolume, volume);
         PlayerPrefs.Save();
 
-        if (AudioManager.Instance != null)
-        {
-            AudioManager.Instance.UpdateVolumeFromPlayerPrefs();
-        }
+        if (AudioManager.Instance != null) AudioManager.Instance.UpdateVolumeFromPlayerPrefs();
     }
 
     public void SetGraphics(int graphicsIndex)

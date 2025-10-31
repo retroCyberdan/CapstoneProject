@@ -17,6 +17,7 @@ VAR oggetti_attivabili = false
 -> END
 
 === risposta_seconda_scelta ===
-<u>MIYUKI</u>: Lo hai notato anche tu? Se mai dovessi sentirti stanca, riposati presso questi <color=red>santuari</color>, ti aiuteranno a stare meglio. # attiva_oggetto:2
+<u>MIYUKI</u>: Lo hai notato anche tu? Se mai dovessi sentirti stanca, riposati presso questi <color=red>santuari</color>, ti aiuteranno a stare meglio.
+    # attiva_oggetto:2
 ~ oggetti_attivabili = true
 -> END

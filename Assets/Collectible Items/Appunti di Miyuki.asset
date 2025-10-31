@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Appunti di Miyuki
   m_EditorClassIdentifier: 
   itemID: note_2
-  itemSprite: {fileID: 21300000, guid: 4671bdca5a191704ea92f0f39cf7fc43, type: 3}
+  itemSprite: {fileID: 21300000, guid: c98e5f6c90ab9ee498888841610f293e, type: 3}
   itemDescription: "Appunti di Miyuki\n\n\nDa quando siamo qui, sento che ogni momento
     potrebbe essere l'ultimo.\r\n\r\nMi sento pi\xF9 vicina a Misato che mai. \xC8
     bello condividere segreti con lei...\r\n\r\nSpesso parliamo del passato. Ricordo
@@ -23,3 +23,6 @@ MonoBehaviour:
     mentre la sua veniva ristrutturata. Parliamo spesso di queste cose.\r\n\r\nTutta
     la mia vita mi \xE8 passata davanti agli occhi. Di tutti i momenti, quello \xE8
     quello che voglio continuare a vivere ancora e ancora, per sempre."
+  useObjectSound: 0
+  objectSound: {fileID: 0}
+  soundVolume: 1

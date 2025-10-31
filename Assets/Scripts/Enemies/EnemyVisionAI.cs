@@ -38,7 +38,6 @@ public class EnemyVisionAI : MonoBehaviour
         _lineRenderer.useWorldSpace = true;
         _lineRenderer.loop = true;
 
-        // Assegna un materiale di default per evitare il colore viola
         _lineRenderer.material = new Material(Shader.Find("Sprites/Default"));
     }
 
@@ -56,8 +55,7 @@ public class EnemyVisionAI : MonoBehaviour
         {
             Vector3 dirToPlayer = (_player.position - transform.position).normalized;
 
-            // SphereCast per controllare se c'è line of sight
-            if (Physics.SphereCast(transform.position, 0.5f, dirToPlayer, out RaycastHit hit, _visionRadius, _playerLayer | _obstacleLayer))
+            if (Physics.SphereCast(transform.position, 0.5f, dirToPlayer, out RaycastHit hit, _visionRadius, _playerLayer | _obstacleLayer)) // <- sphereCast per controllare se c'è line of sight
             {
                 if (hit.transform.CompareTag("Player"))
                 {
@@ -74,7 +72,7 @@ public class EnemyVisionAI : MonoBehaviour
     {
         if (_lineRenderer == null) return;
 
-        // Disegna un FOV circolare
+        // disegna un FOV circolare
         for (int i = 0; i <= _fovSegments; i++)
         {
             float angle = (i / (float)_fovSegments) * 2 * Mathf.PI;
@@ -85,7 +83,7 @@ public class EnemyVisionAI : MonoBehaviour
             _lineRenderer.SetPosition(i, pos);
         }
 
-        // Colore diverso se sta inseguendo
+        // colore diverso se sta inseguendo
         Color fovColor = _chasingPlayer ? Color.red : Color.yellow;
         _lineRenderer.startColor = fovColor;
         _lineRenderer.endColor = fovColor;
@@ -97,18 +95,12 @@ public class EnemyVisionAI : MonoBehaviour
         return (_player.position - transform.position).normalized;
     }
 
-    /// <summary>
-    /// Metodo per impostare il raggio di visione da EnemyController
-    /// </summary>
-    public void SetVisionRadius(float radius)
+    public void SetVisionRadius(float radius) // <- metodo per impostare il raggio di visione da EnemyController
     {
         _visionRadius = Mathf.Max(0f, radius);
     }
 
-    /// <summary>
-    /// Metodo per impostare i segmenti del FOV da EnemyController
-    /// </summary>
-    public void SetFovSegments(int segments)
+    public void SetFovSegments(int segments) // <- metodo per impostare i segmenti del FOV da EnemyController
     {
         _fovSegments = Mathf.Max(3, segments);
         if (_lineRenderer != null)
@@ -117,8 +109,5 @@ public class EnemyVisionAI : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Permette di ottenere il raggio di visione attuale
-    /// </summary>
-    public float GetVisionRadius() => _visionRadius;
+    public float GetVisionRadius() => _visionRadius; // <- permette di ottenere il raggio di visione attuale
 }

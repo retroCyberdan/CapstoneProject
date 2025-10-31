@@ -20,6 +20,7 @@ public class OptionsMenu : MonoBehaviour
     private void Awake()
     {
         SetupResolutions();
+
         LoadSettings(); // <- Carica le impostazioni salvate
     }
 
@@ -36,9 +37,7 @@ public class OptionsMenu : MonoBehaviour
             string option = resolutions[i].width + " x " + resolutions[i].height;
             options.Add(option);
 
-            if (resolutions[i].width == Screen.currentResolution.width &&
-                resolutions[i].height == Screen.currentResolution.height)
-                currentResolutionIndex = i;
+            if (resolutions[i].width == Screen.currentResolution.width && resolutions[i].height == Screen.currentResolution.height) currentResolutionIndex = i;
         }
 
         resolutionDropdown.AddOptions(options);
@@ -48,52 +47,52 @@ public class OptionsMenu : MonoBehaviour
 
     private void LoadSettings()
     {
-        // Carica Volume
+        // carica Volume
         if (PlayerPrefs.HasKey("Volume"))
         {
             float volume = PlayerPrefs.GetFloat("Volume");
             audioMixer.SetFloat("Volume", volume);
-            if (volumeSlider != null)
-                volumeSlider.value = volume;
+
+            if (volumeSlider != null) volumeSlider.value = volume;
         }
 
-        // Carica BGM Volume
+        // carica BGM Volume
         if (PlayerPrefs.HasKey("BGMVolume"))
         {
             float bgmVolume = PlayerPrefs.GetFloat("BGMVolume");
             audioMixer.SetFloat("BGMVolume", bgmVolume);
-            if (bgmSlider != null)
-                bgmSlider.value = bgmVolume;
+
+            if (bgmSlider != null) bgmSlider.value = bgmVolume;
         }
 
-        // Carica SFX Volume
+        // carica SFX Volume
         if (PlayerPrefs.HasKey("SFXVolume"))
         {
             float sfxVolume = PlayerPrefs.GetFloat("SFXVolume");
             audioMixer.SetFloat("SFXVolume", sfxVolume);
-            if (sfxSlider != null)
-                sfxSlider.value = sfxVolume;
+
+            if (sfxSlider != null) sfxSlider.value = sfxVolume;
         }
 
-        // Carica Qualità Grafica
+        // carica Qualità Grafica
         if (PlayerPrefs.HasKey("Quality"))
         {
             int quality = PlayerPrefs.GetInt("Quality");
             QualitySettings.SetQualityLevel(quality);
-            if (qualityDropdown != null)
-                qualityDropdown.value = quality;
+
+            if (qualityDropdown != null) qualityDropdown.value = quality;
         }
 
-        // Carica Fullscreen
+        // carica Fullscreen
         if (PlayerPrefs.HasKey("Fullscreen"))
         {
             bool isFullscreen = PlayerPrefs.GetInt("Fullscreen") == 1;
             Screen.fullScreen = isFullscreen;
-            if (fullscreenToggle != null)
-                fullscreenToggle.isOn = isFullscreen;
+
+            if (fullscreenToggle != null) fullscreenToggle.isOn = isFullscreen;
         }
 
-        // Carica Risoluzione
+        // carica Risoluzione
         if (PlayerPrefs.HasKey("ResolutionIndex"))
         {
             int resIndex = PlayerPrefs.GetInt("ResolutionIndex");

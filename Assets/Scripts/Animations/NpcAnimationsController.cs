@@ -15,8 +15,7 @@ public class NpcAnimationsController : MonoBehaviour
 
     void Update()
     {
-        // Controlla se il DialogueManager è attivo (dialogo in corso)
-        if (DialogueManager.Instance != null && DialogueManager.Instance.canvasGroup != null)
+        if (DialogueManager.Instance != null && DialogueManager.Instance.canvasGroup != null) // <- controlla se il DialogueManager è attivo (dialogo in corso)
         {
             bool isDialogueActive = DialogueManager.Instance.canvasGroup.gameObject.activeSelf;
             _animator.SetBool("isTalking", isDialogueActive);

@@ -13,6 +13,6 @@ public class SO_TankEnemy : SO_Enemy
     public override void Initialize(EnemyController controller)
     {
         base.Initialize(controller);
-        // Logica specifica per il nemico tank
+        // logica specifica per il nemico tank
     }
 }

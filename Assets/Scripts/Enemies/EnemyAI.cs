@@ -65,7 +65,6 @@ public class EnemyAI : MonoBehaviour
         _lineRenderer.useWorldSpace = true;
         _lineRenderer.loop = true;
 
-        // assegna un materiale di default per evitare il colore viola
         _lineRenderer.material = new Material(Shader.Find("Sprites/Default"));
     }
 
@@ -79,8 +78,7 @@ public class EnemyAI : MonoBehaviour
         {
             Vector3 dirToPlayer = (_player.position - transform.position).normalized;
 
-            // spherecast per controllare se c'è LOS
-            if (Physics.SphereCast(transform.position, 0.5f, dirToPlayer, out RaycastHit hit, _visionRadius, _playerLayer | _obstacleLayer))
+            if (Physics.SphereCast(transform.position, 0.5f, dirToPlayer, out RaycastHit hit, _visionRadius, _playerLayer | _obstacleLayer)) // <- spherecast per controllare se c'è LOS
             {
                 if (hit.transform.CompareTag("Player"))
                 {
@@ -112,7 +110,7 @@ public class EnemyAI : MonoBehaviour
             if (_isMoving) moveDir = _randomDirection;
         }
 
-        // Ruota il nemico nella direzione del movimento
+        // ruota il nemico nella direzione del movimento
         if (moveDir.x != 0 || moveDir.z != 0)
         {
             Vector3 lookDirection = new Vector3(moveDir.x, 0, moveDir.z);
@@ -157,31 +155,19 @@ public class EnemyAI : MonoBehaviour
         _lineRenderer.endColor = fovColor;
     }
 
-    // Gestione collisione con CharacterController
-    private void OnControllerColliderHit(ControllerColliderHit hit)
+    private void OnControllerColliderHit(ControllerColliderHit hit) // <- gestione collisione con CharacterController
     {
-        if (hit.gameObject.CompareTag("Player"))
-        {
-            DealDamageToPlayer();
-        }
+        if (hit.gameObject.CompareTag("Player")) DealDamageToPlayer();
     }
 
-    // Gestione collisione con Rigidbody
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter(Collision collision) // <- gestione collisione con Rigidbody
     {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            DealDamageToPlayer();
-        }
+        if (collision.gameObject.CompareTag("Player")) DealDamageToPlayer();
     }
 
-    // Gestione trigger
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other) // <- gestione trigger
     {
-        if (other.CompareTag("Player"))
-        {
-            DealDamageToPlayer();
-        }
+        if (other.CompareTag("Player")) DealDamageToPlayer();
     }
 
     private void DealDamageToPlayer()
@@ -197,7 +183,7 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
-    // Metodi pubblici per modificare il danno
+    // metodi pubblici per modificare il danno
     public void SetDamage(float newDamage) => _damage = Mathf.Max(0, newDamage);
     public float GetDamage() => _damage;
 }

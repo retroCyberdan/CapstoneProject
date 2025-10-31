@@ -23,8 +23,7 @@ public class InventorySlot : MonoBehaviour, IPointerClickHandler
     {
         if (itemData != null && ItemsUiManager.Instance != null)
         {
-            // Mostra l'oggetto (il SetAsLastSibling è già dentro ShowItem)
-            ItemsUiManager.Instance.ShowItem(itemData);
+            ItemsUiManager.Instance.ShowItem(itemData); // <- mostra l'oggetto (il SetAsLastSibling è già dentro ShowItem)
         }
     }
 }

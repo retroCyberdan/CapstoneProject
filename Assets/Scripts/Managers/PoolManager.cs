@@ -66,8 +66,7 @@ public class PoolManager : MonoBehaviour
         return obj;
     }
 
-    // ?? Disattiva un oggetto dopo un certo tempo
-    public IEnumerator DisableAfterDelay(GameObject obj, float delay)
+    public IEnumerator DisableAfterDelay(GameObject obj, float delay) // <- disattiva un oggetto dopo un certo tempo
     {
         yield return new WaitForSeconds(delay);
 

@@ -10,11 +10,11 @@ public class AudioManager : MonoBehaviour
     [Header("Audio Mixer")]
     public AudioMixer audioMixer; // <- riferimento al mixer per il controllo del volume globale
 
-    [Header("BGM Settings")]
+    [Header("BGMs Settings")]
     public AudioClip menuMusic;
     public AudioClip gameMusic;
 
-    [Header("Player Audio Settings")]
+    [Header("Walk Audio Settings")]
     public AudioClip[] footstepSounds; // <- passi su terreno normale
     public AudioClip[] woodFootstepSounds; // <- passi su terreno legnoso
     public AudioClip[] rockFootstepSounds; // <- passi su terreno roccioso
@@ -144,7 +144,7 @@ public class AudioManager : MonoBehaviour
         }
         else
         {
-            return; // nessun suono disponibile
+            return; // <- nessun suono disponibile
         }
 
         AudioClip randomFootstep = soundArray[Random.Range(0, soundArray.Length)]; // <- seleziona un suono casuale dall'array
@@ -175,7 +175,7 @@ public class AudioManager : MonoBehaviour
         _breathingSource.clip = randomBreathing;
         _breathingSource.volume = breathingVolume;
         _breathingSource.loop = true;
-        _breathingSource.outputAudioMixerGroup = _sfxGroup; // <- usa il gruppo SFX
+        _breathingSource.outputAudioMixerGroup = _sfxGroup; // <- usa il gruppo di SFXs
         _breathingSource.Play();
     }
 

@@ -11,13 +11,13 @@ public class PlayerSave
     public float currentStress;
     public float maxStress;
 
-    // Lista degli ID degli oggetti raccolti
-    public List<string> collectedItemIDs = new List<string>();
+    public List<string> collectedItemIDs = new List<string>(); // <- lista degli ID degli oggetti raccolti
+
+    public bool introVista = false; // <- flag per tracciare se l'intro è già stata vista
 
     public PlayerSave() { }
 
-    public PlayerSave(float[] position, float[] rotation, float currentHealth, float maxHealth,
-                      float currentStress, float maxStress, List<string> collectedItemIDs)
+    public PlayerSave(float[] position, float[] rotation, float currentHealth, float maxHealth, float currentStress, float maxStress, List<string> collectedItemIDs, bool introVista)
     {
         this.position = position;
         this.rotation = rotation;
@@ -26,5 +26,6 @@ public class PlayerSave
         this.currentStress = currentStress;
         this.maxStress = maxStress;
         this.collectedItemIDs = collectedItemIDs ?? new List<string>();
+        this.introVista = introVista;
     }
 }

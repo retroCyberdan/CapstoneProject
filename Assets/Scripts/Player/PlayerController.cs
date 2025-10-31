@@ -51,8 +51,9 @@ public class PlayerController : MonoBehaviour
         _horizontal = Input.GetAxis("Horizontal");
         _vertical = Input.GetAxis("Vertical");
 
-        // Permetti lo sprint solo se canSprint è true
+        // permette lo sprint solo se canSprint è true
         if (Input.GetKey(KeyCode.LeftShift) && canSprint) _currentSpeed = sprintSpeed;
+
         else _currentSpeed = walkSpeed;
     }
 
@@ -63,7 +64,7 @@ public class PlayerController : MonoBehaviour
         Vector3 horizontalMove = direction * _currentSpeed * Time.deltaTime;
 
         // applica la gravità
-        if (_characterController.isGrounded && _verticalVelocity < 0) _verticalVelocity = -2f; // piccola forza per mantenere il player a terra
+        if (_characterController.isGrounded && _verticalVelocity < 0) _verticalVelocity = -2f; // <- piccola forza per mantenere il player a terra
 
         else _verticalVelocity += gravity * Time.deltaTime;
 
@@ -101,13 +102,11 @@ public class PlayerController : MonoBehaviour
 
         if (isRunning && !_wasRunning)
         {
-            // Ha appena iniziato a correre
-            if (AudioManager.Instance != null) AudioManager.Instance.StartRunningBreathing(transform.position);
+            if (AudioManager.Instance != null) AudioManager.Instance.StartRunningBreathing(transform.position); // <- ha appena iniziato a correre
         }
         else if (!isRunning && _wasRunning)
         {
-            // Ha appena smesso di correre
-            if (AudioManager.Instance != null) AudioManager.Instance.StopRunningBreathing();
+            if (AudioManager.Instance != null) AudioManager.Instance.StopRunningBreathing(); // <- ha appena smesso di correre
         }
 
         _wasRunning = isRunning;
@@ -134,7 +133,7 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
-                _currentSurfaceType = "Ground"; // default
+                _currentSurfaceType = "Ground"; // <- default
             }
         }
     }

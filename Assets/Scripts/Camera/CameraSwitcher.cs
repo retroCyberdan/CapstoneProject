@@ -10,11 +10,11 @@ public class CameraSwitcher : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player")) activeCamera.Priority = 20; // Aumenta la priorità per attivare questa telecamera
+        if (other.CompareTag("Player")) activeCamera.Priority = 20; // <- aumenta la priorità per attivare questa telecamera
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Player")) activeCamera.Priority = 0; // Ripristina la priorità per disattivare questa telecamera
+        if (other.CompareTag("Player")) activeCamera.Priority = 0; // <- ripristina la priorità per disattivare questa telecamera
     }
 }

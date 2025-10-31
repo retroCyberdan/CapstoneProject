@@ -39,12 +39,10 @@ public class ItemsUiManager : MonoBehaviour
 
     void Update()
     {
-        // Chiudi premendo barra spaziatrice
+        // chiude premendo barra spaziatrice
         if (itemActive && Input.GetKeyDown(KeyCode.Space))
         {
-            // Suono chiusura
-            if (AudioManager.Instance != null && exitClip != null)
-                AudioManager.Instance.PlayOneShot(exitClip, transform.position, volume);
+            if (AudioManager.Instance != null && exitClip != null) AudioManager.Instance.PlayOneShot(exitClip, transform.position, volume); // <- suono chiusura universale
 
             StartCoroutine(AnimateOut());
             itemActive = false;
@@ -59,17 +57,14 @@ public class ItemsUiManager : MonoBehaviour
             return;
         }
 
-        // Assicurati che il canvas sia attivo PRIMA di fare qualsiasi cosa
+        // si assicura che il canvas sia attivo PRIMA di fare qualsiasi cosa
         canvasGroup.gameObject.SetActive(true);
 
-        // Porta in primo piano nella hierarchy
+        // porta in primo piano nella hierarchy
         canvasGroup.transform.SetAsLastSibling();
 
-        // Aggiorna i componenti UI con i dati dello ScriptableObject
-        if (itemText != null)
-        {
-            itemText.SetText(item.itemDescription);
-        }
+        // aggiorna i componenti UI con i dati dello ScriptableObject
+        if (itemText != null) itemText.SetText(item.itemDescription);
 
         if (itemImage != null && item.itemSprite != null)
         {
@@ -81,19 +76,19 @@ public class ItemsUiManager : MonoBehaviour
             itemImage.gameObject.SetActive(false);
         }
 
-        StartCoroutine(ShowItemRoutine());
+        StartCoroutine(ShowItemRoutine(item));
     }
 
-    IEnumerator ShowItemRoutine()
+    IEnumerator ShowItemRoutine(SO_Items item)
     {
         itemActive = true;
 
-        // Suono apertura
-        if (AudioManager.Instance != null && showClip != null)
-            AudioManager.Instance.PlayOneShot(showClip, transform.position, volume);
+        if (AudioManager.Instance != null && showClip != null) AudioManager.Instance.PlayOneShot(showClip, transform.position, volume); // <- suono apertura universale
+
+        if (item != null && item.useObjectSound && item.objectSound != null && AudioManager.Instance != null) AudioManager.Instance.PlayOneShot(item.objectSound, transform.position, item.soundVolume); // <- suono specifico dell'oggetto (se abilitato)
 
         yield return StartCoroutine(AnimateIn());
-        // Resta aperto finché non premi barra spaziatrice (gestito in Update)
+        // resta aperto finché non premi barra spaziatrice (gestito in Update)
     }
 
     IEnumerator AnimateIn()
@@ -143,7 +138,6 @@ public class ItemsUiManager : MonoBehaviour
         canvasGroup.blocksRaycasts = false;
         canvasGroup.interactable = false;
 
-        // Disattiva il canvas dopo l'animazione
-        canvasGroup.gameObject.SetActive(false);
+        canvasGroup.gameObject.SetActive(false); // <- disattiva il canvas dopo l'animazione
     }
 }

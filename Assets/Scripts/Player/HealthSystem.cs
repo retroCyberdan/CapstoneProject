@@ -6,43 +6,43 @@ using UnityEngine.SceneManagement;
 public class HealthSystem : MonoBehaviour
 {
     [Header("Health Settings")]
-    [SerializeField] private float maxHealth = 100f;
-    [SerializeField] private float currentHealth;
+    [SerializeField] private float _maxHealth = 100f;
+    [SerializeField] private float _currentHealth;
 
     [Header("References")]
-    [SerializeField] private UI_HealthBar uiHealthBar;
-    [SerializeField] private CanvasGroup deathCanvas;
+    [SerializeField] private UI_HealthBar _uiHealthBar;
+    [SerializeField] private CanvasGroup _deathCanvas;
 
     [Header("Death Settings")]
-    [SerializeField] private float deathCanvasFadeSpeed = 1f;
-    [SerializeField] private string mainMenuSceneName = "MainMenu";
+    [SerializeField] private float _deathCanvasFadeSpeed = 1f;
+    [SerializeField] private string _mainMenuSceneName = "MainMenu";
 
     // events per notificare cambiamenti di salute
     public event Action<float, float> OnHealthChanged;
     public event Action OnDeath;
 
     // getters
-    public float GetCurrentHealth() => currentHealth;
-    public float GetMaxHealth() => maxHealth;
-    public float GetHealthPercentage() => currentHealth / maxHealth;
-    public bool IsAlive() => currentHealth > 0;
-    public bool IsAtMaxHealth() => Mathf.Approximately(currentHealth, maxHealth);
+    public float GetCurrentHealth() => _currentHealth;
+    public float GetMaxHealth() => _maxHealth;
+    public float GetHealthPercentage() => _currentHealth / _maxHealth;
+    public bool IsAlive() => _currentHealth > 0;
+    public bool IsAtMaxHealth() => Mathf.Approximately(_currentHealth, _maxHealth);
 
     private void Start()
     {
-        currentHealth = maxHealth;
+        _currentHealth = _maxHealth;
 
-        if (uiHealthBar != null)
+        if (_uiHealthBar != null)
         {
-            uiHealthBar.maxHealthValue = maxHealth;
-            uiHealthBar.healthValue = currentHealth;
+            _uiHealthBar.maxHealthValue = _maxHealth;
+            _uiHealthBar.healthValue = _currentHealth;
         }
 
-        // assicurati che la death canvas sia invisibile all'inizio
-        if (deathCanvas != null)
+        // si assicura che la death canvas sia invisibile all'inizio
+        if (_deathCanvas != null)
         {
-            deathCanvas.alpha = 0f;
-            deathCanvas.gameObject.SetActive(false);
+            _deathCanvas.alpha = 0f;
+            _deathCanvas.gameObject.SetActive(false);
         }
     }
 
@@ -56,13 +56,13 @@ public class HealthSystem : MonoBehaviour
 
         if (!IsAlive()) return;
 
-        currentHealth -= damage;
-        currentHealth = Mathf.Max(currentHealth, 0f);
+        _currentHealth -= damage;
+        _currentHealth = Mathf.Max(_currentHealth, 0f);
 
         UpdateHealthBar();
-        OnHealthChanged?.Invoke(currentHealth, maxHealth);
+        OnHealthChanged?.Invoke(_currentHealth, _maxHealth);
 
-        if (currentHealth <= 0) Die();
+        if (_currentHealth <= 0) Die();
     }
 
     public void Heal(float amount)
@@ -73,50 +73,50 @@ public class HealthSystem : MonoBehaviour
             return;
         }
 
-        if (currentHealth <= 0)
+        if (_currentHealth <= 0)
         {
             Debug.LogWarning("Non è possibile guarire un'entità morta.");
             return;
         }
 
-        currentHealth += amount;
-        currentHealth = Mathf.Min(currentHealth, maxHealth);
+        _currentHealth += amount;
+        _currentHealth = Mathf.Min(_currentHealth, _maxHealth);
 
         UpdateHealthBar();
-        OnHealthChanged?.Invoke(currentHealth, maxHealth);
+        OnHealthChanged?.Invoke(_currentHealth, _maxHealth);
     }
 
     public void SetHealth(float value)
     {
-        currentHealth = Mathf.Clamp(value, 0f, maxHealth);
+        _currentHealth = Mathf.Clamp(value, 0f, _maxHealth);
 
         UpdateHealthBar();
-        OnHealthChanged?.Invoke(currentHealth, maxHealth);
+        OnHealthChanged?.Invoke(_currentHealth, _maxHealth);
 
-        if (currentHealth <= 0) Die();
+        if (_currentHealth <= 0) Die();
     }
 
     public void SetMaxHealth(float value, bool healToMax = false)
     {
-        maxHealth = Mathf.Max(value, 1f);
+        _maxHealth = Mathf.Max(value, 1f);
 
-        if (healToMax) currentHealth = maxHealth;
-        else currentHealth = Mathf.Min(currentHealth, maxHealth);
+        if (healToMax) _currentHealth = _maxHealth;
+        else _currentHealth = Mathf.Min(_currentHealth, _maxHealth);
 
-        if (uiHealthBar != null) uiHealthBar.maxHealthValue = maxHealth;
+        if (_uiHealthBar != null) _uiHealthBar.maxHealthValue = _maxHealth;
 
         UpdateHealthBar();
-        OnHealthChanged?.Invoke(currentHealth, maxHealth);
+        OnHealthChanged?.Invoke(_currentHealth, _maxHealth);
     }
 
     public void HealToMax()
     {
-        Heal(maxHealth - currentHealth);
+        Heal(_maxHealth - _currentHealth);
     }
 
     private void UpdateHealthBar()
     {
-        if (uiHealthBar != null) uiHealthBar.healthValue = currentHealth;
+        if (_uiHealthBar != null) _uiHealthBar.healthValue = _currentHealth;
     }
 
     private void Die()
@@ -137,42 +137,42 @@ public class HealthSystem : MonoBehaviour
     private IEnumerator HandleDeath()
     {
         // attiva la death canvas
-        if (deathCanvas != null)
+        if (_deathCanvas != null)
         {
-            deathCanvas.gameObject.SetActive(true);
+            _deathCanvas.gameObject.SetActive(true);
 
             // fade in graduale
-            while (deathCanvas.alpha < 1f)
+            while (_deathCanvas.alpha < 1f)
             {
-                deathCanvas.alpha += Time.unscaledDeltaTime * deathCanvasFadeSpeed;
+                _deathCanvas.alpha += Time.unscaledDeltaTime * _deathCanvasFadeSpeed;
                 yield return null;
             }
 
-            deathCanvas.alpha = 1f;
+            _deathCanvas.alpha = 1f;
         }
 
         yield return new WaitForSecondsRealtime(0.5f); // <- aspetta un attimo prima di freezare completamente
 
         //Time.timeScale = 0f; // <- freezare la scena
 
-        while (!Input.GetKeyDown(KeyCode.Space)) yield return null; // <- aspetta che il giocatore prema Spazio per tornare al menu
+        while (!Input.GetKeyDown(KeyCode.Space)) yield return null; // <- aspetta che il giocatore prema Spazio per tornare al main menu
 
         // ripristina il timeScale e torna al MainMenu
         //Time.timeScale = 1f;
-        SceneManager.LoadScene(mainMenuSceneName);
+        SceneManager.LoadScene(_mainMenuSceneName);
     }
 
     public void ResetGame() // <- metodo pubblico per resettare il gioco (da chiamare da un bottone di restart)
     {
         Time.timeScale = 1f;
 
-        if (deathCanvas != null)
+        if (_deathCanvas != null)
         {
-            deathCanvas.alpha = 0f;
-            deathCanvas.gameObject.SetActive(false);
+            _deathCanvas.alpha = 0f;
+            _deathCanvas.gameObject.SetActive(false);
         }
 
-        currentHealth = maxHealth;
+        _currentHealth = _maxHealth;
         UpdateHealthBar();
 
         var controller = GetComponent<PlayerController>();

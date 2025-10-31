@@ -15,8 +15,31 @@ public class SaveSystem : MonoBehaviour
     private string _dataString;
     private string _path;
 
-    // Lista runtime degli oggetti raccolti
-    private HashSet<string> _collectedItemIDs = new HashSet<string>();
+    private HashSet<string> _collectedItemIDs = new HashSet<string>(); // <- lista a runtime degli oggetti raccolti
+
+    private bool _introVista = false; // <- flag per tracciare se l'intro è stata vista
+
+    public static bool CheckIntroVistaFromFile() // <- metodo statico per controllare se l'intro è stata vista PRIMA che SaveSystem sia istanziato
+    {
+        string path = Application.persistentDataPath + "/save.json";
+
+        if (!MainMenu.ShouldLoadSave || !File.Exists(path))
+        {
+            return false;
+        }
+
+        try
+        {
+            string jsonData = File.ReadAllText(path);
+            PlayerSave save = JsonConvert.DeserializeObject<PlayerSave>(jsonData);
+            return save.introVista;
+        }
+        catch (System.Exception e)
+        {
+            Debug.LogError("Errore durante il controllo intro: " + e.Message);
+            return false;
+        }
+    }
 
     private void Awake()
     {
@@ -36,7 +59,7 @@ public class SaveSystem : MonoBehaviour
         _path = Application.persistentDataPath + "/save.json";
         Debug.Log("Save path: " + _path);
 
-        // Carica subito gli ID degli oggetti raccolti se richiesto dal menu
+        // carica subito gli ID degli oggetti raccolti e lo stato dell'intro se richiesto dal menu
         if (MainMenu.ShouldLoadSave)
         {
             LoadCollectedItemsOnly();
@@ -55,8 +78,7 @@ public class SaveSystem : MonoBehaviour
         }
     }
 
-    // Carica solo gli ID degli oggetti raccolti (per ItemsTrigger in Awake)
-    private void LoadCollectedItemsOnly()
+    private void LoadCollectedItemsOnly() // <- carica solo gli ID degli oggetti raccolti e lo stato dell'intro (per ItemsTrigger e IntroManager in Awake)
     {
         try
         {
@@ -73,7 +95,10 @@ public class SaveSystem : MonoBehaviour
                         _collectedItemIDs.Add(id);
                     }
                 }
-                Debug.Log($"Pre-caricati {_collectedItemIDs.Count} ID oggetti raccolti");
+
+                _introVista = _playerSave.introVista;
+
+                Debug.Log($"Pre-caricati {_collectedItemIDs.Count} ID oggetti raccolti - Intro già vista: {_introVista}");
             }
         }
         catch (System.Exception e)
@@ -102,8 +127,7 @@ public class SaveSystem : MonoBehaviour
         return File.Exists(path);
     }
 
-    // Registra un oggetto come raccolto
-    public void RegisterCollectedItem(string itemID)
+    public void RegisterCollectedItem(string itemID) // <- registra un oggetto come raccolto
     {
         if (!string.IsNullOrEmpty(itemID))
         {
@@ -112,10 +136,20 @@ public class SaveSystem : MonoBehaviour
         }
     }
 
-    // Controlla se un oggetto è stato raccolto
-    public bool IsItemCollected(string itemID)
+    public bool IsItemCollected(string itemID) // <- controlla se un oggetto è stato raccolto
     {
         return _collectedItemIDs.Contains(itemID);
+    }
+
+    public void SetIntroAsViewed() // <- segna l'intro come vista
+    {
+        _introVista = true;
+        Debug.Log("Intro segnata come vista");
+    }
+
+    public bool IsIntroViewed() // <- controlla se l'intro è già stata vista
+    {
+        return _introVista;
     }
 
     public bool Save()
@@ -142,16 +176,15 @@ public class SaveSystem : MonoBehaviour
         float currentStress = _stressSystem != null ? _stressSystem.GetCurrentStress() : 0f;
         float maxStress = _stressSystem != null ? _stressSystem.GetMaxStress() : 0f;
 
-        // Crea la lista degli ID raccolti
-        List<string> collectedIDs = new List<string>(_collectedItemIDs);
+        List<string> collectedIDs = new List<string>(_collectedItemIDs); // <- crea la lista degli ID raccolti
 
-        _playerSave = new PlayerSave(pos, rot, currentHealth, maxHealth, currentStress, maxStress, collectedIDs);
+        _playerSave = new PlayerSave(pos, rot, currentHealth, maxHealth, currentStress, maxStress, collectedIDs, _introVista);
         _dataString = JsonConvert.SerializeObject(_playerSave, Formatting.Indented);
 
         try
         {
             File.WriteAllText(_path, _dataString);
-            Debug.Log($"Save completato: {_path} - Oggetti salvati: {collectedIDs.Count}");
+            Debug.Log($"Save completato: {_path} - Oggetti salvati: {collectedIDs.Count} - Intro vista: {_introVista}");
             return true;
         }
         catch (System.Exception e)
@@ -188,7 +221,7 @@ public class SaveSystem : MonoBehaviour
                     _stressSystem.SetStress(_playerSave.currentStress);
                 }
 
-                // Ripristina gli oggetti raccolti
+                // ripristina gli oggetti raccolti
                 _collectedItemIDs.Clear();
                 if (_playerSave.collectedItemIDs != null)
                 {
@@ -198,13 +231,16 @@ public class SaveSystem : MonoBehaviour
                     }
                 }
 
-                // Ripristina l'inventario
+                // ripristina lo stato dell'intro
+                _introVista = _playerSave.introVista;
+
+                // ripristina l'inventario
                 if (InventoryManager.Instance != null)
                 {
                     InventoryManager.Instance.LoadInventory(_playerSave.collectedItemIDs);
                 }
 
-                Debug.Log($"Load completato - Oggetti caricati: {_collectedItemIDs.Count}");
+                Debug.Log($"Load completato - Oggetti caricati: {_collectedItemIDs.Count} - Intro vista: {_introVista}");
                 return true;
             }
             else
@@ -228,6 +264,7 @@ public class SaveSystem : MonoBehaviour
             {
                 File.Delete(_path);
                 _collectedItemIDs.Clear();
+                _introVista = false;
                 Debug.Log("Salvataggio eliminato");
                 return true;
             }
