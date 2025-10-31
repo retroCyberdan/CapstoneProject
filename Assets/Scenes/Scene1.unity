@@ -15,7 +15,7 @@ OcclusionCullingSettings:
 RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 9
-  m_Fog: 0
+  m_Fog: 1
   m_FogColor: {r: 0.41568628, g: 0.3764706, b: 0.45882353, a: 1}
   m_FogMode: 3
   m_FogDensity: 0.15
@@ -27,7 +27,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 4f6ac531b6fd0d04bafbaa6eb3dc254d, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -23861,26 +23861,26 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "MASU Productions\n\n\n\nVISION OF D\n\n\n\nMAIN DIRECTOR, GAME DESIGNER
-    e PROGRAMMING\nDaniele Feola\n\n\nWORLD MAP DESIGN\nDaniele Feola\n\n\nATTRIBUZIONI
-    SPECIALI PER ASSETS GRAFICI\nBrieucSwales\nlocal.yany\nSeven.Four\nSousinho\nYadroGames\nMrUnity\nFuji\nRenafox\nRusty-exe\nLiliumLetifer\nWhiskey\nTokuwa\nNice2meetU2\nendlessvoidmc\nsergeykuchmin\namanpatel9725\nkinito\nDawnstar-Chronicles\nVeterock\nVasian-Digital3D\nudi_kreasindo3D\nschmoldt.art\nKing
-    Potato\no0ozexo0o\naribb\nImran Aziz\n\n\n\nSea Rover Sanguine\nClawbriar\ndaemoth\n\n\n\nATTRIBUZIONI
-    SPECIALI PER ASSETS AUDIO\nMysticus\n\n\n\ntutte le opere grafiche, comprensive
+  m_text: "da.fe. soft & MASU Productions\n\n\n\n\n\nVISION OF D.\nInunaki no noroi\n\n\n\n\n\nMAIN
+    DIRECTOR, GAME DESIGNER e LEAD PROGRAMMING\nDaniele Feola\n\n\n\nWORLD MAP e
+    LEVEL DESIGN\nDaniele Feola\n\n\n\nMENZIONI SPECIALI PER ASSETS GRAFICI\nBrieucSwales\nlocal.yany\nSeven.Four\nSousinho\nYadroGames\nMrUnity\nFuji\nRenafox\nRusty-exe\nLiliumLetifer\nWhiskey\nTokuwa\nNice2meetU2\nendlessvoidmc\nsergeykuchmin\namanpatel9725\nkinito\nDawnstar-Chronicles\nVeterock\nVasian-Digital3D\nudi_kreasindo3D\nschmoldt.art\nKing
+    Potato\no0ozexo0o\naribb\nImran Aziz\n\n\n\n\nSea Rover Sanguine\nClawbriar\ndaemoth\n\n\n\n\nMENZIONI
+    SPECIALI PER ASSETS AUDIO\nMysticus\n\n\n\n\nTutte le opere grafiche, comprensive
     di modelli tridimensionali di personaggi, oggetti, strutture ed edifici, modelli
-    3D vari sono dei rispettivi proprietari.\n\ntutti gli asset grafici utilizzati
-    sono sotto licenza CC Attribution.\n\ntutti gli assets audio sono dei rispettivi
-    proprietari.\n\n\n\nALTRE ATTRIBUZIONI\nTheSpritersResources\nTheSoundsResources\nthelostvillage
-    (Fatal Frame wiki)\n\n\n\nQuest`opera \xE8 liberamente ispirata ad altre opere
-    maggiori e saghe videoludiche di successo quali Silent Hill, Fatal Frame, Haunting
-    Ground e Resident Evil. Ogni riferimento a persone, luoghi, eventi realmente
-    accaduti \xE8 puramente casuale o a scopo meramente esercitativo.\n\nQuest`opera
+    3D vari sono dei rispettivi proprietari.\n\nTutti gli asset grafici utilizzati
+    sono sotto licenza CC Attribution.\n\nTutti gli assets audio sono dei rispettivi
+    proprietari.\n\n\n\n\nALTRE MENZIONI\nTheSpritersResources\nTheSoundsResources\nthelostvillage
+    (Fatal Frame wiki)\nSketchFab\n\n\n\n\nQuest`opera \xE8 liberamente ispirata
+    ad altre opere maggiori e saghe videoludiche di successo quali Silent Hill, Fatal
+    Frame, Haunting Ground e Resident Evil. Ogni riferimento a persone, luoghi, eventi
+    realmente accaduti \xE8 puramente casuale o a scopo meramente esercitativo.\n\nQuest`opera
     \xE8 frutto dell`amore e della passione che lo sviluppatore nutre in questo genere
     videoludico e nella stima e ammirazione verso quelle persone che hanno creato
-    e dettato le regole del genere.\n\n\n\nRingraziamenti speciali a EPICODE School
+    e dettato le regole del genere.\n\n\n\n\nRingraziamenti speciali a EPICODE School
     per avermi dato modo di apprendere le nozioni fondamentali per poter creare un
-    progetto del genere.\n\n\n\n\nGrazie mille a Jacopo Zuliani e Luca Villanini
-    per la loro professionalit\xE0, passione e amicizia.\n\n\n\n\n\n2025 - Tutti
-    i diritti riservati."
+    progetto del genere.\n\n\n\n\n\nGrazie mille con tutto il cuore a Jacopo Zuliani
+    e Luca Villanini per la loro professionalit\xE0, passione e amicizia.\n\n\n\n\n\n\n2025
+    - Tutti i diritti riservati."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 52bcdc70e6fa1244489afe9317251bd9, type: 2}
   m_sharedMaterial: {fileID: -2963236081478285707, guid: 52bcdc70e6fa1244489afe9317251bd9,
@@ -25160,7 +25160,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -600}
-  m_SizeDelta: {x: 1000, y: 50}
+  m_SizeDelta: {x: 1500, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &3803680339064518135
 PrefabInstance:
@@ -25836,7 +25836,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 0b2514d599c2fa243ade4ff41a1efe54, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0c435b122d40b3c4b971de52e91c360a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -26493,7 +26493,7 @@ GameObject:
   - component: {fileID: 5306466101949935440}
   - component: {fileID: 4760389982479335521}
   m_Layer: 0
-  m_Name: ESC
+  m_Name: SPACE
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

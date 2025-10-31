@@ -14,6 +14,8 @@ public class MainMenu : MonoBehaviour
     {
         AudioManager.Instance.PlayBGM(AudioManager.Instance.menuMusic);
 
+        ShowCursor(); // <- mostra il cursore nel menu principale
+
         UpdateContinueButton(); // <- controlla se esiste un salvataggio e abilita/disabilita il pulsante Continue
     }
 
@@ -39,14 +41,6 @@ public class MainMenu : MonoBehaviour
 
     public void OnNewGameClicked() // <- chiamato dal pulsante "New Game"
     {
-        //// Cancella il salvataggio esistente per iniziare da zero
-        //string path = Application.persistentDataPath + "/save.json";
-        //if (System.IO.File.Exists(path))
-        //{
-        //    System.IO.File.Delete(path);
-        //    Debug.Log("Salvataggio precedente eliminato");
-        //}
-
         ShouldLoadSave = false;
         SceneManager.LoadScene(_gameSceneName);
         AudioManager.Instance.StopBGM();
@@ -80,5 +74,18 @@ public class MainMenu : MonoBehaviour
             Debug.Log("Salvataggio eliminato");
             UpdateContinueButton();
         }
+    }
+
+    // metodi per gestire il cursore
+    public void ShowCursor()
+    {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+    }
+
+    public void HideCursor()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 }

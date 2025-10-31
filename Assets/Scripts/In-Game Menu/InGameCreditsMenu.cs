@@ -5,7 +5,7 @@ public class InGameCreditsMenu : MonoBehaviour
 {
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape)) // <- premi ESC per tornare al menu
+        if (Input.GetKeyDown(KeyCode.Space)) // <- premi SPACE per tornare al menu
         {
             ReturnToMainMenu();
             return;
