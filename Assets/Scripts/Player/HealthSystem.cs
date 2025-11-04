@@ -153,12 +153,12 @@ public class HealthSystem : MonoBehaviour
 
         yield return new WaitForSecondsRealtime(0.5f); // <- aspetta un attimo prima di freezare completamente
 
-        //Time.timeScale = 0f; // <- freezare la scena
+        Time.timeScale = 0f; // <- freezare la scena
 
         while (!Input.GetKeyDown(KeyCode.Space)) yield return null; // <- aspetta che il giocatore prema Spazio per tornare al main menu
 
         // ripristina il timeScale e torna al MainMenu
-        //Time.timeScale = 1f;
+        Time.timeScale = 1f;
         SceneManager.LoadScene(_mainMenuSceneName);
     }
 

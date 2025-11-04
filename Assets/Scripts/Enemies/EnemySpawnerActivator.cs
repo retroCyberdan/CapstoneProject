@@ -8,6 +8,10 @@ public class EnemySpawnerActivator : MonoBehaviour
     [Tooltip("Lo script da attivare")]
     public EnemySpawner enemySpawner;
 
+    [Header("Identificatore Unico")]
+    [Tooltip("ID univoco per questo activator (usato per il salvataggio)")]
+    public string activatorID = "EnemySpawner_1";
+
     [Header("Trigger Settings")]
     [Tooltip("Tag del player (default: 'Player')")]
     public string playerTag = "Player";
@@ -28,9 +32,31 @@ public class EnemySpawnerActivator : MonoBehaviour
 
         else if (!col.isTrigger) Debug.LogWarning($"[EnemySpawnerActivator] Il Collider su {gameObject.name} non è impostato come Trigger!");
 
-        if (enemySpawner != null) enemySpawner.enabled = false; // <- assicura che lo spawner sia disattivato all'inizio
+        if (enemySpawner != null)
+        {
+            // controlla se lo script era già stato attivato in un salvataggio precedente
+            if (SaveSystem.Instance != null && SaveSystem.Instance.IsScriptActivated(activatorID))
+            {
+                // riattiva lo spawner senza far partire il trigger
+                enemySpawner.enabled = true;
+                _hasActivated = true;
+                Debug.Log($"[EnemySpawnerActivator] Script '{activatorID}' ripristinato da salvataggio!");
 
-        else Debug.LogError($"[EnemySpawnerActivator] Script Activator non assegnato su {gameObject.name}!");
+                if (disableAfterActivation)
+                {
+                    gameObject.SetActive(false);
+                }
+            }
+            else
+            {
+                // assicura che lo spawner sia disattivato all'inizio
+                enemySpawner.enabled = false;
+            }
+        }
+        else
+        {
+            Debug.LogError($"[EnemySpawnerActivator] Script Activator non assegnato su {gameObject.name}!");
+        }
     }
 
     void OnTriggerEnter(Collider other)
@@ -49,6 +75,8 @@ public class EnemySpawnerActivator : MonoBehaviour
         {
             enemySpawner.enabled = true;
             _hasActivated = true;
+
+            if (SaveSystem.Instance != null) SaveSystem.Instance.RegisterActivatedScript(activatorID); // <- registra l'attivazione nel SaveSystem
 
             Debug.Log($"[EnemySpawnerActivator] Script attivato su {enemySpawner.gameObject.name}!");
 

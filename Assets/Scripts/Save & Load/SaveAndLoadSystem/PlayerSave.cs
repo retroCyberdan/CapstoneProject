@@ -15,9 +15,17 @@ public class PlayerSave
 
     public bool introVista = false; // <- flag per tracciare se l'intro è già stata vista
 
+    public List<string> activatedScriptIDs = new List<string>(); // <- lista degli ID degli script attivati
+
+    public bool gameIsPaused = false; // <- stato del menu di pausa
+
+    public float masterVolume;
+    public float bgmVolume;
+    public float sfxVolume;
+
     public PlayerSave() { }
 
-    public PlayerSave(float[] position, float[] rotation, float currentHealth, float maxHealth, float currentStress, float maxStress, List<string> collectedItemIDs, bool introVista)
+    public PlayerSave(float[] position, float[] rotation, float currentHealth, float maxHealth, float currentStress, float maxStress, List<string> collectedItemIDs, bool introVista, List<string> activatedScriptIDs, bool gameIsPaused, float masterVolume, float bgmVolume, float sfxVolume)
     {
         this.position = position;
         this.rotation = rotation;
@@ -27,5 +35,10 @@ public class PlayerSave
         this.maxStress = maxStress;
         this.collectedItemIDs = collectedItemIDs ?? new List<string>();
         this.introVista = introVista;
+        this.activatedScriptIDs = activatedScriptIDs ?? new List<string>();
+        this.gameIsPaused = gameIsPaused;
+        this.masterVolume = masterVolume;
+        this.bgmVolume = bgmVolume;
+        this.sfxVolume = sfxVolume;
     }
 }

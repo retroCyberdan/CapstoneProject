@@ -21,7 +21,24 @@ public class PauseMenu : MonoBehaviour
 
     void Start()
     {
-        if (pauseMenuUI != null) pauseMenuUI.SetActive(false);
+        // sincronizza lo stato del menu con GameIsPaused (importante per il caricamento)
+        if (pauseMenuUI != null)
+        {
+            pauseMenuUI.SetActive(GameIsPaused);
+
+            // si assicura che il cursore sia nello stato corretto
+            if (cameraController != null)
+            {
+                if (GameIsPaused)
+                {
+                    cameraController.ShowCursor();
+                }
+                else
+                {
+                    cameraController.HideCursor();
+                }
+            }
+        }
     }
 
     void Update()
@@ -76,6 +93,7 @@ public class PauseMenu : MonoBehaviour
     public void BackToMainMenu()
     {
         Time.timeScale = 1f;
+        GameIsPaused = false; // <- resetta lo stato quando torni al menu principale
         SceneManager.LoadScene("MainMenu");
     }
 }
