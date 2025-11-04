@@ -25,15 +25,21 @@ public class EnemySpawner : MonoBehaviour
     public float spawnInterval = 3f;
 
     [Header("Audio Settings")]
-    public AudioClip enemySpawnSound; // <- suono quando spawna un nemico normale
-    public AudioClip bossSpawnMusic; // <- musica quando spawna il boss
     public string bossPoolTag = "Boss"; // <- tag del boss per identificarlo
 
     private GameObject _currentBoss; // <- riferimento al boss attivo
 
+    private bool _isEnemyMusicPlaying = false;
+    private bool _isBossMusicPlaying = false;
+
     void Start()
     {
         InvokeRepeating(nameof(SpawnEnemy), 2f, spawnInterval);
+    }
+
+    private void Update()
+    {
+        HandleDynamicMusic();
     }
 
     void SpawnEnemy()
@@ -62,21 +68,16 @@ public class EnemySpawner : MonoBehaviour
                     }
 
                     // gestione audio in base al tipo di nemico
-                    if (e.poolTag == bossPoolTag)
+                    if (AudioManager.Instance != null)
                     {
-                        // se è il boss, riproduci la musica del boss
-                        if (bossSpawnMusic != null && AudioManager.Instance != null)
+                        if (e.poolTag == bossPoolTag)
                         {
-                            AudioManager.Instance.PlayOneShot(bossSpawnMusic, spawnPoint.position, .05f);
+                            AudioManager.Instance.PlayBossSpawnSound(spawnPoint.position);
+                            _currentBoss = enemy;
                         }
-                        _currentBoss = enemy;
-                    }
-                    else
-                    {
-                        // se è un nemico normale, riproduci il suono di spawn
-                        if (enemySpawnSound != null && AudioManager.Instance != null)
+                        else
                         {
-                            AudioManager.Instance.PlayOneShot(enemySpawnSound, spawnPoint.position, .05f);
+                            AudioManager.Instance.PlayEnemySpawnSound(spawnPoint.position);
                         }
                     }
 
@@ -102,6 +103,61 @@ public class EnemySpawner : MonoBehaviour
             {
                 _currentBoss = null;
             }
+        }
+    }
+
+    public bool HasActiveEnemies()
+    {
+        foreach (var e in enemies)
+        {
+            if (e.poolTag != bossPoolTag)
+            {
+                List<GameObject> activeObjects = PoolManager.Instance.GetActiveObjects(e.poolTag);
+                if (activeObjects.Exists(obj => obj.activeInHierarchy))
+                    return true;
+            }
+        }
+        return false;
+    }
+
+    public bool HasActiveBoss()
+    {
+        return _currentBoss != null && _currentBoss.activeInHierarchy;
+    }
+
+    public void HandleDynamicMusic()
+    {
+        if (AudioManager.Instance == null) return;
+
+        bool hasEnemies = HasActiveEnemies();
+        bool hasBoss = HasActiveBoss();
+
+        if (hasBoss) // <- caso 1: boss presente -> interrompe musica nemici e avvia boss music
+        {
+            if (!_isBossMusicPlaying)
+            {
+                AudioManager.Instance.StopBGM();
+                AudioManager.Instance.PlayBossSpawnSound(transform.position);
+                _isBossMusicPlaying = true;
+                _isEnemyMusicPlaying = false;
+            }
+            return;
+        }
+
+        if (hasEnemies && !_isEnemyMusicPlaying) // <- caso 2: nessun boss ma ci sono nemici -> musica nemici
+        {
+            AudioManager.Instance.StopBGM();
+            AudioManager.Instance.PlayEnemySpawnSound(transform.position);
+            _isEnemyMusicPlaying = true;
+            _isBossMusicPlaying = false;
+            return;
+        }
+
+        if (!hasEnemies && !hasBoss && (_isEnemyMusicPlaying || _isBossMusicPlaying)) // <- caso 3: nessun nemico e nessun boss -> ferma tutto
+        {
+            AudioManager.Instance.StopBGM();
+            _isEnemyMusicPlaying = false;
+            _isBossMusicPlaying = false;
         }
     }
 }

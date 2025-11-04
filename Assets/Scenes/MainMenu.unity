@@ -1624,6 +1624,10 @@ MonoBehaviour:
   hitVolume: 0.8
   deathSound: {fileID: 8300000, guid: d7107d3a998d6eb478e6bced7c879f8c, type: 3}
   deathVolume: 0.9
+  enemySpawnSound: {fileID: 8300000, guid: 855181f62592a4f34a0cbcbe267d1433, type: 3}
+  enemySpawnVolume: 0.25
+  bossSpawnMusic: {fileID: 8300000, guid: dcaa49c56a6674229829c944cf6ff2f8, type: 3}
+  bossSpawnVolume: 0.3
 --- !u!1 &1152313609
 GameObject:
   m_ObjectHideFlags: 0

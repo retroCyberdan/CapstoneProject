@@ -214,6 +214,10 @@ public class SaveSystem : MonoBehaviour
                     AudioManager.Instance.UpdateVolumeFromPlayerPrefs();
 
                     AudioManager.Instance.PlayGameMusic();
+
+                    // forza un aggiornamento immediato della musica in base a cosa è presente nella scena
+                    EnemySpawner spawner = FindObjectOfType<EnemySpawner>();
+                    if (spawner != null) spawner.Invoke(nameof(spawner.HandleDynamicMusic), 0.1f);
                 }
 
                 // ripristina l'inventario

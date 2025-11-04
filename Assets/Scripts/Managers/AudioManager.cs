@@ -31,6 +31,12 @@ public class AudioManager : MonoBehaviour
     public AudioClip deathSound; // <- suono per la morte del personaggio
     [Range(0f, 1f)] public float deathVolume = 0.9f;
 
+    [Header("Enemy & Boss Audio Settings")]
+    public AudioClip enemySpawnSound; // <- suono di spawn per nemico
+    [Range(0f, 1f)] public float enemySpawnVolume = 0.25f;
+    public AudioClip bossSpawnMusic; // <- suono di spawn per boss
+    [Range(0f, 1f)] public float bossSpawnVolume = 0.3f;
+
     private AudioSource _currentBGM;
     private AudioSource _breathingSource; // <- source per l'affanno continuo
     private AudioMixerGroup _bgmGroup;
@@ -200,6 +206,18 @@ public class AudioManager : MonoBehaviour
     public void PlayDeath(Vector2 position) // <- riproduce suono della morte del personaggio
     {
         PlaySoundEffect(deathSound, position, deathVolume);
+    }
+
+    public void PlayEnemySpawnSound(Vector2 position) // <- riproduce il suono di spawn di un nemico
+    {
+        if (enemySpawnSound == null) return;
+        PlaySoundEffect(enemySpawnSound, position, enemySpawnVolume);
+    }
+
+    public void PlayBossSpawnSound(Vector2 position) //<- riproduce il suono di spawn di un boss
+    {
+        if (bossSpawnMusic == null) return;
+        PlaySoundEffect(bossSpawnMusic, position, bossSpawnVolume);
     }
 
     public void PlaySoundEffect(AudioClip clip, Vector2 position, float volume) // <- funzione generica per riprodurre effetti sonori

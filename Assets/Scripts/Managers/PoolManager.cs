@@ -72,4 +72,22 @@ public class PoolManager : MonoBehaviour
 
         if (obj != null) obj.SetActive(false);
     }
+
+    public List<GameObject> GetActiveObjects(string tag)
+    {
+        List<GameObject> activeObjects = new List<GameObject>();
+
+        if (!_poolDictionary.ContainsKey(tag)) return activeObjects;
+
+        // La coda contiene tutti gli oggetti (attivi e non)
+        foreach (var obj in _poolDictionary[tag])
+        {
+            if (obj != null && obj.activeInHierarchy)
+            {
+                activeObjects.Add(obj);
+            }
+        }
+
+        return activeObjects;
+    }
 }
