@@ -79,4 +79,7 @@ A heartfelt thank you to Jacopo Zuliani and Luca Villanini for their professiona
 
 
 
-LINK: https://drive.google.com/drive/folders/1hDl8VIcWsA-DNJs7ge0giSMsP9-29Hup?usp=drive_link
+LINK: 
+
+https://retrocyberdan.itch.io/vision-of-d-inunaki-no-noroi
+https://drive.google.com/drive/folders/1hDl8VIcWsA-DNJs7ge0giSMsP9-29Hup?usp=drive_link
